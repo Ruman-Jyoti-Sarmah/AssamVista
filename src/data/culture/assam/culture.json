@@ -18,8 +18,8 @@
         "as": "শৰৎ · অক্টোবৰ"
       },
       "about": {
-        "en": "A festival of light for the standing crops, with the kamdi puja and flickering earthen lamps.",
-        "as": "থিয় হৈ থকা শস্যৰ বাবে পোহৰৰ উৎসৱ — কাঁদি পূজা আৰু জ্বলি থকা মাটিৰ চকী সহিত।"
+        "en": "A quiet observance during the growing season, with lamps lit near the tulsi plant and in paddy fields as prayers for the crop.",
+        "as": "শস্যৰ বতৰত পালন কৰা এক শান্ত উৎসৱ; শস্যৰ মংগল কামনাৰে তুলসী তলত আৰু ধাননি পথাৰত চাকি জ্বলোৱা হয়।"
       }
     },
     {
@@ -29,19 +29,19 @@
         "as": "শীত · জানুৱাৰী"
       },
       "about": {
-        "en": "The harvest festival with bigeti (cane rice), curd rice and the feast that ends the season.",
-        "as": "শস্যৰ উৎসৱ — বিঘেটি (বাঁহৰ ভাত), দই-ভাত আৰু ঋতু শেষ কৰা ভোজ।"
+        "en": "The harvest-season celebration known for community feasts, traditional foods and the meji bonfire.",
+        "as": "শস্য চপোৱাৰ সময়ৰ উৎসৱ; সামূহিক ভোজ, পৰম্পৰাগত খাদ্য আৰু মেজিৰ জুই ইয়াৰ বিশেষত্ব।"
       }
     },
     {
-      "name": "Sattriya — the State Dance",
+      "name": "Sattriya",
       "kind": {
         "en": "Living tradition",
         "as": "জীৱন্ত পৰম্পৰা"
       },
       "about": {
-        "en": "Born in the sattras of Majuli, a classical dance-drama of Srimanta Sankardev, performed here still.",
-        "as": "মাজুলীৰ সাত্ৰত জন্মাৰ বোধ কৰা, স্ৰীমন্ত শঙ্কৰদেৱৰ শাস্ত্ৰীয় নৃত্য-নাটক, এতিয়াও ইয়াত উপস্থাপিত হয়।"
+        "en": "A classical dance tradition developed in Assam's Vaishnavite sattras and associated with Srimanta Sankardev and Madhavdev.",
+        "as": "অসমৰ বৈষ্ণৱ সত্ৰসমূহত বিকশিত আৰু শ্ৰীমন্ত শংকৰদেৱ তথা মাধৱদেৱৰ সৈতে জড়িত এক শাস্ত্ৰীয় নৃত্য পৰম্পৰা।"
       }
     },
     {
@@ -62,8 +62,8 @@
         "as": "বসন্ত · গ্ৰাম্য"
       },
       "about": {
-        "en": "The spring sowing festival of the Bodo people — drum, song and the joy of the land.",
-        "as": "বড়ো জনগোষ্ঠীৰ বসন্ত বীজ বপন উৎসৱ — ঢোল, গান আৰু মাটিৰ আনন্দ।"
+        "en": "The Mising spring festival that marks the beginning of sowing, celebrated with dance, music and community gatherings.",
+        "as": "মিচিংসকলৰ বসন্তকালীন উৎসৱ, যিয়ে বীজ সিঁচাৰ আৰম্ভণি সূচায়; নৃত্য, সংগীত আৰু সামূহিক মিলনেৰে উদযাপন কৰা হয়।"
       }
     },
     {

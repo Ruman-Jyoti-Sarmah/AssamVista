@@ -47,8 +47,19 @@ export default function CultureHome() {
         <span className="label chub__lede-kicker">
           {t("culture_hub_kicker")}
         </span>
+        <h2 className="chub__lede-title">{t("culture_intro_title")}</h2>
         <p className="chub__lede-text">{t("culture_hub_lede")}</p>
+        <div className="chub__lede-actions">
+          <a className="btn btn--ghost" href="#/communities">
+            {t("culture_intro_communities")}
+          </a>
+          <a className="btn btn--solid" href="#/travel">
+            {t("culture_intro_plan")}
+          </a>
+        </div>
       </section>
+
+      <HowToPlan />
 
       <AssamCommunitiesSection compact />
 
@@ -78,6 +89,35 @@ export default function CultureHome() {
       {/* ── Nudge into the Travel section ───────────────────────────── */}
       <TravelNudge />
     </div>
+  );
+}
+
+function HowToPlan() {
+  const { t } = useApp();
+  const steps = [
+    { no: "01", Icon: Landmark, title: t("culture_how_step1"), body: t("culture_how_step1_body") },
+    { no: "02", Icon: MapPin, title: t("culture_how_step2"), body: t("culture_how_step2_body") },
+    { no: "03", Icon: Compass, title: t("culture_how_step3"), body: t("culture_how_step3_body") },
+  ];
+
+  return (
+    <section className="chub__how" aria-labelledby="culture-how-title">
+      <div className="chub__how-head">
+        <span className="chub__sec-kicker">{t("culture_how_kicker")}</span>
+        <h2 id="culture-how-title">{t("culture_how_title")}</h2>
+        <p>{t("culture_how_sub")}</p>
+      </div>
+      <ol className="chub__how-grid">
+        {steps.map(({ no, Icon, title, body }) => (
+          <li key={no} className="chub__how-card">
+            <span className="chub__how-no">{no}</span>
+            <Icon size={20} aria-hidden="true" />
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+    </section>
   );
 }
 
@@ -124,22 +164,33 @@ function HeroCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="chub__hero-media">
-        {HERO_SLIDES.map((s, idx) => (
-          <video
-            key={s.id}
-            ref={(el) => (videoRefs.current[idx] = el)}
-            className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
-            autoPlay={idx === 0}
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            tabIndex={-1}
-          >
-            <source src={s.video} type="video/mp4" />
-          </video>
-        ))}
+        {HERO_SLIDES.map((s, idx) =>
+          s.video ? (
+            <video
+              key={s.id}
+              ref={(el) => (videoRefs.current[idx] = el)}
+              className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
+              autoPlay={idx === 0}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={s.poster}
+              aria-hidden="true"
+              tabIndex={-1}
+            >
+              <source src={s.video} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              key={s.id}
+              className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
+              src={s.poster}
+              alt=""
+              aria-hidden="true"
+            />
+          )
+        )}
         <div className="chub__hero-veil" aria-hidden="true" />
       </div>
       {/* Side rail actions — like Incredible India */}
@@ -430,7 +481,7 @@ function Spiritual() {
 /* ── People & Culture — the artists ────────────────────────────────── */
 function People() {
   const { t, pick } = useApp();
-  const featured = assamArtists.slice(0, 6);
+  const featured = assamArtists.filter((artist) => artist.image).slice(0, 6);
   const railRef = useRef(null);
   return (
     <section className="chub__people" data-reveal>

@@ -168,11 +168,10 @@ export const STAYS = {
 };
 
 /*
- * Registered nightly tariffs shown in the journey planner. These are the
- * rates currently registered in the local catalogue, kept separate from the
- * booking links so a later admin/API update can replace them cleanly.
+ * Indicative nightly estimates for planning only; these are not provider
+ * quotes and must be confirmed before booking.
  */
-const REGISTERED_PRICE_BY_TYPE = {
+const ESTIMATED_PRICE_BY_TYPE = {
   circuit: 900,
   guesthouse: 1200,
   homestay: 1800,
@@ -184,12 +183,12 @@ const REGISTERED_PRICE_BY_TYPE = {
   resort: 5200,
 };
 
-/** Stays for a district (empty array fallback), with registered tariff data. */
+/** Stays for a district (empty array fallback), with indicative price estimates. */
 export const getStays = (slug) =>
   (STAYS[slug] || []).map((stay) => ({
     ...stay,
-    registeredPrice:
-      stay.registeredPrice ?? REGISTERED_PRICE_BY_TYPE[stay.type] ?? 1800,
+    estimatedPrice:
+      stay.estimatedPrice ?? ESTIMATED_PRICE_BY_TYPE[stay.type] ?? 1800,
     rateCurrency: "INR",
     rateUnit: "night",
   }));

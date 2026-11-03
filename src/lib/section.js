@@ -40,7 +40,7 @@ const CULTURE_HASHES = new Set([
  * so the very first screen a visitor sees is the Culture portal.
  */
 export function getSection(hash) {
-  const h = (hash || "").trim();
+  const h = (hash || "").trim().split("?")[0];
   if (!h || h === "#" || h === "#top" || h === "#home" || h === "#/") return CULTURE;
   if (h.startsWith("#/culture")) return CULTURE;
   if (h.startsWith("#/travel")) return TRAVEL;

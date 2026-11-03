@@ -1,5 +1,4 @@
 import { useApp } from "@/store/AppContext";
-import CULTURE_IMG from "@/data/culture/cultureImages";
 import AssamCommunitiesSection from "./AssamCommunitiesSection";
 
 export default function AssamCommunitiesPage() {
@@ -8,7 +7,13 @@ export default function AssamCommunitiesPage() {
   return (
     <section className="page" id="top">
       <div className="page__hero">
-        <img src={CULTURE_IMG.sualkuchiHandloom} alt="" />
+        <picture className="communities-page__hero-media">
+          <source
+            media="(max-width: 600px)"
+            srcSet="/AssamCommunities-page-hero-mobile.png"
+          />
+          <img src="/AssamCommunities-page-hero.png" alt="" />
+        </picture>
         <div className="page__veil" />
         <div className="page__hero-content">
           <span className="label">{t("page_communities")}</span>

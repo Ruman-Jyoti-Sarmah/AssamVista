@@ -484,7 +484,7 @@
       },
       "video": "/video/hero-1.mp4",
       "hdVideo": "/video/hero-hd-wildlife.mp4",
-      "poster": "/homehero.png",
+      "poster": "/img/rhino-kaziranga.jpg",
       "credit": {
         "author": "L. Shyamal",
         "source": "https://commons.wikimedia.org/wiki/File:Kaziranga_morning_20231221_075150.webm",
@@ -523,12 +523,10 @@
         "en": "Nature",
         "as": "প্ৰকৃতি"
       },
-      "video": "/video/hero-2.mp4",
-      "hdVideo": "/video/hero-hd-nature.mp4",
-      "poster": "/homehero.png",
+      "poster": "/images/culture/majuli-river.jpg",
       "credit": {
-        "author": "Joy Sagar Murmu",
-        "source": "https://commons.wikimedia.org/wiki/File:Tea_garden_Assam_India.webm",
+        "author": "Dhrubazaan Photography",
+        "source": "https://commons.wikimedia.org/wiki/File:Doriya_River_of_Majuli.jpg",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
@@ -565,12 +563,10 @@
         "en": "Heritage",
         "as": "ঐতিহ্য"
       },
-      "video": "/video/hero-3.mp4",
-      "hdVideo": "/video/hero-hd-heritage.mp4",
-      "poster": "/homehero.png",
+      "poster": "/images/culture/rang-ghar.jpg",
       "credit": {
-        "author": "JyotiPN",
-        "source": "https://commons.wikimedia.org/wiki/File:Rabha_Hamzar_dance_of_Assam,_where_culture,_energy_and_heritage_come_alive_in_every_step.webm",
+        "author": "Aateesh Bangia",
+        "source": "https://commons.wikimedia.org/wiki/File:The_Rang_Ghar_of_Assam.jpg",
         "license": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
       },

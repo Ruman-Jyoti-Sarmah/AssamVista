@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
 import { useApp } from "@/store/AppContext";
 import { submitBooking } from "@/lib/api";
+import { todayISO } from "@/lib/date";
 import { DISTRICTS } from "@/data/travel/districts";
 
 /** Booking / enquiry form — validates, saves via API or localStorage.
@@ -61,7 +62,7 @@ export default function BookingForm({ standalone = false }) {
             </label>
             <div className="booking__row">
               <label>{t("date")}
-                <input value={form.date} onChange={set("date")} type="date" min={new Date().toISOString().slice(0, 10)} />
+      <input value={form.date} onChange={set("date")} type="date" min={todayISO()} />
               </label>
               <label>{t("guests")}
                 <select value={form.guests} onChange={set("guests")}>

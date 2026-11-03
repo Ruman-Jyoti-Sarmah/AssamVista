@@ -1,11 +1,10 @@
-import { MapPin, CalendarCheck, Phone, Mail, Leaf } from "lucide-react";
+import { MapPin, CalendarCheck, Leaf } from "lucide-react";
 import { useApp } from "@/store/AppContext";
-import { LOCATION, FINALE } from "@/data/culture/site/experiences.js";
-import BookingForm from "@/components/travel/Visit/BookingForm";
+import { FINALE } from "@/data/culture/site/experiences.js";
 
 /**
  * STANDALONE PAGE (#/visit) — Plan Your Visit.
- * Hero + travel info (how to reach, best season) + booking form.
+ * Hero + general travel guidance and links to the trip-planning tools.
  */
 export default function Visit() {
   const { t } = useApp();
@@ -27,7 +26,7 @@ export default function Visit() {
             <span className="tr-line"><span className="tr-inner">{t("visit_l1")}</span></span>
             <span className="tr-line"><span className="tr-inner"><em>{t("visit_l2")}</em></span></span>
           </h1>
-          <p className="visit__tag">{t("book_sub")}</p>
+          <p className="visit__tag">{t("visit_intro")}</p>
         </div>
       </div>
 
@@ -37,16 +36,17 @@ export default function Visit() {
           <MapPin size={18} aria-hidden="true" />
           <h3>{t("visit_reach")}</h3>
           <ul>
-            {LOCATION.facts.slice(0, 3).map((f) => (
-              <li key={f.k}><span className="label">{f.k}</span><span>{f.v}</span></li>
-            ))}
+            <li><span className="label">{t("visit_air_title")}</span><span>{t("visit_air_body")}</span></li>
+            <li><span className="label">{t("visit_rail_title")}</span><span>{t("visit_rail_body")}</span></li>
           </ul>
-          <a className="btn btn--ghost visit__cardbtn" href="#booking">{t("visit_directions")}</a>
+          <a className="btn btn--ghost visit__cardbtn" href="https://assamtourism.gov.in/" target="_blank" rel="noopener noreferrer">
+            {t("visit_official_tourism")}
+          </a>
         </div>
         <div className="visit__card visit__card--feature">
           <CalendarCheck size={18} aria-hidden="true" />
           <h3>{t("visit_season")}</h3>
-          <p className="visit__season">{LOCATION.facts[3]?.v}</p>
+          <p className="visit__season">{t("visit_season_body")}</p>
           <ul className="visit__ticks">
             {t("visit_festivals").map((f) => <li key={f}><i />{f}</li>)}
           </ul>
@@ -54,25 +54,19 @@ export default function Visit() {
         <div className="visit__card visit__card--feature">
           <Leaf size={18} aria-hidden="true" />
           <h3>{t("visit_know")}</h3>
+          <p className="visit__season">{t("visit_check_body")}</p>
           <ul className="visit__ticks">
-            <li><i />{t("book_gamosa")}</li>
-            <li><i />{t("book_safari")}</li>
-            <li><i />{t("date")} — {t("book_flex")}</li>
+            <li><i />{t("visit_check_access")}</li>
+            <li><i />{t("visit_check_transport")}</li>
+            <li><i />{t("visit_check_weather")}</li>
           </ul>
-          <div className="visit__contactmini">
-            <a href="mailto:namaskar@axom.example"><Mail size={14} aria-hidden="true" /> namaskar@axom.example</a>
-            <a href="tel:+913610000000"><Phone size={14} aria-hidden="true" /> +91 361 000 0000</a>
-          </div>
         </div>
       </div>
 
-      {/* the enquiry form */}
-      <BookingForm standalone />
-
-      {/* back strip */}
+      {/* planning links */}
       <div className="visit__contact" data-reveal>
-        <a className="btn btn--ghost" href="#top">{t("visit_home")}</a>
-        <a className="btn btn--solid" href="#/districts">{t("visit_districts")}</a>
+        <a className="btn btn--ghost" href="#/districts">{t("visit_districts")}</a>
+        <a className="btn btn--solid" href="#/journey">{t("visit_plan_trip")}</a>
       </div>
     </section>
   );

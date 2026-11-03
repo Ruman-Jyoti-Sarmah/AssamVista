@@ -76,15 +76,15 @@
   ],
   "LOCATION": {
     "title": [
-      "FORTY MINUTES FROM",
-      "THE BRAHMAPUTRA"
+      "GETTING TO",
+      "ASSAM"
     ],
-    "body": "Axom rests on the Saraighat banks in Guwahati — forty minutes from the airport and five centuries deep in Ahom memory, facing Umananda island.",
+    "body": "Assam is served by several airports, railway stations and road networks. The best route and travel time depend on your destination; check current schedules before setting out.",
     "facts": [
-      { "k": "BY AIR", "v": "Gopinath Bordoloi Airport (GAU) · 25 km" },
-      { "k": "BY ROAD", "v": "Private ferry + transfer via Saraighat" },
-      { "k": "COORDINATES", "v": "26.18° N · 91.75° E — Guwahati" },
-      { "k": "BEST SEASON", "v": "October — March · Bihu in April" }
+      { "k": "BY AIR", "v": "Lokpriya Gopinath Bordoloi International Airport serves Guwahati; routes vary by destination." },
+      { "k": "BY RAIL", "v": "Guwahati is a major rail hub; onward rail access varies by destination." },
+      { "k": "BY ROAD", "v": "Check current routes, road conditions and local transport before travel." },
+      { "k": "BEST SEASON", "v": "October — April is popular for many trips; monsoon conditions can affect travel." }
     ]
   },
   "FINALE": {

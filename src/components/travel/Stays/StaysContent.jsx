@@ -4,7 +4,7 @@ import { DISTRICTS, slugify } from "@/data/travel/districts";
 import { getStays, bookingUrl, agodaUrl, googleUrl } from "@/data/travel/stays";
 import { useApp } from "@/store/AppContext";
 
-/** One stay card — type badge + area + registered tariff + live booking links. */
+/** One stay card — type, area, indicative price estimate and provider searches. */
 export function StayCard({ stay, t, district, onSelect, selected = false }) {
   return (
     <article className={`stay ${selected ? "stay--selected" : ""}`}>
@@ -13,8 +13,8 @@ export function StayCard({ stay, t, district, onSelect, selected = false }) {
       <h3 className="stay__name">{stay.name}</h3>
       <p className="stay__area">{stay.area}</p>
       <p className="stay__price">
-        <strong>₹{Number(stay.registeredPrice || 0).toLocaleString("en-IN")}</strong>
-        <span>{t("stay_registered_price")}</span>
+        <strong>₹{Number(stay.estimatedPrice || 0).toLocaleString("en-IN")}</strong>
+        <span>{t("stay_estimated_price")}</span>
       </p>
       {onSelect && (
         <button

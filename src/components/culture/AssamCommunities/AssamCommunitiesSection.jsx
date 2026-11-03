@@ -3,8 +3,28 @@ import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, ExternalLink } from
 import ASSAM_COMMUNITIES from "@/data/culture/assam/communities";
 import { useApp } from "@/store/AppContext";
 
-function CommunityImage({ community, className = "" }) {
+function CommunityImage({ community, className = "", t }) {
   const [src, setSrc] = useState(community.imageUrl);
+  const [unavailable, setUnavailable] = useState(false);
+
+  const handleError = () => {
+    if (community.fallbackImage && src !== community.fallbackImage) {
+      setSrc(community.fallbackImage);
+      return;
+    }
+    setUnavailable(true);
+  };
+
+  if (unavailable) {
+    return (
+      <div className={`${className} community-card__image-placeholder`}>
+        <p>{t("community_image_unavailable")}</p>
+        <a href={community.imageSearchUrl} target="_blank" rel="noopener noreferrer">
+          {t("community_google_images")} <ExternalLink size={13} aria-hidden="true" />
+        </a>
+      </div>
+    );
+  }
 
   return (
     <img
@@ -13,11 +33,7 @@ function CommunityImage({ community, className = "" }) {
       alt={community.name}
       loading="lazy"
       decoding="async"
-      onError={(event) => {
-        if (event.currentTarget.src !== community.fallbackImage) {
-          setSrc(community.fallbackImage);
-        }
-      }}
+      onError={handleError}
     />
   );
 }
@@ -132,7 +148,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
             key={community.id}
           >
             <div className="community-card__image-wrap">
-              <CommunityImage community={community} className="community-card__image" />
+              <CommunityImage community={community} className="community-card__image" t={t} />
             </div>
             <div className="community-card__body">
               <span className="page__culture-kind">{community.region}</span>
@@ -141,7 +157,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
               <p className="community-card__craft">{community.craft}</p>
               {compact ? (
                 <a className="btn btn--ghost community-card__button" href="#/communities">
-                  Explore community <ArrowRight size={15} aria-hidden="true" />
+                  {t("community_explore")} <ArrowRight size={15} aria-hidden="true" />
                 </a>
               ) : (
                 <button
@@ -150,7 +166,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
                   onClick={() => toggleDetails(community.id)}
                   aria-expanded={expandedCommunityId === community.id}
                 >
-                  {expandedCommunityId === community.id ? "Less" : "More"}
+                  {expandedCommunityId === community.id ? t("community_less") : t("community_more")}
                   <ChevronDown size={15} aria-hidden="true" />
                 </button>
               )}
@@ -159,26 +175,26 @@ export default function AssamCommunitiesSection({ compact = false }) {
                 <div className="community-card__details">
                   <div className="community-card__detail-hero">
                     <div className="community-card__detail-image-wrap">
-                      <CommunityImage community={community} className="community-card__detail-image" />
+                      <CommunityImage community={community} className="community-card__detail-image" t={t} />
                     </div>
                     <div>
-                      <span className="page__culture-kind">Inside the community</span>
+                      <span className="page__culture-kind">{t("community_inside")}</span>
                       <p className="community-card__story">{community.story}</p>
                     </div>
                   </div>
                   <div className="community-card__detail-columns">
-                    <DetailList title="Foods and flavours" items={community.foods} />
-                    <DetailList title="Languages and speech" items={community.languages} />
-                    <DetailList title="Traditions" items={community.traditions} />
+                    <DetailList title={t("community_foods")} items={community.foods} />
+                    <DetailList title={t("community_languages")} items={community.languages} />
+                    <DetailList title={t("community_traditions")} items={community.traditions} />
                   </div>
-                  <DetailList title="Where to experience it" items={community.places} />
+                  <DetailList title={t("community_places")} items={community.places} />
                   <a
                     className="community-card__source"
                     href={community.imageSearchUrl}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    More images on Google <ExternalLink size={14} aria-hidden="true" />
+                    {t("community_google_images")} <ExternalLink size={14} aria-hidden="true" />
                   </a>
                 </div>
               ) : null}

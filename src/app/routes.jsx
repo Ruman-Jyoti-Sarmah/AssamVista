@@ -41,8 +41,9 @@ const route = (name, Component, extra = {}) => ({ name, Component, ...extra });
  */
 export function getRoute(hash = "") {
   const currentHash = hash || "";
+  const routeHash = currentHash.split("?")[0];
 
-  if (currentHash === "#/admin") return route("admin", Admin, { titleKey: "title_admin" });
+  if (routeHash === "#/admin") return route("admin", Admin, { titleKey: "title_admin" });
   if (HOME_HASHES.has(currentHash)) return route("culture-home", Homepage, { titleKey: "title_culture_hub" });
 
   const cultureExperience = currentHash.match(/^#\/culture\/experiences\/([a-z-]+)/);
@@ -70,7 +71,7 @@ export function getRoute(hash = "") {
   const district = currentHash.match(/^#\/district\/([a-z0-9-]+)/);
   if (district) return route("district-detail", DistrictDetails, { slug: district[1] });
 
-  if (currentHash === "#/districts") return route("districts", Districts, { titleKey: "title_districts" });
+  if (routeHash === "#/districts") return route("districts", Districts, { titleKey: "title_districts" });
   if (currentHash === "#/stays") return route("stays", Stays, { titleKey: "title_stays" });
   if (currentHash === "#/journey") return route("journey", JourneyPlanner, { titleKey: "title_journey" });
   if (currentHash === "#/artists") return route("artists", AssamArtists, { titleKey: "title_artists" });

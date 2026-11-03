@@ -3,10 +3,8 @@ import { STATE_SYMBOLS } from "@/data/culture/stateSymbols";
 import DepthImage from "@/components/common/DepthImage";
 
 /**
- * State Symbols of Assam — a dedicated page. Every official state symbol
- * (animal, bird, flower, tree, fruit, festival, dance, song, motto, language,
- * seal) gets its own detailed card with an image, its official name, and why
- * it is the state symbol.
+ * State designations and cultural emblems of Assam, with official status
+ * noted only where applicable.
  */
 export function StateSymbolsContent() {
   const { t, pick } = useApp();

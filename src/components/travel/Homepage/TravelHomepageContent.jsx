@@ -13,10 +13,11 @@ import {
 } from "@/data/travel/destinations";
 import DestinationCard from "./DestinationCard";
 import SectionSwitcher from "@/components/common/SectionSwitcher";
+import { todayISO } from "@/lib/date";
 
 /**
  * TravelHome — the TRAVEL section homepage (route #/travel).
- * A) hero (video) → B) explore by district → C) popular destinations
+ * A) river hero → B) explore by district → C) popular destinations
  * (filters + search + add-to-trip) → D) build-your-trip steps →
  * E) featured experiences → F) practical guide → G) final CTA → culture nudge.
  * Copy via t(); destination data is verified/enriched (see destinations.js).
@@ -45,8 +46,6 @@ const EXPERIENCES = [
     dest: "dima-hasao--haflong-lake" },
 ];
 
-const todayISO = () => new Date().toISOString().slice(0, 10);
-
 // Division filter options for the districts rail — derived from the data
 // (unique, in data order), so new divisions appear automatically.
 const DIVISIONS = [...new Set(DISTRICTS.map((d) => d.division))];
@@ -69,15 +68,6 @@ export default function TravelHome() {
   const [quickArrival, setQuickArrival] = useState(() => details.arrivalDate || "");
   const [quickDeparture, setQuickDeparture] = useState(() => details.departureDate || "");
   const [quickError, setQuickError] = useState("");
-
-  /* Pause the hero video for reduced-motion users; the local poster
-     image (and the global broken-media fallback in main.jsx) keeps the
-     hero composed without motion. */
-  useEffect(() => {
-    if (!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
-    const v = document.querySelector(".thub__hero .thub__video");
-    if (v) { v.pause(); v.removeAttribute("autoplay"); }
-  }, []);
 
   const districts = useMemo(() => districtsWithDestinations(), []);
 
@@ -329,13 +319,12 @@ export default function TravelHome() {
       {/* A ── HERO ─────────────────────────────────────────────── */}
       <section className="thub__hero">
         <div className="thub__hero-media">
-          <video
-            className="thub__video" autoPlay muted loop playsInline preload="auto"
-            poster="/img/hero-brahmaputra.jpg"
-            aria-hidden="true" tabIndex={-1}
-          >
-            <source src="/video/hero-2.mp4" type="video/mp4" />
-          </video>
+          <img
+            className="thub__video"
+            src="/img/hero-brahmaputra.jpg"
+            alt=""
+            aria-hidden="true"
+          />
           <div className="thub__veil" aria-hidden="true" />
         </div>
         <div className="thub__hero-inner">

@@ -20,8 +20,7 @@ import {
   estimateJourneyStayTotal,
 } from "@/lib/journeyPlan";
 import { StayCard } from "@/components/travel/Stays/StaysContent";
-
-const todayISO = () => new Date().toISOString().slice(0, 10);
+import { todayISO } from "@/lib/date";
 
 function displayDate(value) {
   if (!value) return "—";
@@ -33,8 +32,7 @@ function displayDate(value) {
 }
 
 /**
- * Book Your Assam Journey — choose a route in order, set days at every stop,
- * then see the stays and registered nightly tariffs for that exact route.
+ * Plan an Assam journey by choosing a route, dates and accommodation ideas.
  */
 export function JourneyPlanner() {
   const { t, pick } = useApp();
@@ -43,7 +41,7 @@ export function JourneyPlanner() {
   const [firstDistrict, setFirstDistrict] = useState("");
   const [extraDistricts, setExtraDistricts] = useState([]);
   const [startDate, setStartDate] = useState("");
-  const [stayDays, setStayDays] = useState({});
+  const [stayNights, setStayNights] = useState({});
   const [selectedStays, setSelectedStays] = useState({});
   const [notes, setNotes] = useState("");
   const [saved, setSaved] = useState(false);
@@ -62,7 +60,7 @@ export function JourneyPlanner() {
   const staysOf = (slug) => getStays(slug);
   const activeExtra = extraDistricts.filter((slug) => slug !== firstDistrict);
   const allSelected = firstDistrict ? [firstDistrict, ...activeExtra] : [];
-  const stops = buildJourneyStops(allSelected, startDate, stayDays);
+  const stops = buildJourneyStops(allSelected, startDate, stayNights);
   const lodgingTotal = estimateJourneyStayTotal(stops, selectedStays);
 
   const chooseFirstDistrict = (slug) => {
@@ -89,8 +87,8 @@ export function JourneyPlanner() {
     });
   };
 
-  const setDays = (slug, value) => {
-    setStayDays((current) => ({
+  const setNights = (slug, value) => {
+    setStayNights((current) => ({
       ...current,
       [slug]: Math.min(30, Math.max(1, Number(value) || 1)),
     }));
@@ -318,13 +316,13 @@ export function JourneyPlanner() {
                       </div>
                       <label className="journey__days">
                         <Clock size={15} aria-hidden="true" />
-                        <span>{t("journey_stay_days")}</span>
+                        <span>{t("journey_stay_nights")}</span>
                         <input
                           type="number"
                           min="1"
                           max="30"
-                          value={stayDays[stop.slug] || 1}
-                          onChange={(event) => setDays(stop.slug, event.target.value)}
+                          value={stayNights[stop.slug] || 1}
+                          onChange={(event) => setNights(stop.slug, event.target.value)}
                         />
                       </label>
                     </div>
@@ -333,8 +331,8 @@ export function JourneyPlanner() {
                         ? t("journey_next_arrival", displayDate(nextStop.arrivalDate))
                         : t("journey_final_stop")}
                     </p>
-                    <p className="journey__registered-note">
-                      <BedDouble size={14} aria-hidden="true" /> {t("journey_registered_note")}
+                    <p className="journey__price-note">
+                      <BedDouble size={14} aria-hidden="true" /> {t("journey_price_note")}
                     </p>
                     {stays.length === 0 ? (
                       <div className="journey__empty">{t("journey_no_stays")}</div>
@@ -376,11 +374,11 @@ export function JourneyPlanner() {
                 <div className="journey__summary-row" key={stop.slug}>
                   <h3>{stop.position}. {nameOf(stop.slug)}</h3>
                   <p>
-                    {displayDate(stop.arrivalDate)} · {stop.days} {t("journey_days_short")} ·{" "}
+                    {displayDate(stop.arrivalDate)} · {t("journey_nights_short", stop.nights)} ·{" "}
                     {selectedStays[stop.slug]?.name || t("journey_stay_not_selected")}
                     {selectedStays[stop.slug] && (
                       <span className="journey__summary-price">
-                        {` · ₹${selectedStays[stop.slug].registeredPrice.toLocaleString("en-IN")}/${t("journey_night_short")}`}
+                        {` · ₹${selectedStays[stop.slug].estimatedPrice.toLocaleString("en-IN")}/${t("journey_night_short")}`}
                       </span>
                     )}
                   </p>

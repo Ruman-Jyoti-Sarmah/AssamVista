@@ -4,7 +4,6 @@ import {
   Search,
   Globe,
   ChevronDown,
-  User,
   Landmark,
   MapPin,
   MoreVertical,
@@ -17,13 +16,10 @@ import { PILLARS } from "@/data/culture/cultureSections";
 import SectionSwitcher from "@/components/common/SectionSwitcher";
 
 /* ── Top utility strip (like Incredible India) ─────────────────────── */
-const UTILITY = [
-  { en: "Travel for LiFE", as: "Travel for LiFE" },
-  { en: "Colours of Assam", as: "অসমৰ ৰঙ" },
-  { en: "FAQs", as: "সাধাৰণ প্ৰশ্ন" },
-  { en: "Contact Us", as: "যোগাযোগ" },
-  { en: "Privacy Policy", as: "গোপনীয়তা নীতি" },
-  { en: "Terms of Use", as: "ব্যৱহাৰৰ চৰ্ত" },
+const UTILITY = (t) => [
+  { label: t("nav_guide"), href: "#/guide" },
+  { label: t("nav_visit"), href: "#/visit" },
+  { label: t("foot_credits"), href: "#/credits" },
 ];
 
 /* ── Language selector (Incredible India offers many; we ship EN + অসমীয়া) ── */
@@ -128,7 +124,7 @@ function buildColumns() {
             label: { en: "Travel Guide", as: "ভ্ৰমণ নিৰ্দেশনা" },
             href: "#/guide",
           },
-          { label: { en: "Book / Enquire", as: "বুকিং কৰক" }, href: "#/visit" },
+          { label: { en: "Visit planning", as: "ভ্ৰমণৰ পৰিকল্পনা" }, href: "#/visit" },
         ],
       },
     ],
@@ -176,7 +172,8 @@ export default function CultureHeader({ section, isCultureHome = false }) {
   /** Is a flat Travel link the current route? (#/district/… counts as Districts) */
   const isLinkActive = (href) =>
     hash === href ||
-    (href === "#/districts" && hash.startsWith("#/district/"));
+    (href === "#/districts" &&
+      (hash.startsWith("#/district/") || hash.startsWith("#/districts?")));
 
   useEffect(() => {
     const onClick = (e) => {
@@ -201,6 +198,14 @@ export default function CultureHeader({ section, isCultureHome = false }) {
     }
     window.location.hash = href;
   };
+  const submitSearch = (e) => {
+    e?.preventDefault();
+    setMobileOpen(false);
+    const search = q.trim();
+    window.location.hash = search
+      ? `#/districts?q=${encodeURIComponent(search)}`
+      : "#/districts";
+  };
   const enterPillar = (id) => {
     clearTimeout(closeTimer.current);
     setOpenPillar(id);
@@ -215,6 +220,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
     PILLARS.travel,
   ].filter(Boolean);
   const activeLang = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0];
+  const utilityLinks = UTILITY(t);
 
   // TRAVEL section: simple flat links (pehle jaisa) instead of the Culture mega-menu.
   const TRAVEL_LINKS = [
@@ -238,9 +244,9 @@ export default function CultureHeader({ section, isCultureHome = false }) {
             <span>{pick(BRAND.name, lang)}</span>
           </a>
           <nav className="chead__strip-links" aria-label="Utility">
-            {UTILITY.map((u) => (
-              <a key={u.en} href="#top" onClick={(e) => go(e, "#top")}>
-                {pick(u, lang)}
+            {utilityLinks.map((link) => (
+              <a key={link.href} href={link.href} onClick={(e) => go(e, link.href)}>
+                {link.label}
               </a>
             ))}
           </nav>
@@ -367,12 +373,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
               onChange={(e) => setQ(e.target.value)}
               placeholder={t("search_placeholder")}
               aria-label={t("search_placeholder")}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setMobileOpen(false);
-                  window.location.hash = "#/districts";
-                }
-              }}
+              onKeyDown={(e) => { if (e.key === "Enter") submitSearch(e); }}
             />
           </div>
 
@@ -423,16 +424,6 @@ export default function CultureHeader({ section, isCultureHome = false }) {
             )}
           </div>
 
-          {/* account */}
-          <button
-            className="chead__account"
-            aria-label="Login / Register"
-            title="Login / Register"
-          >
-            <User size={16} aria-hidden="true" />
-            <span>Login</span>
-          </button>
-
           <SectionSwitcher section={section} compact />
 
           <button
@@ -459,6 +450,16 @@ export default function CultureHeader({ section, isCultureHome = false }) {
           className="chead__mobile"
           aria-label={t("a11y_mobile")}
         >
+          <form className="chead__mobile-search" onSubmit={submitSearch}>
+            <Search size={16} aria-hidden="true" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder={t("search_placeholder")}
+              aria-label={t("search_placeholder")}
+            />
+            <button type="submit">{t("search")}</button>
+          </form>
           {section === "travel" ? (
             <>
               <div className="chead__mgroup">
@@ -502,29 +503,43 @@ export default function CultureHeader({ section, isCultureHome = false }) {
               </div>
             </>
           ) : (
-            pillars.map((p) => (
-              <div key={p.id} className="chead__mgroup">
-                <span className="chead__mghead">{pick(p.label, lang)}</span>
-                {COLUMNS[p.id].map((col) => (
-                  <div key={col.heading.en} className="chead__mcol">
-                    <span className="chead__mcolhead">
-                      {pick(col.heading, lang)}
-                    </span>
-                    {col.links.map((l) => (
-                      <a
-                        key={l.label.en}
-                        href={l.href}
-                        onClick={(e) => go(e, l.href)}
-                        aria-current={hash === l.href ? "page" : undefined}
-                        className={hash === l.href ? "is-active" : ""}
-                      >
-                        {pick(l.label, lang)}
-                      </a>
-                    ))}
-                  </div>
-                ))}
+            <>
+              <div className="chead__mgroup">
+                <div className="chead__mcol">
+                  <a
+                    href="#/culture"
+                    onClick={(e) => go(e, "#/culture")}
+                    aria-current={isCultureHome ? "page" : undefined}
+                    className={isCultureHome ? "is-active" : ""}
+                  >
+                    {t("home")}
+                  </a>
+                </div>
               </div>
-            ))
+              {pillars.map((p) => (
+                <div key={p.id} className="chead__mgroup">
+                  <span className="chead__mghead">{pick(p.label, lang)}</span>
+                  {COLUMNS[p.id].map((col) => (
+                    <div key={col.heading.en} className="chead__mcol">
+                      <span className="chead__mcolhead">
+                        {pick(col.heading, lang)}
+                      </span>
+                      {col.links.map((l) => (
+                        <a
+                          key={l.label.en}
+                          href={l.href}
+                          onClick={(e) => go(e, l.href)}
+                          aria-current={hash === l.href ? "page" : undefined}
+                          className={hash === l.href ? "is-active" : ""}
+                        >
+                          {pick(l.label, lang)}
+                        </a>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </>
           )}
           <div className="chead__mfoot">
             <SectionSwitcher section={section} />
@@ -535,9 +550,6 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                 {tripCount}
               </span>
             </a>
-            <button className="chead__maccount" aria-label="Login / Register">
-              <User size={15} aria-hidden="true" /> Login
-            </button>
           </div>
         </nav>
       )}

@@ -1,5 +1,5 @@
-// Official state symbols of Assam — accredited by the Government of Assam.
-// Source: https://en.wikipedia.org/wiki/List_of_Assam_state_symbols
+// State designations and cultural emblems of Assam, with official status noted
+// only where applicable.
 // Images via Wikimedia Commons (Special:FilePath — reliable, no arbitrary thumb widths).
 //
 // Data now lives in ./stateSymbols.json. The generated Commons URLs are stored

@@ -8,7 +8,7 @@
       "official": "Rhinoceros unicornis · এশিঙীয়া গঁড় (Ekhingiya Gorh)",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Greater%20one-horned%20Rhinoceros%20from%20Kaziranga%2C%20Assam.jpg?width=1200",
       "why": "The rhino is the living emblem of Assam's wild grasslands.",
-      "detail": "The Indian rhinoceros is inseparably tied to Kaziranga National Park, which shelters the majority of the world's wild population. A symbol of strength and survival, it draws visitors from across the globe to the floodplains of the Brahmaputra. Classified Vulnerable by the IUCN, it is both Assam's pride and a global conservation responsibility."
+      "detail": "The Indian rhinoceros is inseparably tied to Kaziranga National Park, which protects a large share of the world's wild population. A symbol of survival, it draws visitors to the Brahmaputra floodplains. Classified Vulnerable by the IUCN, it remains a global conservation priority."
     },
     {
       "key": "bird",
@@ -38,7 +38,7 @@
       "official": "Dipterocarpus macrocarpus · হলং",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sapling%20of%20Hollong%20tree%20(Dipterocarpus%20macrocarpus)%2C%20the%20state%20tree%20of%20Assam.jpg?width=1200",
       "why": "The royal hardwood of Assam's evergreen forests.",
-      "detail": "Hollong is a towering tropical hardwood, 20–30 metres tall, that dominates Assam's evergreen and semi-evergreen forests. Valued for its durable timber, it is sacred to the Moran community and stands as a symbol of the state's forest wealth and ecological heritage."
+      "detail": "Hollong is a tropical hardwood found in Assam's evergreen and semi-evergreen forests. It is an important part of the state's forest ecosystems and conservation heritage."
     },
     {
       "key": "fruit",
@@ -48,27 +48,27 @@
       "official": "Citrus limon · কাজী নেমু",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kaji%20nemu%20or%20Assam%20Nemu.jpg?width=1200",
       "why": "The GI-tagged lemon declared the state fruit in 2024.",
-      "detail": "Kaji Nemu is a slender, seedless variety of lemon indigenous to Assam. Declared the state fruit by cabinet decision on 12 February 2024, it is a Geographical Indication (GI) tagged treasure — used in the famous Khar, in the aromatic 'Masor Tenga', and served to guests after every Assamese meal."
+      "detail": "Kaji Nemu is a lemon variety associated with Assam. It was declared the state fruit in 2024 and has Geographical Indication status; it is used as a condiment and in drinks and dishes."
     },
     {
       "key": "festival",
       "icon": "🎊",
-      "kind": "State Festival",
+      "kind": "Major Festival",
       "name": "Bihu",
       "official": "বিহু",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bihu%20Dance%20%2C%20Festival%20of%20India.jpg?width=1200",
-      "why": "The three-fold festival of Assam's agricultural year.",
-      "detail": "Bihu is celebrated three times a year — Rongali (Bohag) Bihu in April, Kongali (Kati) Bihu in October, and Bhogali (Magh) Bihu in January — marking the sowing, growing and harvest of the rice. With the dhol, pepa and gogona, and the woven gamosa, it is the heartbeat of Assamese life."
+      "why": "A major festival cycle linked to seasonal and agricultural life in Assam.",
+      "detail": "The three Bihus are Rongali (Bohag) in spring, Kongali (Kati) during the growing season and Bhogali (Magh) after the harvest. Their customs vary by community and place; music, dance, food and seasonal observances are central to many celebrations."
     },
     {
       "key": "dance",
       "icon": "💃",
-      "kind": "State Dance",
+      "kind": "Dance Tradition",
       "name": "Bihu Dance",
       "official": "বিহু নাচ",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bihu%20Dance%202.jpg?width=1200",
-      "why": "The state dance, performed at Rongali Bihu.",
-      "detail": "The Bihu dance, performed to the rhythm of the dhol and the bamboo clatter of the gogona, is the official state dance of Assam. Danced in circling groups with brisk steps and swaying hips, it is the joyful expression of the Assamese new year — women in muga mekhela-sador, men in dhoti and gamosa."
+      "why": "A widely recognized folk dance tradition associated with Bihu celebrations.",
+      "detail": "Bihu dance is performed to rhythms including the dhol and pepa. Costumes, choreography and performance styles vary; it is one of Assam's best-known cultural traditions."
     },
     {
       "key": "song",
@@ -83,22 +83,22 @@
     {
       "key": "motto",
       "icon": "🪷",
-      "kind": "State Motto",
+      "kind": "Popular Slogan",
       "name": "Joi Aai Axom",
       "official": "জয় আই অসম — 'Hail Mother Assam'",
       "image": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Prime%20Minister%2C%20Shri%20Narendra%20Modi%20being%20presented%20Jaapi%2C%20a%20traditional%20hat%20from%20Assam%2C%20at%20the%2085th%20Annual%20Conference%20of%20Srimanta%20Sankaradeva%20Sangha%2C%20at%20Sibasagar%2C%20Assam%20on%20February%2005%2C%202016.jpg?width=1200",
-      "why": "The invocation to Assam personified as a mother goddess.",
-      "detail": "'Joi Aai Axom' — Hail Mother Assam — is the officially accredited motto of the state. It invokes Assam as a mother goddess, a land of nurture and pride, and is the resounding greeting of Assamese identity and belonging."
+      "why": "A popular expression of pride and belonging.",
+      "detail": "'Joi Aai Axom' means 'Hail Mother Assam' and is widely used as a slogan expressing Assamese pride. It is not an official state motto."
     },
     {
       "key": "language",
       "icon": "অ",
-      "kind": "State Language",
+      "kind": "Major Language",
       "name": "Assamese",
       "official": "অসমীয়া (Axomiya)",
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bihu%20Dance-This%20photo%20crosses%2028000%20Views.jpg?width=1200",
-      "why": "The easternmost Indo-Aryan language, written in its own script.",
-      "detail": "Assamese (Axomiya) is the official language of Assam and the easternmost of the Indo-Aryan languages, written in the Assamese–Bengali abugida. Carried by the poetry of Sankardev, the Borgeets and the literature of the Assam Sahitya Sabha, it is the voice of a distinct civilisational identity in the Northeast."
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Eastern%20Nagari%20Script.svg?width=1200",
+      "why": "One of Assam's official languages, written in the Assamese script.",
+      "detail": "Assamese (Axomiya) is one of Assam's official languages. Bodo, Bengali and many Indigenous languages are also spoken across the state, with language use varying by region and community."
     },
     {
       "key": "seal",

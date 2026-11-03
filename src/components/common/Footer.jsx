@@ -1,35 +1,27 @@
-import { ArrowUpRight } from "lucide-react";
 import { BRAND } from "@/data/site/brand.js";
 import { useApp } from "@/store/AppContext";
 import { pick } from "@/lib/pick";
-import Newsletter from "@/components/common/Newsletter";
 
 const LINKS = (t) => [
-  { label: t("nav_heritage"), href: "#architecture" },
+  { label: t("nav_heritage"), href: "#/heritage" },
   { label: t("nav_stays"), href: "#/stays" },
-  { label: t("nav_cuisine"), href: "#dining" },
-  { label: t("nav_experiences"), href: "#experiences" },
+  { label: t("nav_cuisine"), href: "#/culture/experiences/cuisine" },
+  { label: t("culture_fest_title"), href: "#/culture/festivals" },
   { label: t("nav_districts"), href: "#/districts" },
-  { label: t("nav_gallery"), href: "#gallery" },
+  { label: t("nav_guide"), href: "#/guide" },
   { label: t("nav_visit"), href: "#/visit" },
   { label: t("nav_journey"), href: "#/journey" },
   { label: t("nav_artists"), href: "#/artists" },
   { label: t("nav_wildlife"), href: "#/wildlife" },
 ];
 
-/** Footer — dynamic nav + newsletter signup + saved favourites count. */
+/** Footer — route navigation and saved favourites. */
 export default function Footer() {
   const { t, favourites, lang } = useApp();
   const NAV = LINKS(t);
   const go = (e, href) => {
     e.preventDefault();
-    if (href.startsWith("#/") || window.location.hash.startsWith("#/district")) {
-      window.location.hash = href;
-      return;
-    }
-    try {
-      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    } catch {}
+    window.location.hash = href;
   };
   return (
     <footer className="footer" aria-label="Footer">
@@ -37,9 +29,7 @@ export default function Footer() {
         <div>
           <p className="footer__logo">{pick(BRAND.name, lang)}</p>
           <p className="label footer__tag">{pick(BRAND.tagline, lang)}</p>
-          <div style={{ marginTop: "1.6rem", maxWidth: "22rem" }}>
-            <Newsletter />
-          </div>
+          <p className="footer__note">{t("footer_independent_note")}</p>
         </div>
         <div className="footer__cols">
           <nav className="footer__col" aria-label="Footer navigation">
@@ -60,15 +50,11 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer__col">
-            <h4 className="label">{t("foot_follow")}</h4>
+            <h4 className="label">{t("foot_plan")}</h4>
             <ul>
-              {(lang === "as" ? ["ইনস্টাগ্ৰাম", "পিনতাৰেস্ট", "জাৰ্নেল"] : ["Instagram", "Pinterest", "Journal"]).map((s) => (
-                <li key={s}>
-                  <a href="#top" onClick={(e) => go(e, "#top")} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-                    {s} <ArrowUpRight size={13} aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
+              <li><a href="#/guide" onClick={(e) => go(e, "#/guide")}>{t("nav_guide")}</a></li>
+              <li><a href="#/journey" onClick={(e) => go(e, "#/journey")}>{t("nav_journey")}</a></li>
+              <li><a href="#/visit" onClick={(e) => go(e, "#/visit")}>{t("nav_visit")}</a></li>
             </ul>
           </div>
         </div>

@@ -16,25 +16,23 @@ function addDays(value, days) {
 
 /**
  * Build the stops in the exact order chosen by the traveller.
- * Each stop's next arrival is calculated from its stay length, so the plan
+ * Each stop's next arrival is calculated from its overnight stays, so the plan
  * never quietly sends someone to the next district before their current stay
  * is over.
  */
-export function buildJourneyStops(order, startDate, stayDays = {}) {
+export function buildJourneyStops(order, startDate, stayNights = {}) {
   let arrivalDate = validDate(startDate) ? startDate : "";
 
   return order.map((slug, index) => {
-    const days = Math.max(1, Number(stayDays[slug]) || 1);
-    const nights = Math.max(0, days - 1);
+    const nights = Math.min(30, Math.max(1, Number(stayNights[slug]) || 1));
     const stop = {
       slug,
       position: index + 1,
       arrivalDate,
-      days,
       nights,
     };
 
-    if (arrivalDate) arrivalDate = addDays(arrivalDate, days);
+    if (arrivalDate) arrivalDate = addDays(arrivalDate, nights);
     return stop;
   });
 }
@@ -42,7 +40,7 @@ export function buildJourneyStops(order, startDate, stayDays = {}) {
 export function estimateJourneyStayTotal(stops, selectedStays = {}) {
   return stops.reduce((total, stop) => {
     const stay = selectedStays[stop.slug];
-    return total + (stay?.registeredPrice || 0) * stop.nights;
+    return total + (stay?.estimatedPrice || 0) * stop.nights;
   }, 0);
 }
 

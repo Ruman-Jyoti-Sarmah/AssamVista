@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, MapPin, Tag, Clock, CalendarDays } from "lucide-
 import { useApp } from "@/store/AppContext";
 import { useTrip } from "@/store/TripContext";
 import { categoryLabel } from "@/data/travel/destinations";
+import { todayISO } from "@/lib/date";
 
 // Travel interests are broader than destination categories (e.g. food,
 // photography, local life), so they carry their own bilingual labels.
@@ -17,8 +18,6 @@ const INTERESTS = [
   { key: "adventure", label: { en: "Adventure", as: "দুঃসাহস" } },
   { key: "local", label: { en: "Local life", as: "স্থানীয় জীৱন" } },
 ];
-const todayISO = () => new Date().toISOString().slice(0, 10);
-
 /**
  * TripPlanner — the travel-details wizard (route #/trip/plan).
  * 4 steps with visible progress: 1 dates · 2 travellers · 3 preferences ·

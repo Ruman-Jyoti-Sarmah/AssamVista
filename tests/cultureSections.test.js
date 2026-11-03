@@ -30,6 +30,9 @@ import {
   CULTURE_HERO,
   HERO_SLIDES,
 } from "../src/data/culture/cultureSections.js";
+import cultureHome from "../src/data/culture/cultureHome.json" with { type: "json" };
+import cultureImages from "../src/data/culture/cultureImages.json" with { type: "json" };
+import cultureCredits from "../src/data/culture/cultureCredits2.json" with { type: "json" };
 import { SPIRITUAL_DESTINATIONS } from "../src/data/culture/spiritualDestinations.js";
 
 /* ═══ 1. Export compatibility ════════════════════════════════════════════════ */
@@ -142,6 +145,23 @@ describe("cultureSections: static data and ordering", () => {
     for (const s of cs.HERO_SLIDES) {
       assert.deepEqual(Object.keys(s.credit), ["author", "source", "license", "licenseUrl"]);
     }
+    const slidesById = Object.fromEntries(cs.HERO_SLIDES.map((slide) => [slide.id, slide]));
+    assert.equal(slidesById.nature.video, undefined);
+    assert.equal(slidesById.nature.poster, "/images/culture/majuli-river.jpg");
+    assert.equal(slidesById.heritage.video, undefined);
+    assert.equal(slidesById.heritage.poster, "/images/culture/rang-ghar.jpg");
+  });
+
+  test("Cuisine photos match the dish names", () => {
+    const masorTenga = cultureHome.CUISINE_BAND.find((item) =>
+      item.name.en.startsWith("Masor tenga")
+    );
+    assert.equal(masorTenga.image, "/images/culture/masor-tenga.jpg");
+    assert.equal(cultureImages.CULTURE_IMG.masorTenga, masorTenga.image);
+    assert.equal(
+      cultureCredits.PART2.find((credit) => credit.file === "masor-tenga.jpg").license,
+      "CC BY-SA 4.0"
+    );
   });
 
   test("PILLARS: four keys including unused culture key", () => {
@@ -170,4 +190,3 @@ function csModule() {
     CULTURE_HERO, HERO_SLIDES,
   };
 }
-

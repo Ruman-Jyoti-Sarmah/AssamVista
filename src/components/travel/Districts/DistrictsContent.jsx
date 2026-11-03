@@ -14,10 +14,22 @@ const DIVISIONS = ["All", "Lower Assam", "North Assam", "Upper Assam", "Central 
 export default function Districts() {
   const { t, pick, favourites, toggleFav, isFav } = useApp();
   const [filter, setFilter] = useState("All");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => {
+    const hashQuery = window.location.hash.split("?")[1] || "";
+    return new URLSearchParams(hashQuery).get("q") || "";
+  });
   const [sort, setSort] = useState("no");
   const [favOnly, setFavOnly] = useState(false);
   const q = useDebouncedValue(query.trim().toLowerCase(), 200);
+
+  useEffect(() => {
+    const syncQuery = () => {
+      const hashQuery = window.location.hash.split("?")[1] || "";
+      setQuery(new URLSearchParams(hashQuery).get("q") || "");
+    };
+    window.addEventListener("hashchange", syncQuery);
+    return () => window.removeEventListener("hashchange", syncQuery);
+  }, []);
 
   const list = useMemo(() => {
     let items = [...DISTRICTS];
