@@ -565,8 +565,8 @@ export const STRINGS = {
     itin_empty_trip_cta: "Go to My Trip",
 
     /* ── Culture hub (Incredible-India style) ── */
-    culture_hub_kicker: "AXOM · CULTURE OF ASSAM",
-    culture_hub_lede: "Explore Assam through its communities, festivals, food, crafts, spiritual life, history and wildlife. Then browse districts and make a draft travel plan. AXOM is an independent guide, not an official government website.",
+    culture_hub_kicker: "AssamVista · CULTURE OF ASSAM",
+    culture_hub_lede: "Explore Assam through its communities, festivals, food, crafts, spiritual life, history and wildlife. Then browse districts and make a draft travel plan. AssamVista is an independent guide, not an official government website.",
     culture_intro_title: "Get to know Assam, then plan your visit",
     culture_intro_communities: "Explore communities",
      culture_intro_plan: "Start planning",
@@ -642,8 +642,8 @@ export const STRINGS = {
     breadcrumb_home: "Home",
     breadcrumb_culture: "Culture",
     breadcrumb_experiences: "Experiences",
-    title_culture_hub: "Culture of Assam — AXOM",
-    title_culture_experience: "Experience Assam — AXOM",
+    title_culture_hub: "Culture of Assam — AssamVista",
+    title_culture_experience: "Experience Assam — AssamVista",
 
     /* ── Rivers of Assam ───────────────────────────────────────── */
     rivers_hero_kicker: "RIVERS",
