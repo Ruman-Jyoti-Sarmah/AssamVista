@@ -28,7 +28,7 @@ export default function ItineraryView() {
 
   const onSave = () => {
     try {
-      localStorage.setItem("axom:trip:saved", JSON.stringify(itinerary));
+      localStorage.setItem("assamvista:trip:saved", JSON.stringify(itinerary));
       setSaved(true);
     } catch { /* storage unavailable — ignore */ }
   };

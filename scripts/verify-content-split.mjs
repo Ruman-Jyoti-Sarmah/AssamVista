@@ -19,7 +19,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE_REF = "70a8f62ace025d821e5d7e3940ee156552bfd4a3";
 
 /* Materialise the original module in a temp dir so we can import it. */
-const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "axom-content-"));
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "assamvista-content-"));
 const original = execFileSync("git", ["show", `${BASE_REF}:src/data/content.js`], {
   cwd: root,
   encoding: "utf8",

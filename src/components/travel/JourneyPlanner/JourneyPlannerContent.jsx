@@ -36,7 +36,7 @@ function displayDate(value) {
  */
 export function JourneyPlanner() {
   const { t, pick } = useApp();
-  const [savedPlan, setSavedPlan] = useLocalStorage("axom:journey:plan", null);
+  const [savedPlan, setSavedPlan] = useLocalStorage("assamvista:journey:plan", null);
   const [step, setStep] = useState(1);
   const [firstDistrict, setFirstDistrict] = useState("");
   const [extraDistricts, setExtraDistricts] = useState([]);

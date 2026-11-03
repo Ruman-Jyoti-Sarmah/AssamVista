@@ -1,7 +1,7 @@
 {
   "BRAND": {
     "name": {
-      "en": "AXOM",
+      "en": "AssamVista",
       "as": "অসম"
     },
     "tagline": {
@@ -24,8 +24,8 @@
   ],
   "FOOTER": {
     "legal": {
-      "en": "AXOM is an independent guide to Assam, not an official government website. © 2026",
-      "as": "AXOM অসমৰ এক স্বতন্ত্ৰ নিৰ্দেশিকা, চৰকাৰী ৱেবছাইট নহয়। © ২০২৬"
+      "en": "AssamVista is an independent guide to Assam, not an official government website. © 2026",
+      "as": "AssamVista অসমৰ এক স্বতন্ত্ৰ নিৰ্দেশিকা, চৰকাৰী ৱেবছাইট নহয়। © ২০২৬"
     }
   }
 }

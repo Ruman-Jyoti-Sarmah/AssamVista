@@ -33,9 +33,9 @@ const EMPTY_DETAILS = {
 };
 
 export function TripProvider({ children }) {
-  const [selectedIds, setSelectedIds] = useLocalStorage("axom:trip:selected", []);
-  const [details, setDetails] = useLocalStorage("axom:trip:details", EMPTY_DETAILS);
-  const [itinerary, setItinerary] = useLocalStorage("axom:trip:itinerary", null);
+  const [selectedIds, setSelectedIds] = useLocalStorage("assamvista:trip:selected", []);
+  const [details, setDetails] = useLocalStorage("assamvista:trip:details", EMPTY_DETAILS);
+  const [itinerary, setItinerary] = useLocalStorage("assamvista:trip:itinerary", null);
 
   const isSelected = useCallback(
     (id) => selectedIds.includes(id),

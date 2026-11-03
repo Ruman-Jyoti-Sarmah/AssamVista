@@ -51,7 +51,7 @@ export default function SectionDock({ section = CULTURE }) {
       data-section={section}
     >
       <span className="section-dock__eyebrow" aria-hidden="true">
-        Axom · {t("switch_section")}
+        AssamVista · {t("switch_section")}
       </span>
       <span className="section-dock__track" role="presentation">
         <span

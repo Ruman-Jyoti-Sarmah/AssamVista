@@ -57,7 +57,7 @@ export async function submitBooking(payload) {
   try {
     return await tryFetch("/api/bookings", { method: "POST", body: JSON.stringify(payload) });
   } catch {
-    const key = "axom:bookings";
+    const key = "assamvista:bookings";
     const prev = JSON.parse(localStorage.getItem(key) || "[]");
     const rec = { id: `local-${Date.now()}`, ...payload, createdAt: new Date().toISOString(), pending: true };
     localStorage.setItem(key, JSON.stringify([rec, ...prev]));
@@ -69,7 +69,7 @@ export async function submitNewsletter(email) {
   try {
     return await tryFetch("/api/newsletter", { method: "POST", body: JSON.stringify({ email }) });
   } catch {
-    const key = "axom:newsletter";
+    const key = "assamvista:newsletter";
     const prev = JSON.parse(localStorage.getItem(key) || "[]");
     if (!prev.includes(email)) localStorage.setItem(key, JSON.stringify([email, ...prev]));
     return { ok: true, offline: true };

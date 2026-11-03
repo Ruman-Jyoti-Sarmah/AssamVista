@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB = path.join(__dirname, "..", "..", "data", "db.json");
-const ADMIN_KEY = process.env.ADMIN_KEY || "axom-admin-123";
+const ADMIN_KEY = process.env.ADMIN_KEY || "assamvista-admin-123";
 
 const read = () => JSON.parse(fs.readFileSync(DB, "utf8"));
 const write = (db) => fs.writeFileSync(DB, JSON.stringify(db, null, 2));
@@ -112,4 +112,4 @@ app.delete("/api/admin/bookings/:id", admin, (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`AXOM API on http://localhost:${PORT} (ADMIN_KEY=${ADMIN_KEY})`));
+app.listen(PORT, () => console.log(`AssamVista API on http://localhost:${PORT} (ADMIN_KEY=${ADMIN_KEY})`));

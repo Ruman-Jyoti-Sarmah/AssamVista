@@ -19,7 +19,7 @@ const createFallbackSvg = (label = "Assam") => {
       <circle cx="930" cy="165" r="120" fill="rgba(243,201,138,0.22)" />
       <path d="M0 540C170 500 320 610 470 620C665 635 770 470 950 500C1055 522 1115 560 1200 540V800H0Z" fill="rgba(255,255,255,0.07)" />
       <text x="70" y="620" fill="#f3c98a" font-size="92" font-family="Georgia, serif" font-weight="700">${safeLabel}</text>
-      <text x="72" y="690" fill="rgba(255,255,255,0.75)" font-size="30" font-family="Arial, sans-serif" letter-spacing="4">AXOM</text>
+      <text x="72" y="690" fill="rgba(255,255,255,0.75)" font-size="30" font-family="Arial, sans-serif" letter-spacing="4">AssamVista</text>
     </svg>
   `;
 
@@ -31,9 +31,9 @@ const replaceBrokenMedia = (target) => {
     !(target instanceof HTMLImageElement || target instanceof HTMLVideoElement)
   )
     return;
-  if (target.dataset.axomFallback === "true") return;
+  if (target.dataset.assamvistaFallback === "true") return;
 
-  target.dataset.axomFallback = "true";
+  target.dataset.assamvistaFallback = "true";
 
   if (target instanceof HTMLImageElement) {
     target.src = createFallbackSvg(

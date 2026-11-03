@@ -1,7 +1,7 @@
 # Rivers image download + derivative build script
-# Run: powershell -File d:\User(D)\Coding\Axom\scripts\river-assets.ps1
+# Run: powershell -File d:\User(D)\Coding\AssamVista\scripts\river-assets.ps1
 $ErrorActionPreference = 'Stop'
-$srcDir = 'd:\User(D)\Coding\Axom\public\images\rivers\originals'
+$srcDir = 'd:\User(D)\Coding\AssamVista\public\images\rivers\originals'
 $proxyOk = $true
 
 function Get-Web ($url, $out) {

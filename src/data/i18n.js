@@ -48,7 +48,7 @@ export const STRINGS = {
     menu_guide: "Travel Guide",
     menu_heritage: "Heritage & Kings",
     menu_symbols: "State Symbols",
-    symbols_kicker: "AXOM · STATE SYMBOLS OF ASSAM",
+    symbols_kicker: "AssamVista · STATE SYMBOLS OF ASSAM",
     symbols_title: "State designations & cultural emblems",
     symbols_sub:
       "Explore Assam's state designations and cultural emblems. Each card identifies official designations where applicable and distinguishes them from well-known traditions and popular expressions.",
@@ -67,7 +67,7 @@ export const STRINGS = {
     zubeen_bio:
       "Wrapped in the red-and-white gamosa and sung to the rhythm of the mighty Brahmaputra, Zubeen Garg (1972–2025) was the Luit Konwar — the voice that carried Assam from the muga looms and the sattras of Majuli to the tea gardens and Bihu fields, and on to the world. His songs — Mayabini, Ya Ali, Boku Duru Duru — echo with the soil of Xorai: equal parts Bihu fire, Borgeet devotion and the golden pride of Asomiya culture, forever woven into the fabric of the land he loved.",
     facts_label: "About Assam",
-    facts_kicker: "AXOM · SOUL OF ASSAM",
+    facts_kicker: "AssamVista · SOUL OF ASSAM",
     facts_title: "Things Assam is Famous For",
     facts_intro:
       "A quick introduction to Assam's wildlife, language, festivals, food and craft traditions. Some entries are official designations; others are cultural highlights.",
@@ -789,7 +789,7 @@ export const STRINGS = {
     menu_guide: "ভ্ৰমণ নিৰ্দেশনা",
     menu_heritage: "ঐতিহ্য আৰু ৰজা",
     menu_symbols: "ৰাজ্যিক প্ৰতীক",
-    symbols_kicker: "AXOM · অসমৰ ৰাজ্যিক প্ৰতীক",
+    symbols_kicker: "AssamVista · অসমৰ ৰাজ্যিক প্ৰতীক",
     symbols_title: "ৰাজ্যিক স্বীকৃতি আৰু সাংস্কৃতিক প্ৰতীক",
     symbols_sub:
       "অসমৰ ৰাজ্যিক স্বীকৃতি আৰু সাংস্কৃতিক প্ৰতীকসমূহ জানক। প্ৰতিটো কাৰ্ডত প্ৰযোজ্য ক্ষেত্ৰত চৰকাৰী স্বীকৃতি উল্লেখ কৰা হৈছে আৰু পৰম্পৰা বা জনপ্ৰিয় অভিব্যক্তিৰ পৰা পৃথক কৰা হৈছে।",

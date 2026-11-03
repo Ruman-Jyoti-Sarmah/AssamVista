@@ -12,7 +12,7 @@ function useAdmin(key) {
 
 /** Admin panel — route #/admin. Bookings + newsletter + district editor. */
 export default function Admin() {
-  const [key, setKey] = useState(() => localStorage.getItem("axom:admin-key") || "");
+  const [key, setKey] = useState(() => localStorage.getItem("assamvista:admin-key") || "");
   const [authed, setAuthed] = useState(false);
   const [tab, setTab] = useState("bookings");
   const [bookings, setBookings] = useState([]);
@@ -34,7 +34,7 @@ export default function Admin() {
       setNewsletter(n);
       setDistricts(d);
       setAuthed(true);
-      localStorage.setItem("axom:admin-key", key);
+      localStorage.setItem("assamvista:admin-key", key);
     } catch (e) {
       setError("Login failed — check ADMIN_KEY. (" + e.message + ")");
     }
@@ -48,9 +48,9 @@ export default function Admin() {
   if (!authed) {
     return (
       <section className="admin" id="top">
-        <span className="label">AXOM · ADMIN</span>
+        <span className="label">AssamVista · ADMIN</span>
         <h1>Admin Login</h1>
-        <p>Server ke <code>ADMIN_KEY</code> se login karo (default: <code>axom-admin-123</code>).</p>
+        <p>Server ke <code>ADMIN_KEY</code> se login karo (default: <code>assamvista-admin-123</code>).</p>
         <div className="admin__login">
           <input value={key} onChange={(e) => setKey(e.target.value)} placeholder="ADMIN_KEY" type="password" />
           <button className="btn btn--solid" onClick={load}>Login</button>
@@ -63,7 +63,7 @@ export default function Admin() {
 
   return (
     <section className="admin" id="top">
-      <span className="label">AXOM · ADMIN PANEL</span>
+      <span className="label">AssamVista · ADMIN PANEL</span>
       <h1>Namaskar, Admin</h1>
       <div className="admin__tabs">
         {[["bookings", `Bookings (${bookings.length})`], ["newsletter", `Newsletter (${newsletter.length})`], ["districts", `Districts (${districts.length})`]].map(([id, label]) => (
@@ -71,7 +71,7 @@ export default function Admin() {
             {label}
           </button>
         ))}
-        <button className="dlist__chip" onClick={() => { setAuthed(false); localStorage.removeItem("axom:admin-key"); }}>
+        <button className="dlist__chip" onClick={() => { setAuthed(false); localStorage.removeItem("assamvista:admin-key"); }}>
           Logout
         </button>
       </div>

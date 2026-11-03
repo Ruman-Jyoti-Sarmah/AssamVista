@@ -6,9 +6,9 @@ import AS from "../data/asData";
 const AppCtx = createContext(null);
 
 export function AppProvider({ children }) {
-  const [lang, setLang] = useLocalStorage("axom:lang", "en");
-  const [favourites, setFavourites] = useLocalStorage("axom:favs", []);
-  const [bookings, setBookings] = useLocalStorage("axom:bookings", []);
+  const [lang, setLang] = useLocalStorage("assamvista:lang", "en");
+  const [favourites, setFavourites] = useLocalStorage("assamvista:favs", []);
+  const [bookings, setBookings] = useLocalStorage("assamvista:bookings", []);
 
   // keep <html lang> in sync for accessibility + fonts
   useEffect(() => {

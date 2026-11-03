@@ -262,7 +262,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
           aria-label={`${pick(BRAND.name, lang)} — ${t("switch_to_culture")}`}
         >
           <span className="chead__logo-mark" aria-hidden="true">
-            <Landmark size={18} />
+            <img src="/Logo/AssamVista-Logo.png" alt="" />
           </span>
           <span className="chead__logo-text">
             <strong>{pick(BRAND.name, lang)}</strong>
