@@ -7,6 +7,11 @@ import RiversAtlas from "@/components/travel/Rivers/RiversAtlas";
 export default function RiverDetail({ id: defaultId }) {
   const { t, pick } = useApp();
   const [id, setId] = useState(defaultId || "");
+
+// Sync id from prop when navigating between river detail pages.
+  useEffect(() => {
+    if (defaultId && defaultId !== id) setId(defaultId);
+  }, [defaultId, id]);
   const [Leaflet, setLeaflet] = useState(null);
 
   useEffect(() => {

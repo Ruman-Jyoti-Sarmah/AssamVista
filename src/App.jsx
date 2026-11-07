@@ -12,6 +12,15 @@ import { getRoute } from "@/app/routes";
 const RIVER_TITLE_KEYS = {
   brahmaputra: "title_rivers_brahmaputra",
   barak: "title_rivers_barak",
+  subansiri: "title_rivers_subansiri",
+  "jia-bharali": "title_rivers_jia-bharali",
+  kopili: "title_rivers_kopili",
+  kulsi: "title_rivers_kulsi",
+  dikhow: "title_rivers_dikhow",
+  beki: "title_rivers_beki",
+  "burhi-dihing": "title_rivers_burhi-dihing",
+  dhansiri: "title_rivers_dhansiri",
+  longai: "title_rivers_longai",
 };
 
 function useCurrentHash() {
@@ -32,7 +41,7 @@ function getDistrictSlug(hash) {
 }
 
 function getRiverTitleKey(route) {
-  return route.riverSlug ? RIVER_TITLE_KEYS[route.riverSlug] || null : null;
+  return route.id ? RIVER_TITLE_KEYS[route.id] || null : null;
 }
 
 function getPageTitle({ route, districtSlug, riverTitleKey, t, pick }) {
@@ -127,7 +136,7 @@ function Shell() {
           </div>
         }
       >
-        <Page {...pageProps} key={route.name} />
+        <Page {...pageProps} key={revealKey} />
       </Suspense>
       <SectionDock section={section} />
       <Footer />

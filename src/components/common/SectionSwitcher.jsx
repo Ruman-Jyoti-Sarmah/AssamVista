@@ -51,7 +51,7 @@ export default function SectionSwitcher({ section, compact = false }) {
             aria-selected={active}
             aria-label={`${label} — ${hint}`}
             title={hint}
-            className={`switch__btn ${active ? "is-active" : ""}`}
+            className={`switch__btn switch__btn--${id} ${active ? "is-active" : ""}`}
             onClick={() => go(id)}
           >
             <Icon size={15} aria-hidden="true" />

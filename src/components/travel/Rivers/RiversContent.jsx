@@ -84,8 +84,10 @@ export default function RiversPage() {
                       <div className="rh-card-body">
                         <h3 className="rh-card-name">{pick(r.name, "en")}</h3>
                         {(r.aliases?.en?.[0] || r.aliases?.as?.[0]) ? <p className="rh-card-aliases">{pick(r.aliases.en[0] || r.aliases.as[0])}</p> : null}
-                        <span className="rh-card-side">{pick(sideLabel(r.side, "en"))}</span>
-                        <span className="rh-card-system">{pick(riverSystemLabel(r.system, "en"))}</span>
+                        <div className="rh-card-meta">
+                          <span className="rh-card-badge">{pick(sideLabel(r.side, "en"))}</span>
+                          <span className="rh-card-system">{pick(riverSystemLabel(r.system, "en"))}</span>
+                        </div>
                         <a className="rh-card-link" href={`#/river/${r.id}`}>{t("rivers_view")} <ArrowRight size={14} aria-hidden="true" /> {pick(r.name)}</a>
                       </div>
                     </article>

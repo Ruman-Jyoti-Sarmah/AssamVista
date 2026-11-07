@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { useApp } from "@/store/AppContext";
 import { RIVERS, riverSystemLabel } from "@/data/travel/rivers";
 import { riverCreditFor } from "@/data/travel/riverImageCredits";
-import ScrollHint from "@/components/common/ScrollHint";
 
 const sideLabel = (s, lang = "en") =>
   s === "main"
@@ -57,19 +56,17 @@ export default function RiversHome() {
         })}
       </div>
 
-      <ScrollHint target="rivers-home-cta">
-        <div className="chome__cta">
-          <p>{t("rivers_intro")}</p>
-          <div className="chome__cta-actions">
-            <a className="btn btn--solid" href="#/rivers">
-              {t("rivers_view")} <ArrowRight size={15} aria-hidden="true" /> {t("rivers_title")}
-            </a>
-            <a className="btn btn--ghost" href="#/travel">
-              {t("switch_to_travel")}
-            </a>
-          </div>
+      <div className="chome__cta">
+        <p>{t("rivers_intro")}</p>
+        <div className="chome__cta-actions">
+          <a className="btn btn--solid" href="#/rivers">
+            Explore Rivers <ArrowRight size={15} aria-hidden="true" />
+          </a>
+          <a className="btn btn--ghost" href="#/travel">
+            {t("switch_to_travel")}
+          </a>
         </div>
-      </ScrollHint>
+      </div>
     </section>
   );
 }

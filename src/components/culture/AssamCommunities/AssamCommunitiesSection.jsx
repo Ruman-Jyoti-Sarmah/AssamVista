@@ -57,6 +57,10 @@ export default function AssamCommunitiesSection({ compact = false }) {
   const [canGoBack, setCanGoBack] = useState(false);
   const [canGoForward, setCanGoForward] = useState(true);
 
+  // Culture homepage shows only 3 communities; the full list lives on the
+  // dedicated communities page.
+  const communities = compact ? ASSAM_COMMUNITIES.slice(0, 3) : ASSAM_COMMUNITIES;
+
   const updateSliderButtons = useCallback(() => {
     if (!isCarousel) return;
 
@@ -142,7 +146,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
         aria-label={isCarousel ? "Communities of Assam carousel" : "Communities of Assam list"}
         tabIndex={isCarousel ? 0 : undefined}
       >
-        {ASSAM_COMMUNITIES.map((community) => (
+        {communities.map((community) => (
           <article
             className={`community-card ${expandedCommunityId === community.id ? "is-expanded" : ""}`}
             key={community.id}

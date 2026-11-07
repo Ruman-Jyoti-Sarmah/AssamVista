@@ -31,3 +31,4 @@ Thumbs.db
 # Optional: Vercel / vercel build cache
 .vercel/
 .vercel_build_output/
+.andromity/

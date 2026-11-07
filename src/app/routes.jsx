@@ -84,7 +84,7 @@ export function getRoute(hash = "") {
   if (currentHash === "#/symbols") return route("symbols", StateSymbols, { titleKey: "title_symbols" });
 
   const river = currentHash.match(/^#\/rivers?\/([a-z0-9-]+)/);
-  if (river) return route("river-detail", RiverDetails, { riverSlug: river[1] });
+  if (river) return route("river-detail", RiverDetails, { id: river[1] });
   if (currentHash === "#/rivers" || currentHash === "#/rivers/") return route("rivers", Rivers, { titleKey: "title_rivers" });
 
   // Preserve the old fallback: an unknown hash opens the Culture home.

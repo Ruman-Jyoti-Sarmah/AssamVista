@@ -78,7 +78,7 @@
   ],
   "FESTIVAL_STRIP": [
     {
-      "image": "/images/culture/bihu-dance.jpg",
+      "image": "https://media.istockphoto.com/id/1204129776/photo/bihu-dance-of-assam.jpg?s=612x612&w=0&k=20&c=AJbomV__4kVUvoiBdpMzgpm8t3PJjoy3Lu9nk0epAiw=",
       "name": {
         "en": "Bihu dance",
         "as": "বিহু নাচ"
@@ -90,7 +90,7 @@
       "href": "#/culture"
     },
     {
-      "image": "/images/culture/ali-aye-ligang.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoHD8vg-LMJVfwKzzokgHsOJPNeds9sId-dWmsUH7SqZDD4x1QI2nn7PSJ&s=10",
       "name": {
         "en": "Ali-Aye-Ligang · Mising",
         "as": "আলি-আয়ে-লৃগাং · মিচিং"
@@ -128,7 +128,7 @@
   ],
   "CRAFT_FEATURES": [
     {
-      "image": "/images/culture/sualkuchi-handloom.jpg",
+      "image": "https://www.utsavpedia.com/wp-content/uploads/2013/06/51f61cade4b0514530764e9d_500x3001.jpg",
       "kicker": {
         "en": "Golden muga",
         "as": "সোণীয় মুগা"
@@ -144,7 +144,7 @@
       "href": "#/handicrafts"
     },
     {
-      "image": "/images/culture/gamosa-assam.jpg",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREXr_-1tUvfDwyB7F5jJ5raYBX5-lgaNqTuf8O1SjVsZGQjNhP6Sr3XzjK&s=10",
       "kicker": {
         "en": "Honour & craft",
         "as": "সন্মান আৰু শিল্প"
@@ -177,7 +177,7 @@
   },
   "PERFORMANCE_CARDS": [
     {
-      "image": "/images/culture/bihu-dance.jpg",
+      "image": "https://media.istockphoto.com/id/1204129776/photo/bihu-dance-of-assam.jpg?s=612x612&w=0&k=20&c=AJbomV__4kVUvoiBdpMzgpm8t3PJjoy3Lu9nk0epAiw=",
       "name": {
         "en": "Bihu · Dhol · Pepa",
         "as": "বিহু · ঢোল · পেঁপা"
