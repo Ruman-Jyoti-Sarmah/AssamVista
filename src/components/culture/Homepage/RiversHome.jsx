@@ -1,20 +1,11 @@
 import { useMemo } from "react";
 import { ArrowRight } from "lucide-react";
 import { useApp } from "@/store/AppContext";
-import { RIVERS, riverSystemLabel } from "@/data/travel/rivers";
+import { RIVERS, riverSideLabel, riverSystemLabel } from "@/data/travel/rivers";
 import { riverCreditFor } from "@/data/travel/riverImageCredits";
 
-const sideLabel = (s, lang = "en") =>
-  s === "main"
-    ? "Main river"
-    : s === "north"
-    ? "North-bank tributary"
-    : s === "south"
-    ? "South-bank tributary"
-    : "Barak Valley tributary";
-
 export default function RiversHome() {
-  const { t, pick } = useApp();
+  const { t, pick, lang } = useApp();
   const featured = useMemo(() => {
     const byId = new Map(RIVERS.map((r) => [r.id, r]));
     const order = ["brahmaputra", "barak", "jia-bharali", "manas", "beki", "subansiri", "longai"];
@@ -41,12 +32,12 @@ export default function RiversHome() {
               className={`chome__tile chome__tile--r${idx}`}
               data-reveal
             >
-              <img src={r.image} alt={pick(r.alt, "en")} loading="lazy" decoding="async" />
+              <img src={r.image} alt={pick(r.alt)} loading="lazy" decoding="async" />
               <span className="chome__tile-veil" aria-hidden="true" />
               <span className="chome__tile-copy">
-                <span className="chome__tile-sub">{pick(riverSystemLabel(r.system, "en"))}</span>
-                <span className="chome__tile-label">{pick(r.name, "en")}</span>
-                <span className="chome__tile-meta">{pick(sideLabel(r.side, "en"))}</span>
+                <span className="chome__tile-sub">{riverSystemLabel(r.system, lang)}</span>
+                <span className="chome__tile-label">{pick(r.name)}</span>
+                <span className="chome__tile-meta">{riverSideLabel(r.side, lang)}</span>
                 {credit ? (
                   <span className="chome__tile-meta">{credit.author} &middot; {credit.license}</span>
                 ) : null}
@@ -57,10 +48,10 @@ export default function RiversHome() {
       </div>
 
       <div className="chome__cta">
-        <p>{t("rivers_intro")}</p>
+        <p>{t("rivers_home_cta")}</p>
         <div className="chome__cta-actions">
           <a className="btn btn--solid" href="#/rivers">
-            Explore Rivers <ArrowRight size={15} aria-hidden="true" />
+            {t("rivers_explore")} <ArrowRight size={15} aria-hidden="true" />
           </a>
           <a className="btn btn--ghost" href="#/travel">
             {t("switch_to_travel")}

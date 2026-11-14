@@ -5,7 +5,7 @@ import { riverCreditFor } from "@/data/travel/riverImageCredits";
 import RiversAtlas from "@/components/travel/Rivers/RiversAtlas";
 
 export default function RiverDetail({ id: defaultId }) {
-  const { t, pick } = useApp();
+  const { t, pick, lang } = useApp();
   const [id, setId] = useState(defaultId || "");
 
 // Sync id from prop when navigating between river detail pages.
@@ -45,9 +45,9 @@ export default function RiverDetail({ id: defaultId }) {
         <div className="rivers__hero-content">
           {river ? (
             <>
-              <p className="label">{pick(riverSystemLabel(river.system, "en"))}</p>
-              <h1 className="rivers__title">{pick(river.name, "en")}</h1>
-              <p className="rh-sub">{pick(riverSideLabel(river.side, "en"))}</p>
+              <p className="label">{riverSystemLabel(river.system, lang)}</p>
+              <h1 className="rivers__title">{pick(river.name)}</h1>
+              <p className="rh-sub">{riverSideLabel(river.side, lang)}</p>
             </>
           ) : (
             <>
@@ -65,17 +65,17 @@ export default function RiverDetail({ id: defaultId }) {
           <p className="rivers__empty">{t("rivers_not_found")}</p>
         ) : (
           <>
-            <p className="rivers__headline">{pick(river.name, "en")}</p>
-            <p className="rivers__subsume">{pick(river.region, "en")}</p>
+            <p className="rivers__headline">{pick(river.name)}</p>
+            <p className="rivers__subsume">{pick(river.region)}</p>
 
             <section className="rivers__section" aria-labelledby="river-place-label">
               <h2 id="river-place-label" className="rivers__section-title">{t("rivers_place")}</h2>
-              <p className="rivers__text">{pick(river.place, "en")}</p>
+              <p className="rivers__text">{pick(river.place)}</p>
             </section>
 
             <section className="rivers__section" aria-labelledby="river-desc-label">
               <h2 id="river-desc-label" className="rivers__section-title">{t("rivers_description")}</h2>
-              <p className="rivers__text">{pick(river.description, "en")}</p>
+              <p className="rivers__text">{pick(river.description)}</p>
             </section>
 
             <section className="rivers__section" aria-labelledby="river-credits-label">
@@ -99,7 +99,7 @@ export default function RiverDetail({ id: defaultId }) {
             <section className="rivers__section" aria-labelledby="river-atlas-label">
               <h2 id="river-atlas-label" className="rivers__section-title">{t("rivers_atlas")}</h2>
               <div className="rivers__map">
-                {Leaflet ? <RiversAtlas systems={[river.system]} /> : <p className="rivers__map-empty">{t("rivers_load_map")}</p>}
+                {Leaflet ? <RiversAtlas systems={[river.system]} label={t("rivers_atlas")} /> : <p className="rivers__map-empty">{t("rivers_load_map")}</p>}
               </div>
             </section>
           </>

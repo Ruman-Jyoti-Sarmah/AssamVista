@@ -14,6 +14,7 @@ const RIVER_TITLE_KEYS = {
   barak: "title_rivers_barak",
   subansiri: "title_rivers_subansiri",
   "jia-bharali": "title_rivers_jia-bharali",
+  manas: "title_rivers_manas",
   kopili: "title_rivers_kopili",
   kulsi: "title_rivers_kulsi",
   dikhow: "title_rivers_dikhow",

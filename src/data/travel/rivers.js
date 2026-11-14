@@ -25,7 +25,7 @@ export const RIVERS = [
     place: { en: "The Red River — from Kobo to Dhubri", as: "ৰঙা নদী — কবোৰ পৰা ধুবুৰীলৈ" },
     description: {
       en: "One of the largest rivers in the world — fifth by average discharge — which enters Assam valley from Kobo and leaves at Dhubri, braiding across an average width of 5.46 Km.",
-      as: "বিশ্বৰ আটাইতকৈ ডাঙৰ নদীসমূহৰ এটা — গড় হাৰ্মিন প্ৰৱাহৰ ওপৰত পঞ্চম — কবৰ পৰা অসমৰ উপত্যকাত সোমাই ধুবুৰীত ওলায়, গড় প্ৰস্থ ৫.৪৬ কিলোমিটাৰ বান্ধি।",
+      as: "বিশ্বৰ আটাইতকৈ ডাঙৰ নদীসমূহৰ এটা — গড় স্ৰাৱৰ হিচাপত পঞ্চম — কবোৰ পৰা অসমৰ উপত্যকাত সোমাই ধুবুৰীত ওলায়, গড় প্ৰস্থ ৫.৪৬ কিলোমিটাৰলৈকে শাখা-প্ৰশাখাত বিস্তৃত হৈ।",
     },
     image: "/images/rivers/brahmaputra-guwahati.jpg",
     alt: { en: "Brahmaputra river in Guwahati", as: "গুৱাহাটীত ব্ৰহ্মপুত্ৰ" },
@@ -52,10 +52,10 @@ export const RIVERS = [
     system: "brahmaputra",
     side: "north",
     region: { en: "Arunachal Pradesh · Lakhimpur", as: "অৰুণাচল প্ৰদেশ · লখিমপুৰ" },
-    place: { en: "Northern Assam · Lakhimpur", as: "উত্তৰ অসম · শিৱসাগৰ" },
+    place: { en: "Northern Assam · Lakhimpur", as: "উত্তৰ অসম · লখিমপুৰ" },
     description: {
       en: "A major Himalayan tributary that joins the Brahmaputra from the north bank — a celebrated river of rafting and rafting tourism.",
-      as: "হিমালয়ৰৰ এটা প্ৰধান উপনদী, উত্তৰ তীৰত ব্ৰহ্মপুত্ৰক মিলে — ৰাফটিং আৰু ৰাফটিং পৰ্যটনৰ বাবে খ্যাত নদী।",
+      as: "হিমালয়ৰ এটা প্ৰধান উপনদী, উত্তৰ তীৰত ব্ৰহ্মপুত্ৰক মিলে — ৰাফটিং আৰু ৰাফটিং পৰ্যটনৰ বাবে খ্যাত নদী।",
     },
     image: "/images/rivers/subansiri-lakhimpur.jpg",
     alt: { en: "Subansiri river from the Lakhimpur side", as: "লখিমপুৰ দিশৰ পৰা সোৱণশিৰি" },
@@ -70,7 +70,7 @@ export const RIVERS = [
     place: { en: "Nameri National Park side", as: "নামেৰী ৰাষ্ট্ৰীয় উদ্যানৰ দিশ" },
     description: {
       en: "A spirited Himalayan tributary that sweeps past Tezpur and Nameri — the valley's angling and adventure river.",
-      as: "তেজপুৰ আৰু নামেৰীৰ কাষেৰে বৈ যোৱা এক উৎসাহী হিমালয় উপনদী — উপত্যকাৰ মাছ ধৰা আৰু দুঃসাহসীকৰ্মৰ নদী।",
+      as: "তেজপুৰ আৰু নামেৰীৰ কাষেৰে বৈ যোৱা এক প্ৰাণবন্ত হিমালয় উপনদী — উপত্যকাৰ মাছ ধৰা আৰু দুঃসাহসিক ক্ৰীড়াৰ নদী।",
     },
     image: "/images/rivers/jia-bharali-nameri.jpg",
     alt: { en: "Jia Bharali river in Nameri National Park", as: "নামেৰী ৰাষ্ট্ৰীয় উদ্যানত জিয়া ভৰালি" },
@@ -85,7 +85,7 @@ export const RIVERS = [
     place: { en: "Manas National Park side", as: "মানস ৰাষ্ট্ৰীয় উদ্যানৰ দিশ" },
     description: {
       en: "A trans-boundary Himalayan river that gives Manas National Park its name — a sanctuary stretch where river, grassland and elephant forest meet.",
-      as: "মানস ৰাষ্ট্ৰীয় উদ্যানৰ নাম দিয়ে — এখন অভয়াৰণৰ অংশ য’ত নদী, তৃণভূমি আৰু হাতীৰ বন মিলে।",
+      as: "সীমান্ত পাৰ হৈ অহা হিমালয়ৰ নদীয়ে মানস ৰাষ্ট্ৰীয় উদ্যানৰ নাম দিয়ে — এখন অভয়াৰণৰ অংশ য’ত নদী, তৃণভূমি আৰু হাতীৰ বন মিলে।",
     },
     image: "/images/rivers/manas-river.jpg",
     alt: { en: "Manas river inside Manas National Park", as: "মানস ৰাষ্ট্ৰীয় উদ্যানত মানস নদী" },
@@ -100,7 +100,7 @@ export const RIVERS = [
     place: { en: "Hill district side", as: "পাহাৰীয়া জিলা" },
     description: {
       en: "A hill-born river of Dima Hasao and Karbi Anglong that powers the Kopili hydel project and feeds the valley's irrigation.",
-      as: "ডিমা হাছাও আৰু কাৰ্বি আংলঙৰ পাহাৰীয়া নদী যি কপিলী জলবিদ্যুৎ প্ৰকল্পক শক্তি দিয়ে আৰু উপত্যকাৰ জলসিঞ্চন পোষণ কৰে।",
+      as: "ডিমা হাছাও আৰু কাৰ্বি আংলঙৰ পাহাৰীয়া নদী যি কপিলী জলবিদ্যুৎ প্ৰকল্পক শক্তি দিয়ে আৰু উপত্যকাৰ জলসিঞ্চনত সহায় কৰে।",
     },
     image: "/images/rivers/kopili-river.jpg",
     alt: { en: "Kopili river, Assam", as: "কপিলী নদী, অসম" },
@@ -147,7 +147,7 @@ export const RIVERS_EXTRA = [
     place: { en: "Bhasighat, Barpeta", as: "ভাষীঘাট, বৰপেটা" },
     description: {
       en: "A low-land river of the western Brahmaputra valley — at Bhasighat in Barpeta its sunset reach is a beloved riverside landmark.",
-      as: "পশ্চিম ব্ৰহ্মপুত্ৰ উপত্যকাৰ এখন নিম্ন-ভূমি নদী — বৰপেটাৰ ভাষীঘাটত ইয়াৰ বসন্তৰ পৰা এটা প্ৰিয় নদীৰ দৃশ্য।",
+      as: "পশ্চিম ব্ৰহ্মপুত্ৰ উপত্যকাৰ এখন নিম্ন-ভূমি নদী — বৰপেটাৰ ভাষীঘাটত ইয়াৰ সূৰ্যাস্তৰ দৃশ্য বৰ প্ৰিয়।",
     },
     image: "/images/rivers/beki-river.jpg",
     alt: { en: "Beki river at Bhasighat, Barpeta", as: "বৰপেটাৰ ভাষীঘাটত বেকী" },
@@ -165,7 +165,7 @@ export const RIVERS_EXTRA_2 = [
     place: { en: "Dibrugarh district side", as: "ডিব্ৰুগড় জিলা" },
     description: {
       en: "A meandering southern tributary — from the air its floodplain unfolds in broad silver loops across Dibrugarh.",
-      as: "খনখনিয়া দক্ষিণ উপনদী — আকাশৰ পৰা ডিব্ৰুগড়ত ইয়াৰ প্লাবনভূমি ৰূপালী বাক্যত খোল খায়।",
+      as: "খনখনিয়া দক্ষিণ উপনদী — আকাশৰ পৰা ডিব্ৰুগড়ত ইয়াৰ প্লাবনভূমি ৰূপালী বক্ৰত খোল খায়।",
     },
     image: "/images/rivers/burhi-dihing-dibrugarh.jpg",
     alt: { en: "Aerial view of the Burhi Dihing floodplain, Dibrugarh", as: "ডিব্ৰুগড়ত বুৰহি দিহিঙৰ প্লাবনভূমি" },
@@ -195,7 +195,7 @@ export const RIVERS_EXTRA_2 = [
     place: { en: "Karimganj town side", as: "কৰিমগঞ্জ নগৰৰ দিশ" },
     description: {
       en: "A Barak Valley workhorse river seen from Karimganj — ferry ghats, sand banks and the everyday trade of the southern districts.",
-      as: "কৰিমগঞ্জৰ পৰা দেখা বৰাক উপত্যকাৰ কামিয়া নদী — ফেৰী ঘাট, বালিৰ তীৰ আৰু দক্ষিণ জিলাৰ দৈনন্দিন বাণিজ্য।",
+      as: "কৰিমগঞ্জৰ পৰা দেখা বৰাক উপত্যকাৰ পৰিশ্ৰমী নদী — ফেৰী ঘাট, বালিৰ তীৰ আৰু দক্ষিণ জিলাৰ দৈনন্দিন বাণিজ্য।",
     },
     image: "/images/rivers/longai-karimganj.jpg",
     alt: { en: "Longai river at Karimganj", as: "কৰিমগঞ্জত লংগাই নদী" },

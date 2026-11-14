@@ -6,7 +6,7 @@ export default function AssamCommunitiesPage() {
 
   return (
     <section className="page" id="top">
-      <div className="page__hero">
+      <div className="page__hero page__hero--communities">
         <picture className="communities-page__hero-media">
           <source
             media="(max-width: 600px)"
