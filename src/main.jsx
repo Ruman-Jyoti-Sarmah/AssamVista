@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import "./styles/index.css";
 import "./styles/travel.css";
 import "./styles/marketplace.css";
+import "./styles/intro.css";
 import "./index.css";
 
 const createFallbackSvg = (label = "Assam") => {

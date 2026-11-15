@@ -6,6 +6,8 @@
 export const STRINGS = {
   en: {
     nav_heritage: "The Heritage",
+    intro_label: "AssamVista — loading experience",
+    skip_intro: "Skip intro",
     nav_stays: "Stays",
     nav_cuisine: "Cuisine",
     nav_experiences: "Experiences",
@@ -1008,6 +1010,8 @@ export const STRINGS = {
   },
   as: {
     nav_heritage: "ঐতিহ্য",
+    intro_label: "অসমবিস্তাৰ — ল’ডিং অভিজ্ঞতা",
+    skip_intro: "অভ্যুত্থান বাদ দিও",
     nav_stays: "থকাৰ ঠাই",
     nav_cuisine: "আহাৰ",
     nav_experiences: "অভিজ্ঞতা",
