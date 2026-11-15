@@ -12575,7 +12575,7 @@ main[data-section="travel"] {
 
 /* Layout container: desktop split / mobile column */
 .auth-body{position:relative;z-index:10;display:flex;flex-direction:column;width:100%;min-height:calc(100vh - 4rem)}
-.auth-main{display:flex;flex:1;width:100%;padding:2rem var(--gutter) 3rem}
+.auth-main{display:flex;flex:1;width:100%;padding:2rem var(--gutter) 2rem}
 
 /* Left hero (desktop only) */
 .auth-hero{flex:0 0 58%;display:flex;align-items:flex-end;justify-content:flex-start;padding-right:3rem}
