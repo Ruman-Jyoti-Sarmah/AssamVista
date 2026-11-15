@@ -7,41 +7,21 @@ import {
   User,
   UserPlus,
   LogIn,
-  ArrowRight,
-  Home,
   MapPin,
   Film,
   Sparkles,
-  Globe,
-  X,
 } from "lucide-react";
 import { useAuth } from "@/store/AuthContext";
 import { useApp } from "@/store/AppContext";
 
-const NAV_ITEMS = [
-  { label: "Home", icon: Home, hash: "#/" },
-  { label: "Travel", icon: MapPin, hash: "#/districts" },
-  { label: "Culture", icon: Film, hash: "#/culture/festivals" },
-  { label: "Explore Assam", icon: Sparkles, hash: "#/guide" },
-];
-
-const ICON_MAP = {
-  email: Mail,
-  password: Lock,
-  name: User,
-  phone: Globe,
-};
-
 export default function AuthPage() {
-  const { t, lang } = useApp();
-  const { login, register, isAuthenticated, loading } = useAuth();
+  const { login, register } = useAuth();
 
   const [mode, setMode] = useState(window.location.hash.includes("/signup") ? "signup" : "login");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [showPw2, setShowPw2] = useState(false);
-  const [openNav, setOpenNav] = useState(false);
   const bgRef = useRef(null);
 
   const formRef = useRef({
@@ -150,13 +130,6 @@ export default function AuthPage() {
     },
   ];
 
-  const footerLinks = [
-    { label: "About Us", hash: "#/" },
-    { label: "Contact", hash: "#/" },
-    { label: "Privacy Policy", hash: "#/privacy" },
-    { label: "Terms of Service", hash: "#/terms" },
-  ];
-
   return (
     <section className="auth-page" id="top">
       {/* Background */}
@@ -173,46 +146,6 @@ export default function AuthPage() {
         />
         <div className="auth-bg__overlay" />
       </div>
-
-      {/* Transparent top navigation */}
-      <nav className="auth-nav" aria-label="Main navigation">
-        <div className="auth-nav__inner">
-          <div className="auth-nav__brand">
-            <img className="auth-nav__logo" src="/Logo/AssamVista-Logo.png" alt="AssamVista" />
-            <span className="auth-nav__wordmark">Assam<span className="auth-nav__accent">Vista</span></span>
-          </div>
-          <div className="auth-nav__menu">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.label}
-                type="button"
-                className="auth-nav__link"
-                onClick={() => { window.location.hash = item.hash; setOpenNav(false); }}
-              >
-                <item.icon size={16} aria-hidden="true" />
-                <span>{item.label}</span>
-              </button>
-            ))}
-            <button type="button" className="auth-nav__explore" onClick={() => { window.location.hash = "#/guide"; setOpenNav(false); }}>
-              Explore Now <ArrowRight size={14} aria-hidden="true" />
-            </button>
-          </div>
-          <div className="auth-nav__actions">
-            <button type="button" className="auth-nav__lang" aria-label="Language">
-              <Globe size={16} aria-hidden="true" />
-              <span className="auth-nav__lang-label">{lang === "en" ? "EN" : "অসমীয়া"}</span>
-            </button>
-            <button
-              type="button"
-              className="auth-nav__mobile-toggle"
-              aria-label="Toggle menu"
-              onClick={() => setOpenNav((n) => !n)}
-            >
-              {openNav ? <X size={18} aria-hidden="true" /> : <span className="auth-nav__mobile-bars" />}
-            </button>
-          </div>
-        </div>
-      </nav>
 
       {/* Layout container */}
       <div className="auth-body">
@@ -441,23 +374,6 @@ export default function AuthPage() {
       </div>
     </div>
   </div>
-
-  {/* Mobile footer below the card */}
-  <footer className="auth-footer">
-        <div className="auth-footer__inner">
-          <p className="auth-footer__heading">Explore the Beauty of Assam</p>
-          <div className="auth-footer__decor" aria-hidden="true" />
-          <p className="auth-footer__powered">Powered by AssamVista</p>
-          <nav className="auth-footer__nav" aria-label="Footer">
-            {footerLinks.map((l) => (
-              <a key={l.label} href={l.hash} className="auth-footer__link" onClick={(e) => { e.preventDefault(); window.location.hash = l.hash; }}>
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <p className="auth-footer__made">Made with ❤️ for Assam</p>
-        </div>
-      </footer>
     </section>
   );
 }
