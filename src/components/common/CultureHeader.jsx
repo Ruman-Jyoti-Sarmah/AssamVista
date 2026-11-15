@@ -563,7 +563,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
           )}
             <div className="chead__mfoot">
               <SectionSwitcher section={section} />
-              <a className="chead__mtrip" href={isAuthenticated ? "#/account" : "#/login"} onClick={(e) => { go(e, isAuthenticated ? "#/account" : "#/login"); setMobileOpen(false); }}>
+              <a className="chead__mtrip chead__maccount" href={isAuthenticated ? "#/account" : "#/login"} onClick={(e) => { go(e, isAuthenticated ? "#/account" : "#/login"); setMobileOpen(false); }}>
                 {isAuthenticated ? <User size={15} aria-hidden="true" /> : <LogIn size={15} aria-hidden="true" />}
                 {isAuthenticated ? "My Account" : "Log in"}
               </a>

@@ -634,6 +634,11 @@ export const STRINGS = {
     community_cat_barak: "Barak Valley & Kuki-Chin",
     community_cat_himalayanNaga: "Himalayan & Naga",
 
+    /* ── Community group sections ── */
+    community_group_major: "Assam Major Indigenous Communities",
+    community_group_other: "Other Important Communities of Assam",
+    community_group_smaller: "Smaller Ethnic & Tribal Groups",
+
     /* ── Culture homepage gateway ── */
     culture_gateway_kicker: "CULTURE & HERITAGE",
     culture_gateway_title: "Discover Assam's Culture",
@@ -919,6 +924,7 @@ export const STRINGS = {
     culture_fest_kicker: "FESTIVALS & TRADITIONS",
     culture_fest_title: "Celebrations across the seasons",
     culture_fest_sub: "Festivals, rituals and community gatherings that bring Assam's traditions to life.",
+    culture_explore_festivals: "Explore All Festivals",
     culture_craft_kicker: "MADE BY HAND",
     culture_craft_title: "Craft, skill and living tradition",
     culture_craft_sub: "Weaving, bamboo work and handmade objects that carry Assam's knowledge from one generation to the next.",
@@ -1630,6 +1636,11 @@ export const STRINGS = {
     community_cat_barak: "বৰাক উপত্যকা আৰু কুকি-চিন",
     community_cat_himalayanNaga: "হিমালয় আৰু নাগা",
 
+    /* ── Community group sections ── */
+    community_group_major: "অসমৰ মুখ্য আদিবাসী সমাজসমূহ",
+    community_group_other: "অসমৰ অন্য গুৰুত্বপূৰ্ণ সমাজসমূহ",
+    community_group_smaller: "ক্ষুদ্ৰ নৃবিজ্ঞান আৰু উপজাতি গোষ্ঠীসমূহ",
+
     /* ── Culture homepage gateway ── */
     culture_gateway_kicker: "সংস্কৃতি আৰু ঐতিহ্য",
     culture_gateway_title: "অসমৰ সংস্কৃতি আৱিষ্কাৰ কৰক",
@@ -1911,6 +1922,7 @@ export const STRINGS = {
     culture_fest_kicker: "উৎসৱ আৰু পৰম্পৰা",
     culture_fest_title: "ঋতু অনুসৰি উদযাপন",
     culture_fest_sub: "অসমৰ পৰম্পৰাক জীৱন্ত কৰি ৰখা উৎসৱ, ৰীতি-নীতি আৰু সমাজৰ মিলনসমূহ।",
+    culture_explore_festivals: "সকলো উৎসৱ চাওক",
     culture_craft_kicker: "হাতেৰে নিৰ্মিত",
     culture_craft_title: "শিল্প, দক্ষতা আৰু জীৱন্ত পৰম্পৰা",
     culture_craft_sub: "এটা প্ৰজন্মৰ পৰা আন এটা প্ৰজন্মলৈ অসমৰ জ্ঞান কঢ়িয়াই নিয়া বয়ন, বাঁহৰ কাম আৰু হাতেৰে নিৰ্মিত সামগ্ৰী।",

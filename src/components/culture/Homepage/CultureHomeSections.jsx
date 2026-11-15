@@ -75,8 +75,8 @@ export function Festivals() {
   return (
     <section className="chome chome--fest">
       <div className="chome__head chome__head--split">
-          <div>
-            <div className="chome__eyebrow">
+        <div>
+          <div className="chome__eyebrow">
             <Kicker>{t("culture_fest_kicker")}</Kicker>
           </div>
           <h2 className="chome__title">{t("culture_fest_title")}</h2>
@@ -85,7 +85,7 @@ export function Festivals() {
       </div>
       <div className="chome__strip" role="list" ref={stripRef}>
         {FESTIVAL_STRIP.map((f, idx) => (
-          <a key={pick(f.name)} href={f.href} role="listitem" className="chome__strip-card" data-reveal style={{ "--d": `${Math.min(idx, 3) * 70}ms` }}>
+          <article key={pick(f.name)} role="listitem" className="chome__strip-card" data-reveal style={{ "--d": `${Math.min(idx, 3) * 70}ms` }}>
             <div className="chome__strip-media">
               <img src={f.image} alt={pick(f.name)} loading="lazy" decoding="async" />
             </div>
@@ -93,10 +93,15 @@ export function Festivals() {
               <h3>{pick(f.name)}</h3>
               <p>{pick(f.about)}</p>
             </div>
-          </a>
+          </article>
         ))}
       </div>
       <ScrollHint targetRef={stripRef} />
+      <div className="chome__fest-cta">
+        <a className="chome__fest-btn" href="#/culture/festivals">
+          {t("culture_explore_festivals") || "Explore All Festivals"} <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </div>
     </section>
   );
 }

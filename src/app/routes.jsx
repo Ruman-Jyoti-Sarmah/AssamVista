@@ -70,7 +70,7 @@ export function getRoute(hash = "") {
     return route("culture-experience", Page, { titleKey: "title_culture_experience" });
   }
 
-  if (currentHash === "#/culture/festivals") return route("culture-festivals", CultureAndFestivals, { titleKey: "title_culture" });
+  if (routeHash === "#/culture/festivals") return route("culture-festivals", CultureAndFestivals, { titleKey: "title_culture" });
   if (currentHash === "#/credits") return route("credits", ImageCredits, { titleKey: "title_culture" });
 
   /* ── Heritage Marketplace ───────────────────────────────────────────

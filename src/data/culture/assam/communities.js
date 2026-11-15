@@ -45,7 +45,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Kokrajhar, Chirang, Baksa and Udalguri",
     craft: "Dokhona, aronai, cotton and eri weaving",
-    imageFile: "Two Bodo girls in traditional dresses at Kokrajhar.jpg",
+    imageUrl: "https://i.pinimg.com/736x/90/75/bf/9075bf9db334e6fdf561b8cae35bf9a6.jpg",
     fallbackImage: "/images/culture/gamosa-assam.jpg",
     summary:
       "Bodo identity is expressed through language, weaving, music and a strong connection to the land.",
@@ -85,7 +85,7 @@ const PROFILES = [
     category: "hills",
     region: "Karbi Anglong and West Karbi Anglong",
     craft: "Woven garments, bamboo and cane work, beadwork",
-    imageFile: "Bamboo articrafts from Assam.jpg",
+    imageUrl: "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/07/01/Pictures/india-festival_4e6a54ea-5e7f-11e7-a18d-042ec35e3331.jpg",
     fallbackImage: "/images/culture/cane-bamboo-crafts.jpg",
     summary:
       "Karbi community life is shaped by the hills, agriculture, textile traditions and village festivals.",
@@ -105,7 +105,7 @@ const PROFILES = [
     category: "brahmaputra",
     region: "Goalpara, Kamrup, Kokrajhar and western Assam",
     craft: "Cotton weaving, bamboo work, music and dance",
-    imageFile: "A Rabha tribal lady.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj3kj7LyVhYAN2Or-01YD4Jf_3Flej8LK-I0ZV0WO84sBAQpApyZx2GXRb&s=10",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Rabha culture brings together village life, weaving, oral traditions and seasonal celebrations.",
@@ -125,7 +125,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Dima Hasao and parts of Cachar and the Barak Valley",
     craft: "Risha and other woven garments, bamboo and cane work",
-    imageFile: "Traditional Dress of Dimasa Tribe.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_tC7MAgBkOGipe2ja9aFhCUV8S8HijZM-UMGP7uXsqg&s=10",
     fallbackImage: "/images/culture/sualkuchi-handloom.jpg",
     summary:
       "Dimasa culture is rooted in the hill country, with a rich textile vocabulary and community festivals.",
@@ -145,7 +145,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Dibrugarh, Tinsukia, Lakhimpur and Upper Assam",
     craft: "Handloom cotton and eri textiles, bamboo craft",
-    imageFile: "Handloom industry of Sualkuchi, Assam.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/75/Sonowal_Kachari_Leseri_Bisu_troupe.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     fallbackImage: "/images/culture/sualkuchi-handloom.jpg",
     summary:
       "Sonowal Kachari communities carry forward Upper Assam's agricultural, handloom and festival traditions.",
@@ -165,7 +165,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Lakhimpur, Dhemaji, Tinsukia and other Upper Assam districts",
     craft: "Handwoven garments, bamboo work and ceremonial objects",
-    imageFile: "Bamboo articrafts from Assam.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuIwcHePwZqvTlnDKM5t87E67mIBWDN2iytGYtuwPZ94JvMFE4f4mzlAE&s=10",
     fallbackImage: "/images/culture/cane-bamboo-crafts.jpg",
     summary:
       "Deori community traditions are maintained through their language, weaving and village festivals.",
@@ -205,7 +205,7 @@ const PROFILES = [
     category: "hills",
     region: "Goalpara and western Assam, adjoining the Garo Hills",
     craft: "Dakmanda and other handwoven textiles, bamboo and cane craft",
-    imageFile: "GARO TRADITIONAL DRESS-2.jpg",
+    imageUrl: "https://tribia.info/wp-content/uploads/2023/06/Garo-tribe-4.jpeg",
     fallbackImage: "/images/culture/cane-bamboo-crafts.jpg",
     summary:
       "Garo (A·chik) culture is known for community celebrations, weaving and a close relationship with the land.",
@@ -388,7 +388,7 @@ const PROFILES = [
     category: "tai",
     region: "Eastern Assam and settlements around Sadiya and Tinsukia",
     craft: "Tai manuscripts, handloom textiles, bamboo and woodwork",
-    imageFile: "Traditional Attire of the Khamti Community in Assam.jpg",
+    imageUrl: "https://www.discovereast.in/wp-content/uploads/2020/08/IMG_20200807_194735.jpg",
     fallbackImage: "/images/culture/namphake-buddhist-temple.jpg",
     summary:
       "Tai Khamti culture is marked by its language, Theravada Buddhist traditions and community festivals.",
@@ -408,7 +408,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Jorhat, Golaghat and Upper Assam",
     craft: "Handloom weaving, agriculture and household craft",
-    imageFile: "Thengalkacharis.jpg",
+    imageUrl: "https://morungexpress.com/sites/default/files/field/image/1caption%20take.jpg",
     fallbackImage: "/images/culture/sualkuchi-handloom.jpg",
     summary:
       "The Thengal Kachari are an Upper Assam Kachari community whose Bihu songs and spring observances are part of their public identity.",
@@ -428,7 +428,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Hojai, Nagaon and central Assam",
     craft: "Agriculture, weaving and small-scale craft",
-    imageUrl: "/images/culture/bihu-dance.jpg",
+    imageUrl: "https://nedaindia.wordpress.com/wp-content/uploads/2021/08/hio.jpg?w=630",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "The Hojai are an Assamese-speaking Muslim community of central Assam, closely linked with the history of the Hojai region.",
@@ -488,7 +488,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Tinsukia, Dibrugarh, Sivasagar and Upper Assam",
     craft: "Handloom weaving and agriculture",
-    imageUrl: "/images/culture/bihu-dance.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/42/Moran_Bihu_Dance.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "The Moran are an Upper Assam community known for Rati Bihu, a night-time Bihu tradition with songs and dance.",
@@ -508,7 +508,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Dibrugarh, Tinsukia and Upper Assam",
     craft: "Weaving, agriculture and Vaishnavite craft traditions",
-    imageFile: "Moamuria or Muttuck, hill tribe, Assam (NYPL b13409080-1125266).jpg",
+    imageUrl: "https://northeastindiawiki.wordpress.com/wp-content/uploads/2020/06/fb_img_1592801801853.jpg?w=640",
     fallbackImage: "/images/culture/bordowa-than.jpg",
     summary:
       "The Matak are a Vaishnavite community of Upper Assam whose religious life is closely tied to Bhaona and satra traditions.",
@@ -609,7 +609,7 @@ const PROFILES = [
     category: "adivasi",
     region: "Tea gardens and Adivasi settlements across Assam",
     craft: "Agriculture, weaving and basketry",
-    imageFile: "Munda Lady.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRxikF0GCaBSDSJd6j3eG0EKxwMfDKfi6sudQquEGcP2c8F2jGPuUktBA&s=10",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Karam is the central dance festival of the Munda, honouring the Karam spirit and seeking a good harvest.",
@@ -689,7 +689,7 @@ const PROFILES = [
     category: "adivasi",
     region: "Tea gardens and Adivasi settlements across Assam",
     craft: "Agriculture, weaving and household craft",
-    imageFile: "ଭୂମିଜ ଘରର ପୂଜାପର୍ବାଣୀ.jpg",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Firkal_slowly_decaying_martial_dance_of_ChotaNagpur_of_Jharkhand_performed_at_Central_Park_Delhi_IMG_0934_02.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Bhumij communities share Karam and Sohrai dance traditions with neighbouring Adivasi groups, while specific details need further documentation.",
@@ -710,7 +710,7 @@ const PROFILES = [
     scope: "Linguistic community",
     region: "Barak Valley (Cachar, Karimganj, Hailakandi) and other parts of Assam",
     craft: "Weaving, pottery and agriculture",
-    imageFile: "An ancient Bengali folk martial dance Raibenshe 41.jpg",
+    imageUrl: "https://www.shutterstock.com/shutterstock/videos/1109181167/thumb/1.jpg?ip=x480",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Bengali cultural life in Assam spans language, literature, Durga Puja and folk dances such as Bou Nach, Dhamail and Gambhira.",
@@ -731,7 +731,7 @@ const PROFILES = [
     scope: "Linguistic community",
     region: "Sonitpur, Nagaon, Karbi Anglong, Tinsukia and other districts",
     craft: "Agriculture, weaving and dairy farming",
-    imageFile: "Maruni dance.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYJET4iTFNXTfyVYGiuafSZS4yTSK3KpcojJjWnL9dKtxrInHuVx1Sll8D&s=10",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Nepali/Gorkha cultural life in Assam is known for Maruni and Dohori, along with Dashain and Tihar.",
@@ -771,7 +771,7 @@ const PROFILES = [
     category: "tai",
     region: "Dibrugarh, Tinsukia and eastern Assam",
     craft: "Handloom weaving, agriculture and bamboo work",
-    imageFile: "Namphake Buddhist Temple, Assam, India.jpg",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMm7HK3EGOcDxNevZUq6cKOuy139uNmjf5ydLSAAuCovx6BCsKBV397E1F&s=10",
     fallbackImage: "/images/culture/namphake-buddhist-temple.jpg",
     summary:
       "Tai Phake cultural life centres on Theravada Buddhism and the Poi Sangken new year festival, with community music and dance.",
@@ -791,7 +791,7 @@ const PROFILES = [
     category: "tai",
     region: "Jorhat, Golaghat, Sivasagar and eastern Assam",
     craft: "Handloom weaving, agriculture and bamboo work",
-    imageUrl: "/images/culture/namphake-buddhist-temple.jpg",
+    imageUrl: "https://media.assettype.com/homegrown/import/book/11194-tbclwkrjen-1554906288.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
     fallbackImage: "/images/culture/namphake-buddhist-temple.jpg",
     summary:
       "The Tai Aiton preserve Tai language and Theravada Buddhist festivals; a distinct traditional dance name could not be verified.",

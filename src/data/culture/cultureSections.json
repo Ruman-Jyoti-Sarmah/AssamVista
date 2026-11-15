@@ -484,7 +484,7 @@
       },
       "video": "/video/hero-1.mp4",
       "hdVideo": "/video/hero-hd-wildlife.mp4",
-      "poster": "/img/rhino-kaziranga.jpg",
+      "poster": "./public/images/culture/rhino.png",
       "credit": {
         "author": "L. Shyamal",
         "source": "https://commons.wikimedia.org/wiki/File:Kaziranga_morning_20231221_075150.webm",
@@ -523,7 +523,7 @@
         "en": "Nature",
         "as": "প্ৰকৃতি"
       },
-      "poster": "/images/culture/majuli-river.jpg",
+      "poster": "https://thumbs.dreamstime.com/b/beautiful-natural-scenery-sky-udalguri-district-assam-india-256096101.jpg",
       "credit": {
         "author": "Dhrubazaan Photography",
         "source": "https://commons.wikimedia.org/wiki/File:Doriya_River_of_Majuli.jpg",
