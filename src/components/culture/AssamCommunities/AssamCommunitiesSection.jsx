@@ -159,43 +159,79 @@ export default function AssamCommunitiesSection({ compact = false }) {
     setExpandedCommunityId(null);
   }, [query, category]);
 
-  const filtered = useMemo(() => {
+  const MAJOR_IDS = new Set([
+    "bodo", "mising", "karbi", "rabha", "dimasa", "sonowal-kachari", "deori",
+    "tiwa", "garo", "hajong", "tai-ahom", "chutia", "moran", "matak",
+    "koch-rajbongshi", "thengal-kachari", "hojai", "mech",
+  ]);
+  const OTHER_IDS = new Set([
+    "hmar", "khasi", "chakma", "kuki", "naga", "singpho", "khamti", "jaintia",
+    "bengali", "nepali", "manipuri", "tai-phake", "tai-aiton", "tai-turung", "tai-khamyang",
+  ]);
+  const SMALLER_IDS = new Set([
+    "tea-tribes", "santhal", "munda", "oraon", "kharia", "ho", "bhumij",
+  ]);
+
+  const matches = (community) => {
     const term = normalize(query);
+    if (category !== "all" && community.category !== category) return false;
+    if (!term) return true;
+    const haystack = [
+      community.name,
+      ...community.altNames,
+      community.region,
+      community.craft,
+      community.summary,
+      community.story,
+      ...community.foods,
+      ...community.languages,
+      ...community.traditions,
+      ...community.places,
+      ...community.dances.flatMap((dance) => [
+        dance.name,
+        ...(dance.alternateNames || []),
+        dance.description,
+        dance.significance,
+        dance.occasion,
+        dance.clothing,
+      ]),
+    ]
+      .map(normalize)
+      .join(" ");
+    return haystack.includes(term);
+  };
 
-    return ASSAM_COMMUNITIES.filter((community) => {
-      if (category !== "all" && community.category !== category) return false;
-      if (!term) return true;
-
-      const haystack = [
-        community.name,
-        ...community.altNames,
-        community.region,
-        community.craft,
-        community.summary,
-        community.story,
-        ...community.foods,
-        ...community.languages,
-        ...community.traditions,
-        ...community.places,
-        ...community.dances.flatMap((dance) => [
-          dance.name,
-          ...(dance.alternateNames || []),
-          dance.description,
-          dance.significance,
-          dance.occasion,
-          dance.clothing,
-        ]),
-      ]
-        .map(normalize)
-        .join(" ");
-
-      return haystack.includes(term);
-    });
+  const groups = useMemo(() => {
+    return [
+      {
+        key: "major",
+        title: t("community_group_major"),
+        ids: MAJOR_IDS,
+      },
+      {
+        key: "other",
+        title: t("community_group_other"),
+        ids: OTHER_IDS,
+      },
+      {
+        key: "smaller",
+        title: t("community_group_smaller"),
+        ids: SMALLER_IDS,
+      },
+    ].map((g) => ({
+      ...g,
+      communities: ASSAM_COMMUNITIES.filter(
+        (c) => g.ids.has(c.id) && matches(c)
+      ),
+    }));
   }, [query, category]);
+
+  const allFiltered = groups.flatMap((g) => g.communities);
+  const totalShown = allFiltered.length;
 
   // Culture homepage shows only 3 communities; the full list lives on the
   // dedicated communities page.
-  const communities = compact ? ASSAM_COMMUNITIES.slice(0, 3) : filtered;
+  const communities = compact ? ASSAM_COMMUNITIES.slice(0, 3) : allFiltered;
   const hasFilters = query.trim().length > 0 || category !== "all";
 
   const clearFilters = () => {
@@ -321,7 +357,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
 
           <div className="communities__status">
             <p role="status" aria-live="polite">
-              {t("community_count", filtered.length, ASSAM_COMMUNITIES.length)}
+              {t("community_count", totalShown, ASSAM_COMMUNITIES.length)}
             </p>
             {hasFilters ? (
               <button type="button" className="communities__clear" onClick={clearFilters}>
@@ -355,7 +391,7 @@ export default function AssamCommunitiesSection({ compact = false }) {
         </div>
       ) : null}
 
-      {!compact && filtered.length === 0 ? (
+      {!compact && totalShown === 0 ? (
         <div className="communities__empty">
           <Search size={26} aria-hidden="true" />
           <h3>{t("community_empty")}</h3>
@@ -365,182 +401,193 @@ export default function AssamCommunitiesSection({ compact = false }) {
           </button>
         </div>
       ) : (
-        <div
-          ref={trackRef}
-          className={`communities__grid ${
-            isCarousel ? "communities__grid--carousel" : "communities__grid--stacked"
-          }`}
-          role="region"
-          aria-label={isCarousel ? "Communities of Assam carousel" : "Communities of Assam list"}
-          tabIndex={isCarousel ? 0 : undefined}
-        >
-          {communities.map((community) => {
-            const expanded = expandedCommunityId === community.id;
-            const detailsId = `community-details-${community.id}`;
+        groups.map((group) => (
+          <section key={group.key} className="communities__group">
+            <h2 className="communities__group-title">{group.title}</h2>
+            <div
+              ref={group.key === "major" ? trackRef : undefined}
+              className={`communities__grid ${
+                isCarousel ? "communities__grid--carousel" : "communities__grid--stacked"
+              }`}
+              role="region"
+              aria-label={`${group.title} (${group.communities.length})`}
+              tabIndex={isCarousel ? 0 : undefined}
+            >
+              {group.communities.map((community) => {
+                const expanded = expandedCommunityId === community.id;
+                const detailsId = `community-details-${community.id}`;
 
-            return (
-              <article
-                className={`community-card ${expanded ? "is-expanded" : ""}`}
-                key={community.id}
-              >
-                <div className="community-card__image-wrap">
-                  <CommunityImage community={community} className="community-card__image" t={t} />
-                  <span className="community-card__badge">
-                    {t(`community_cat_${community.category}`)}
-                  </span>
-                </div>
-                <div className="community-card__body">
-                  <span className="page__culture-kind community-card__region">
-                    <MapPin size={12} aria-hidden="true" />
-                    {community.region}
-                  </span>
-                  <h3>{community.name}</h3>
-                  <p>{community.summary}</p>
-
-                  <div className="community-card__dance-tags">
-                    {community.dances.slice(0, 2).map((dance) => (
-                      <span
-                        key={dance.name}
-                        className={`community-card__dance-tag ${
-                          dance.status === "verification" ? "is-unverified" : ""
-                        }`}
-                      >
-                        {dance.status === "verification" ? (
-                          <Info size={12} aria-hidden="true" />
-                        ) : (
-                          <Music2 size={12} aria-hidden="true" />
-                        )}
-                        {dance.status === "verification"
-                          ? t("community_verification")
-                          : dance.name}
-                      </span>
-                    ))}
-                    {community.dances.length > 2 ? (
-                      <span className="community-card__dance-tag community-card__dance-tag--more">
-                        +{community.dances.length - 2}
-                      </span>
-                    ) : null}
-                  </div>
-
-                  <p className="community-card__craft">{community.craft}</p>
-
-                  {compact ? (
-                    <a className="btn btn--ghost community-card__button" href="#/communities">
-                      {t("community_explore")} <ArrowRight size={15} aria-hidden="true" />
-                    </a>
-                  ) : (
-                    <button
-                      className="btn btn--ghost community-card__button"
-                      type="button"
-                      onClick={() => toggleDetails(community.id)}
-                      aria-expanded={expanded}
-                      aria-controls={detailsId}
-                    >
-                      {expanded ? t("community_less") : t("community_more")}
-                      <ChevronDown size={15} aria-hidden="true" />
-                    </button>
-                  )}
-
-                  {!compact && expanded ? (
-                    <div className="community-card__details" id={detailsId}>
-                      <div className="community-card__detail-hero">
-                        <div className="community-card__detail-image-wrap">
-                          <CommunityImage
-                            community={community}
-                            className="community-card__detail-image"
-                            t={t}
-                          />
-                        </div>
-                        <div>
-                          <span className="page__culture-kind">{t("community_history")}</span>
-                          <p className="community-card__story">{community.story}</p>
-                          <div className="community-card__meta-row">
-                            <span>
-                              {t("community_scope")}:{" "}
-                              <strong>
-                                {t(
-                                  `community_scope_${
-                                    community.scope === "Umbrella identity"
-                                      ? "umbrella"
-                                      : community.scope === "Linguistic community"
-                                      ? "linguistic"
-                                      : "community"
-                                  }`
-                                )}
-                              </strong>
-                            </span>
-                            {!community.danceVerified ? (
-                              <span className="community-card__verify-chip">
-                                <Info size={12} aria-hidden="true" />
-                                {t("community_verification")}
-                              </span>
-                            ) : null}
-                          </div>
-                        </div>
-                      </div>
-
-                      <DanceDetails community={community} t={t} />
-
-                      <div className="community-card__detail-columns">
-                        <DetailList
-                          icon={Utensils}
-                          title={t("community_foods")}
-                          items={community.foods}
-                        />
-                        <DetailList
-                          icon={Languages}
-                          title={t("community_languages")}
-                          items={community.languages}
-                        />
-                        <DetailList
-                          icon={Sparkles}
-                          title={t("community_traditions")}
-                          items={community.traditions}
-                        />
-                      </div>
-
-                      <DetailList
-                        icon={MapPin}
-                        title={t("community_places")}
-                        items={community.places}
+                return (
+                  <article
+                    className={`community-card ${expanded ? "is-expanded" : ""}`}
+                    key={community.id}
+                  >
+                    <div className="community-card__image-wrap">
+                      <CommunityImage
+                        community={community}
+                        className="community-card__image"
+                        t={t}
                       />
+                      <span className="community-card__badge">
+                        {t(`community_cat_${community.category}`)}
+                      </span>
+                    </div>
+                    <div className="community-card__body">
+                      <span className="page__culture-kind community-card__region">
+                        <MapPin size={12} aria-hidden="true" />
+                        {community.region}
+                      </span>
+                      <h3>{community.name}</h3>
+                      <p>{community.summary}</p>
 
-                      {community.references.length ? (
-                        <div className="community-card__references">
-                          <h3>{t("community_references")}</h3>
-                          <ul>
-                            {community.references.map((reference) => (
-                              <li key={reference.url}>
-                                <a
-                                  href={reference.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                >
-                                  {reference.label}{" "}
-                                  <ExternalLink size={12} aria-hidden="true" />
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
+                      <div className="community-card__dance-tags">
+                        {community.dances.slice(0, 2).map((dance) => (
+                          <span
+                            key={dance.name}
+                            className={`community-card__dance-tag ${
+                              dance.status === "verification" ? "is-unverified" : ""
+                            }`}
+                          >
+                            {dance.status === "verification" ? (
+                              <Info size={12} aria-hidden="true" />
+                            ) : (
+                              <Music2 size={12} aria-hidden="true" />
+                            )}
+                            {dance.status === "verification"
+                              ? t("community_verification")
+                              : dance.name}
+                          </span>
+                        ))}
+                        {community.dances.length > 2 ? (
+                          <span className="community-card__dance-tag community-card__dance-tag--more">
+                            +{community.dances.length - 2}
+                          </span>
+                        ) : null}
+                      </div>
+
+                      <p className="community-card__craft">{community.craft}</p>
+
+                      {compact ? (
+                        <a className="btn btn--ghost community-card__button" href="#/communities">
+                          {t("community_explore")} <ArrowRight size={15} aria-hidden="true" />
+                        </a>
+                      ) : (
+                        <button
+                          className="btn btn--ghost community-card__button"
+                          type="button"
+                          onClick={() => toggleDetails(community.id)}
+                          aria-expanded={expanded}
+                          aria-controls={detailsId}
+                        >
+                          {expanded ? t("community_less") : t("community_more")}
+                          <ChevronDown size={15} aria-hidden="true" />
+                        </button>
+                      )}
+
+                      {!compact && expanded ? (
+                        <div className="community-card__details" id={detailsId}>
+                          <div className="community-card__detail-hero">
+                            <div className="community-card__detail-image-wrap">
+                              <CommunityImage
+                                community={community}
+                                className="community-card__detail-image"
+                                t={t}
+                              />
+                            </div>
+                            <div>
+                              <span className="page__culture-kind">
+                                {t("community_history")}
+                              </span>
+                              <p className="community-card__story">{community.story}</p>
+                              <div className="community-card__meta-row">
+                                <span>
+                                  {t("community_scope")}:{" "}
+                                  <strong>
+                                    {t(
+                                      `community_scope_${
+                                        community.scope === "Umbrella identity"
+                                          ? "umbrella"
+                                          : community.scope === "Linguistic community"
+                                          ? "linguistic"
+                                          : "community"
+                                      }`
+                                    )}
+                                  </strong>
+                                </span>
+                                {!community.danceVerified ? (
+                                  <span className="community-card__verify-chip">
+                                    <Info size={12} aria-hidden="true" />
+                                    {t("community_verification")}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </div>
+                          </div>
+
+                          <DanceDetails community={community} t={t} />
+
+                          <div className="community-card__detail-columns">
+                            <DetailList
+                              icon={Utensils}
+                              title={t("community_foods")}
+                              items={community.foods}
+                            />
+                            <DetailList
+                              icon={Languages}
+                              title={t("community_languages")}
+                              items={community.languages}
+                            />
+                            <DetailList
+                              icon={Sparkles}
+                              title={t("community_traditions")}
+                              items={community.traditions}
+                            />
+                          </div>
+
+                          <DetailList
+                            icon={MapPin}
+                            title={t("community_places")}
+                            items={community.places}
+                          />
+
+                          {community.references.length ? (
+                            <div className="community-card__references">
+                              <h3>{t("community_references")}</h3>
+                              <ul>
+                                {community.references.map((reference) => (
+                                  <li key={reference.url}>
+                                    <a
+                                      href={reference.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      {reference.label}{" "}
+                                      <ExternalLink size={12} aria-hidden="true" />
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+
+                          <a
+                            className="community-card__source"
+                            href={community.imageSearchUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {t("community_google_images")}{" "}
+                            <ExternalLink size={14} aria-hidden="true" />
+                          </a>
                         </div>
                       ) : null}
-
-                      <a
-                        className="community-card__source"
-                        href={community.imageSearchUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t("community_google_images")}{" "}
-                        <ExternalLink size={14} aria-hidden="true" />
-                      </a>
                     </div>
-                  ) : null}
-                </div>
-              </article>
-            );
-          })}
-        </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        ))
       )}
 
       {!compact ? (

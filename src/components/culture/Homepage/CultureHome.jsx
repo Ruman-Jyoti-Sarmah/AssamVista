@@ -234,7 +234,7 @@ function HeroCarousel() {
               {pick(slide.cta.label)}{" "}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a className="chub__btn chub__btn--ghost" href="#experiences">
+            <a className="chub__btn chub__btn--ghost" href="#/districts">
               <Play size={15} aria-hidden="true" />{" "}
               {t("culture_hero_cta_experiences")}
             </a>

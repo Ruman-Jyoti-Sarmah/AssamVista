@@ -634,6 +634,11 @@ export const STRINGS = {
     community_cat_barak: "Barak Valley & Kuki-Chin",
     community_cat_himalayanNaga: "Himalayan & Naga",
 
+    /* ── Community group sections ── */
+    community_group_major: "Assam Major Indigenous Communities",
+    community_group_other: "Other Important Communities of Assam",
+    community_group_smaller: "Smaller Ethnic & Tribal Groups",
+
     /* ── Culture homepage gateway ── */
     culture_gateway_kicker: "CULTURE & HERITAGE",
     culture_gateway_title: "Discover Assam's Culture",
@@ -1630,6 +1635,11 @@ export const STRINGS = {
     community_cat_adivasi: "চাহ বাগান আৰু আদিবাসী",
     community_cat_barak: "বৰাক উপত্যকা আৰু কুকি-চিন",
     community_cat_himalayanNaga: "হিমালয় আৰু নাগা",
+
+    /* ── Community group sections ── */
+    community_group_major: "অসমৰ মুখ্য আদিবাসী সমাজসমূহ",
+    community_group_other: "অসমৰ অন্য গুৰুত্বপূৰ্ণ সমাজসমূহ",
+    community_group_smaller: "ক্ষুদ্ৰ নৃবিজ্ঞান আৰু উপজাতি গোষ্ঠীসমূহ",
 
     /* ── Culture homepage gateway ── */
     culture_gateway_kicker: "সংস্কৃতি আৰু ঐতিহ্য",
