@@ -21,7 +21,7 @@ import { useApp } from "@/store/AppContext";
 const NAV_ITEMS = [
   { label: "Home", icon: Home, hash: "#/" },
   { label: "Travel", icon: MapPin, hash: "#/districts" },
-  { label: "Culture", icon: Theatre, hash: "#/culture/festivals" },
+  { label: "Culture", icon: Film, hash: "#/culture/festivals" },
   { label: "Explore Assam", icon: Sparkles, hash: "#/guide" },
 ];
 
