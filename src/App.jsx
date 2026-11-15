@@ -6,6 +6,7 @@ import { CartProvider } from "@/store/CartContext";
 import CultureHeader from "@/components/common/CultureHeader";
 import SectionDock from "@/components/common/SectionDock";
 import Footer from "@/components/common/Footer";
+import AssamVistaIntro from "@/components/common/AssamVistaIntro";
 import { useRevealRoot } from "@/lib/useReveal";
 import { getSection } from "@/lib/section";
 import { getRoute } from "@/app/routes";
@@ -152,11 +153,22 @@ function Shell() {
 }
 
 export default function App() {
+  /* The startup intro plays on the very first load and on every page
+     reload. Because the app uses hash-based routing inside a single
+     page, this state persists while the user navigates between internal
+     routes, so the intro never replays on navigation. It only plays
+     again after a full refresh, which resets component state. */
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <AppProvider>
       <TripProvider>
         <CartProvider>
-          <Shell />
+          {showIntro ? (
+            <AssamVistaIntro onFinish={() => setShowIntro(false)} />
+          ) : (
+            <Shell />
+          )}
         </CartProvider>
       </TripProvider>
     </AppProvider>
