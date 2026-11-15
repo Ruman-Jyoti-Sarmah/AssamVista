@@ -484,7 +484,7 @@
       },
       "video": "/video/hero-1.mp4",
       "hdVideo": "/video/hero-hd-wildlife.mp4",
-      "poster": "/img/rhino-kaziranga.jpg",
+      "poster": "./public/images/culture/rhino.png",
       "credit": {
         "author": "L. Shyamal",
         "source": "https://commons.wikimedia.org/wiki/File:Kaziranga_morning_20231221_075150.webm",

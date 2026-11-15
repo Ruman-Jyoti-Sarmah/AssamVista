@@ -12201,11 +12201,11 @@ main[data-section="travel"] {
   }
 
   .thub__hero-media {
-    background: url("/img/hero-brahmaputra.jpg") center / cover no-repeat;
+    background: none;
   }
 
   .thub__video {
-    display: none;
+    display: block;
   }
 }
 

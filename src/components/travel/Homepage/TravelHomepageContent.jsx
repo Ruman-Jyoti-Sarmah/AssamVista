@@ -319,10 +319,13 @@ export default function TravelHome() {
       {/* A ── HERO ─────────────────────────────────────────────── */}
       <section className="thub__hero">
         <div className="thub__hero-media">
-          <img
+          <video
             className="thub__video"
-            src="/img/hero-brahmaputra.jpg"
-            alt=""
+            src="/video/travel-home-hero/travel-home-hero.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
             aria-hidden="true"
           />
           <div className="thub__veil" aria-hidden="true" />
