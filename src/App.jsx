@@ -148,7 +148,9 @@ function Shell() {
       >
         <Page {...pageProps} key={revealKey} />
       </Suspense>
-      <SectionDock section={section} />
+      {route.name !== "login" && route.name !== "signup" && (
+        <SectionDock section={section} />
+      )}
       <Footer />
     </main>
   );
