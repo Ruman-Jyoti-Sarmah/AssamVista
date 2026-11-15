@@ -346,6 +346,8 @@ export const STRINGS = {
     site_brand: "অসম",
     title_home: "AXOM — Soul of Assam, Land of the Brahmaputra",
     title_home_as: "অসম — অসমৰ আত্মা, ব্ৰহ্মপুত্ৰৰ দেশ",
+    title_login: "AssamVista | Discover Assam",
+    title_signup: "AssamVista | Discover Assam",
     title_districts: "All 35 Districts — AXOM, Assam",
     title_stays: "Stays Across Assam — AXOM, Assam",
     title_journey: "Plan Your Assam Journey — AXOM, Assam",
@@ -837,7 +839,7 @@ export const STRINGS = {
     mkt_shipping_note: (amount) =>
       `Free demo delivery on orders of ${amount} or more.`,
     mkt_checkout: "Continue to checkout",
-    mkt_cart_demo:
+    mkt_cart_note:
       "Your cart is saved in this browser. No payment is processed.",
     mkt_cart_empty: "Your cart is empty",
     mkt_cart_empty_hint:
@@ -864,7 +866,7 @@ export const STRINGS = {
       "This is a demonstration order. No payment was taken and no seller received it.",
     mkt_order_ref: "Order reference",
     mkt_confirmation_demo:
-      "The order is stored only in this browser. A real purchase needs a backend and a payment gateway.",
+      "This order request is submitted to your account. No online payment gateway is connected and no payment is processed on this site.",
     mkt_view_orders: "View orders",
     mkt_checkout_empty: "Your cart is empty",
     mkt_checkout_empty_hint: "Add a product to the cart before checking out.",
@@ -891,26 +893,26 @@ export const STRINGS = {
     mkt_select_district: "Select a district",
     mkt_payment_method: "Payment method",
     mkt_payment_demo:
-      "Only the payment method is selected. No card number, UPI ID or credential is collected.",
-    mkt_pay_cod: "Cash on delivery (demo)",
-    mkt_pay_upi: "UPI (demo)",
-    mkt_pay_card: "Card (demo)",
+      "Select a preferred payment method. No card number, UPI ID, or online payment credential is collected or processed by this website.",
+    mkt_pay_cod: "Cash on delivery (request)",
+    mkt_pay_upi: "UPI on delivery/confirmation (request)",
+    mkt_pay_card: "Card on delivery/confirmation (request)",
     mkt_no_card_fields:
-      "Never enter card or UPI details here — no payment gateway is connected.",
+      "No online payment is processed here. Card/UPI are recorded only as your payment preference for this order request.",
     mkt_order_summary: "Order summary",
-    mkt_place_order: "Place demo order",
+    mkt_place_order: "Place order request",
     mkt_place_order_demo:
-      "This button only saves a demo order in this browser.",
+      "Your order request is submitted to your authenticated account after server-side verification.",
     mkt_orders_kicker: "YOUR ORDERS",
     mkt_orders_title: "Order history",
-    mkt_orders_sub: "Demo orders saved in this browser.",
+    mkt_orders_sub: "Orders linked to your account.",
     mkt_orders_count: (count) => `${count} ${count === 1 ? "order" : "orders"}`,
     mkt_orders_clear: "Clear order history",
-    mkt_status_demo: "Demo order",
+    mkt_status_demo: "Order request",
     mkt_shipping_to: "Deliver to",
     mkt_orders_empty: "No orders yet",
     mkt_orders_empty_hint:
-      "Complete the demo checkout to see an order here.",
+      "Authenticated orders you place will appear here.",
     culture_heritage_kicker: "LIVING HERITAGE",
     culture_heritage_title: "The stories that shaped Assam",
     culture_heritage_sub: "Historic landmarks, sacred satras and royal legacies that continue to shape Assam's identity.",
@@ -1831,7 +1833,7 @@ export const STRINGS = {
     mkt_shipping_note: (amount) =>
       `${amount} বা তাতোধিক অৰ্ডাৰত নমুনা ডেলিভাৰী বিনামূলীয়া।`,
     mkt_checkout: "চেকআউটলৈ যাওক",
-    mkt_cart_demo:
+    mkt_cart_note:
       "আপোনাৰ কাৰ্ট এই ব্ৰাউজাৰত সংৰক্ষিত। কোনো পেমেন্ট প্ৰক্ৰিয়া নহয়।",
     mkt_cart_empty: "আপোনাৰ কাৰ্ট খালী",
     mkt_cart_empty_hint: "বজাৰৰ পৰা সামগ্ৰী চাই কাৰ্টত যোগ কৰক।",

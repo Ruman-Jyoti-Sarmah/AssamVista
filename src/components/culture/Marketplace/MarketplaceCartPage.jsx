@@ -149,7 +149,7 @@ export default function MarketplaceCartPage() {
               </a>
               <p className="mkt-demo-note mkt-demo-note--small">
                 <ShoppingBag size={14} aria-hidden="true" />
-                {t("mkt_cart_demo")}
+                {t("mkt_cart_note")}
               </p>
             </aside>
           </div>

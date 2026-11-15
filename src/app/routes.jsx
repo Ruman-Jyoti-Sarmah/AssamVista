@@ -21,6 +21,11 @@ const MarketplaceCart = lazy(() => import("@/pages/Culture/MarketplaceCart"));
 const MarketplaceWishlist = lazy(() => import("@/pages/Culture/MarketplaceWishlist"));
 const MarketplaceCheckout = lazy(() => import("@/pages/Culture/MarketplaceCheckout"));
 const MarketplaceOrders = lazy(() => import("@/pages/Culture/MarketplaceOrders"));
+const LoginPage = lazy(() => import("@/pages/Auth/Login"));
+const SignupPage = lazy(() => import("@/pages/Auth/Signup"));
+const AccountPage = lazy(() => import("@/pages/Account/Account"));
+const PrivacyPage = lazy(() => import("@/pages/Legal/Privacy"));
+const TermsPage = lazy(() => import("@/pages/Legal/Terms"));
 
 const TravelHomepage = lazy(() => import("@/pages/Travel/Homepage"));
 const DistrictDetails = lazy(() => import("@/pages/Travel/DistrictDetails"));
@@ -80,6 +85,12 @@ export function getRoute(hash = "") {
   if (routeHash === "#/culture/marketplace/wishlist") return route("marketplace-wishlist", MarketplaceWishlist, { titleKey: "title_marketplace_wishlist" });
   if (routeHash === "#/culture/marketplace/checkout") return route("marketplace-checkout", MarketplaceCheckout, { titleKey: "title_marketplace_checkout" });
   if (routeHash === "#/culture/marketplace/orders") return route("marketplace-orders", MarketplaceOrders, { titleKey: "title_marketplace_orders" });
+
+  if (routeHash === "#/login") return route("login", LoginPage, { titleKey: "title_login" });
+  if (routeHash === "#/signup") return route("signup", SignupPage, { titleKey: "title_signup" });
+  if (routeHash === "#/account" || routeHash.startsWith("#/account/")) return route("account", AccountPage, { titleKey: "title_account" });
+  if (routeHash === "#/privacy") return route("privacy", PrivacyPage, { titleKey: "title_privacy" });
+  if (routeHash === "#/terms") return route("terms", TermsPage, { titleKey: "title_terms" });
 
   if (currentHash === "#/trip/itinerary") return route("trip-itinerary", Itinerary, { titleKey: "itin_title" });
   if (currentHash === "#/trip/plan") return route("trip-plan", TravelDetails, { titleKey: "plan_title" });

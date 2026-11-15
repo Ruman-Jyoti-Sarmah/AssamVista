@@ -1,6 +1,8 @@
-import { PackageSearch, Trash2 } from "lucide-react";
+﻿import { useEffect, useState } from "react";
+import { PackageSearch, LogIn } from "lucide-react";
 import { useApp } from "@/store/AppContext";
-import { useCart } from "@/store/CartContext";
+import { useAuth } from "@/store/AuthContext";
+import { fetchMyOrders } from "@/lib/api";
 import { formatDate, formatPrice } from "@/data/marketplace/catalogue";
 import {
   Breadcrumbs,
@@ -8,10 +10,6 @@ import {
   ProductImage,
   ShopLinks,
 } from "./MarketplaceUI";
-
-const STATUS_KEY = {
-  "demo-placed": "mkt_status_demo",
-};
 
 const PAYMENT_KEY = {
   cod: "mkt_pay_cod",
@@ -21,7 +19,29 @@ const PAYMENT_KEY = {
 
 export default function MarketplaceOrdersPage() {
   const { t } = useApp();
-  const { orders, removeOrder, clearOrders } = useCart();
+  const { isAuthenticated, loading } = useAuth();
+  const [orders, setOrders] = useState([]);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      if (!isAuthenticated) { setOrders([]); return; }
+      setBusy(true);
+      setError("");
+      try {
+        const data = await fetchMyOrders();
+        if (!cancelled) setOrders(Array.isArray(data?.orders) ? data.orders : (Array.isArray(data) ? data : []));
+      } catch (e) {
+        if (!cancelled) setError(e?.message || "Could not load orders.");
+      } finally {
+        if (!cancelled) setBusy(false);
+      }
+    }
+    if (!loading) load();
+    return () => { cancelled = true; };
+  }, [isAuthenticated, loading]);
 
   return (
     <div className="mkt">
@@ -40,13 +60,22 @@ export default function MarketplaceOrdersPage() {
           <p>{t("mkt_orders_sub")}</p>
         </div>
 
-        {orders.length ? (
+        {loading || busy ? (
+          <p>Loading orders…</p>
+        ) : !isAuthenticated ? (
+          <EmptyState
+            icon={LogIn}
+            title="Sign in to view your orders"
+            body="Orders are linked to your account. Log in to see orders you have placed."
+            action={<a className="mkt-btn mkt-btn--solid" href="#/login">Log in</a>}
+          />
+        ) : error ? (
+          <p role="alert">{error}</p>
+        ) : orders.length ? (
           <>
             <div className="mkt-results__bar">
               <p>{t("mkt_orders_count", orders.length)}</p>
-              <button type="button" className="mkt-link-btn" onClick={clearOrders}>
-                {t("mkt_orders_clear")}
-              </button>
+              <a className="mkt-link-btn" href="#/account">View in My Account</a>
             </div>
 
             <ul className="mkt-orders">
@@ -58,17 +87,15 @@ export default function MarketplaceOrdersPage() {
                         {t("mkt_order_ref")}: <strong>{order.id}</strong>
                       </span>
                       <span className="mkt-order__date">
-                        {formatDate(order.placedAt)}
+                        {formatDate(order.createdAt || order.placedAt)}
                       </span>
                     </div>
-                    <span className="mkt-order__status">
-                      {t(STATUS_KEY[order.status] || "mkt_status_demo")}
-                    </span>
+                    <span className="mkt-order__status">{order.status || "placed"}</span>
                   </header>
 
                   <ul className="mkt-order__items">
-                    {order.items.map((item) => (
-                      <li key={item.slug}>
+                    {(order.items || []).map((item) => (
+                      <li key={item.slug + String(item.qty)}>
                         <ProductImage
                           src={item.image}
                           alt={item.name}
@@ -93,30 +120,21 @@ export default function MarketplaceOrdersPage() {
                     <div>
                       <span>
                         {t("mkt_shipping_to")}: {order.customer?.city}
-                        {order.customer?.district
-                          ? `, ${order.customer.district}`
-                          : ""}
+                        {order.customer?.district ? `, ${order.customer.district}` : ""}
                       </span>
                       <span>
-                        {t("mkt_payment_method")}:{" "}
-                        {t(PAYMENT_KEY[order.customer?.paymentMethod] || "mkt_status_demo")}
+                        {t("mkt_payment_method")}: {t(PAYMENT_KEY[order.customer?.paymentMethod] || "mkt_pay_cod")}
                       </span>
                     </div>
                     <div className="mkt-order__totals">
                       <span>{t("mkt_total")}</span>
                       <strong>{formatPrice(order.total)}</strong>
                     </div>
-                    <button
-                      type="button"
-                      className="mkt-line__remove"
-                      onClick={() => removeOrder(order.id)}
-                    >
-                      <Trash2 size={14} aria-hidden="true" />
-                      {t("mkt_remove")}
-                    </button>
                   </footer>
 
-                  <p className="mkt-order__note">{order.note}</p>
+                  <p className="mkt-order__note">
+                    Order stored securely for your account. Payment, shipping fulfillment, and seller confirmation are not processed by this website unless explicitly arranged by the operator.
+                  </p>
                 </li>
               ))}
             </ul>
@@ -125,12 +143,8 @@ export default function MarketplaceOrdersPage() {
           <EmptyState
             icon={PackageSearch}
             title={t("mkt_orders_empty")}
-            body={t("mkt_orders_empty_hint")}
-            action={
-              <a className="mkt-btn mkt-btn--solid" href="#/culture/marketplace/category/all">
-                {t("mkt_browse_all")}
-              </a>
-            }
+            body="Authenticated orders you place will appear here and in My Account."
+            action={<a className="mkt-btn mkt-btn--solid" href="#/culture/marketplace/category/all">{t("mkt_browse_all")}</a>}
           />
         )}
       </div>

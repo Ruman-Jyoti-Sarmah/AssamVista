@@ -55,14 +55,15 @@ export default function Footer() {
               <li><a href="#/guide" onClick={(e) => go(e, "#/guide")}>{t("nav_guide")}</a></li>
               <li><a href="#/journey" onClick={(e) => go(e, "#/journey")}>{t("nav_journey")}</a></li>
               <li><a href="#/visit" onClick={(e) => go(e, "#/visit")}>{t("nav_visit")}</a></li>
+              <li><a href="#/account" onClick={(e) => go(e, "#/account")}>My Account</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div className="footer__bottom">
         <span>{pick(BRAND.established, lang)}</span>
-        <span>{t("foot_legal")}</span>
-        <span><a href="#/credits">{t("foot_credits")}</a></span>
+        <span><a href="#/privacy" onClick={(e) => go(e, "#/privacy")}>Privacy Policy</a> · <a href="#/terms" onClick={(e) => go(e, "#/terms")}>Terms of Service</a></span>
+        <span><a href="#/credits" onClick={(e) => go(e, "#/credits")}>{t("foot_credits")}</a></span>
       </div>
     </footer>
   );

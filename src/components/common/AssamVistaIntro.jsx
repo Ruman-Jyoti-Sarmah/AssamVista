@@ -248,7 +248,6 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
             ref={logoRef}
             alt="AssamVista emblem"
             decoding="async"
-            fetchPriority="high"
             src="/Logo/AssamVista-Logo.png"
           />
         </div>

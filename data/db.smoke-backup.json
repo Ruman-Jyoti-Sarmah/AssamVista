@@ -1,0 +1,372 @@
+{
+  "districts": [
+    {
+      "no": 1,
+      "name": "Baksa",
+      "division": "Lower Assam",
+      "hq": "Mushalpur",
+      "tag": "Manas National Park · UNESCO",
+      "about": "Half-wild hill district of the Bhutan foothills, where Manas shelters tiger, elephant and golden langur beside Bodo villages and threshing-floor Bihu.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Spectacular%20view%20of%20the%20mountains%20from%20Manas%20National%20Park.jpg?width=1600",
+      "alt": "Bhutan foothills seen from Manas National Park, Baksa"
+    },
+    {
+      "no": 2,
+      "name": "Bajali",
+      "division": "Lower Assam",
+      "hq": "Pathsala",
+      "tag": "Seat of naamghars & satras",
+      "about": "Assam's smallest district — a fertile plain of satras, naamghars and the Vaishnavite scholarship of Bhattadev around Pathsala.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bajali%20college%20Arts%20Building.jpg?width=1600",
+      "alt": "Bajali College arts building, Pathsala"
+    },
+    {
+      "no": 3,
+      "name": "Barpeta",
+      "division": "Lower Assam",
+      "hq": "Barpeta",
+      "tag": "Barpeta Satra · Sankardev",
+      "about": "Born of Srimanta Sankardev's Kamala Kshetra — home of the Barpeta Satra, Puthi manuscripts and the ecstatic Fakir Borgeet tradition.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sankardev%20Satra%20Patbausi%2C%20Barpeta.jpg?width=1600",
+      "alt": "Sankardev Satra at Patbausi, Barpeta"
+    },
+    {
+      "no": 4,
+      "name": "Bongaigaon",
+      "division": "Lower Assam",
+      "hq": "Bongaigaon",
+      "tag": "Jogighopa & Bhumeshwar caves",
+      "about": "Gateway of lower Assam where ancient Jogighopa and the rocky Bhumeshwar hill look over the Brahmaputra's sandy beaches.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bhumeshwar%20hill.jpg?width=1600",
+      "alt": "Bhumeshwar hill at Bongaigaon"
+    },
+    {
+      "no": 5,
+      "name": "Chirang",
+      "division": "Lower Assam",
+      "hq": "Kajalgaon",
+      "tag": "Bijni kingdom heritage",
+      "about": "BTC district of the old Bijni kingdom — Bodo plains, forested ridges and the Kamakhyaguri foothills of the Bhutan border.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/BijniDewkurapaar.jpg?width=1600",
+      "alt": "Landscape at Bijni, Chirang district"
+    },
+    {
+      "no": 6,
+      "name": "Dhubri",
+      "division": "Lower Assam",
+      "hq": "Dhubri",
+      "tag": "Assam's oldest town · ferry rides",
+      "about": "One of the oldest towns of the Northeast on the Brahmaputra — busy ferry ghat, the Sri Sri Gurdwara and the temple of Dhubri Devi.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Dhuburi%20collage.jpg?width=1600",
+      "alt": "Scenes of Dhubri town on the Brahmaputra"
+    },
+    {
+      "no": 7,
+      "name": "Goalpara",
+      "division": "Lower Assam",
+      "hq": "Goalpara",
+      "tag": "Surya Pahar rock-cut relics",
+      "about": "Land of Surya Pahar — a hill strewn with rock-cut sun, Buddha and Hindu relics, watched over by the mighty Brahmaputra.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sri%20Surya%20Mandir%20at%20Sri%20Surya%20Pahar%2C%20Goalpara.jpg?width=1600",
+      "alt": "Sri Surya Mandir at Surya Pahar, Goalpara"
+    },
+    {
+      "no": 8,
+      "name": "Kamrup",
+      "division": "Lower Assam",
+      "hq": "Amingaon",
+      "tag": "Hajo & Sualkuchi silk",
+      "about": "Rural heart of ancient Kamrupa — holy Hajo, where faiths meet on Hayagriva Madhava's hill, and Sualkuchi, the muga-silk village on the Brahmaputra.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Hayagriva%20Madhava%20Temple%2C%20Hajo.jpg?width=1600",
+      "alt": "Hayagriva Madhava Temple at Hajo, Kamrup"
+    },
+    {
+      "no": 9,
+      "name": "Kamrup Metropolitan",
+      "division": "Lower Assam",
+      "hq": "Guwahati",
+      "tag": "The capital · Kamakhya",
+      "about": "Guwahati and Nilachal — gateway of the Northeast, cradling the Kamakhya shakti pitha and Umananda's river-island shrine.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamakhya%20Temple%20-%20DEV%208829.jpg?width=1600",
+      "alt": "Kamakhya Temple on Nilachal Hill, Guwahati"
+    },
+    {
+      "no": 10,
+      "name": "Kokrajhar",
+      "division": "Lower Assam",
+      "hq": "Kokrajhar",
+      "tag": "BTC capital · Raimona NP",
+      "about": "Capital of the Bodoland Territorial Region, guarding Raimona's rainforest and the Manas fringe with Gwcwra Bodo hospitality.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Singi%20stream%20in%20Raimona%20NP.jpg?width=1600",
+      "alt": "Stream inside Raimona National Park, Kokrajhar"
+    },
+    {
+      "no": 11,
+      "name": "Nalbari",
+      "division": "Lower Assam",
+      "hq": "Nalbari",
+      "tag": "Daul Mandir & ghosha satras",
+      "about": "Quiet Vaishnavite district of ghoshas' naamghars, the hillock Daul Mandir and mango gardens along the Burhanguri river.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Daul%20mandir.jpg?width=1600",
+      "alt": "Daul Mandir temple, Nalbari"
+    },
+    {
+      "no": 12,
+      "name": "South Salmara-Mankachar",
+      "division": "Lower Assam",
+      "hq": "Hatsingimari",
+      "tag": "Chars of the Brahmaputra",
+      "about": "Assam's westernmost riverine district of chars and ghatas bordering Bangladesh — home of Mankachar's Kamakhya shrine on the river bank.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamakhya%20Temple%2C%20Mankachar.jpg?width=1600",
+      "alt": "Kamakhya Temple at Mankachar, South Salmara-Mankachar"
+    },
+    {
+      "no": 13,
+      "name": "Tamulpur",
+      "division": "Lower Assam",
+      "hq": "Tamulpur",
+      "tag": "BTC · Bodo heartland",
+      "about": "Newest Lower Assam district (2021) in the Bhutan foothills — Bodo villages, paddy fields and forested ridges toward Rangia.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Nature%20Of%20Phahurbari.jpg?width=1600",
+      "alt": "Green landscapes of Tamulpur region"
+    },
+    {
+      "no": 14,
+      "name": "Biswanath",
+      "division": "North Assam",
+      "hq": "Biswanath Ghat",
+      "tag": "Ancient ghat & tea gardens",
+      "about": "The 'second temple city' of Assam — riverside Biswanath's Shiva ghat, cashew groves and tea estates reaching toward Kaziranga's northern range.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Biswanath%20Temple%2C%20Biswanath%20ghat.JPG?width=1600",
+      "alt": "Biswanath Temple at the ghat, Biswanath"
+    },
+    {
+      "no": 15,
+      "name": "Darrang",
+      "division": "North Assam",
+      "hq": "Mangaldoi",
+      "tag": "Patharighat Swahid Stambha",
+      "about": "Agricultural heartland of North Assam honouring the Patharighat martyrs, with paddy and mustard horizons under wide skies.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Swahid%20Stambha%2C%20Patharighat.jpg?width=1600",
+      "alt": "Swahid Stambha at Patharighat, Darrang"
+    },
+    {
+      "no": 16,
+      "name": "Sonitpur",
+      "division": "North Assam",
+      "hq": "Tezpur",
+      "tag": "Tezpur · Nameri · Mahabhairav",
+      "about": "City of eternal romance — Tezpur's Mahabhairav hill, Nameri's hornbill forests and the Bhairabkunda gorge on the Bhutan border.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Landscape%20of%20Nameri%20National%20Park.jpg?width=1600",
+      "alt": "Landscape of Nameri National Park, Sonitpur"
+    },
+    {
+      "no": 17,
+      "name": "Udalguri",
+      "division": "North Assam",
+      "hq": "Udalguri",
+      "tag": "Paneri tea & Bhairabkunda",
+      "about": "Tea country of the Bodoland hills where Bhairabkunda's falls thunder near the Bhutan border and Bodo Bihu drums roll at dusk.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paneri%20Tea%20Garden.jpg?width=1600",
+      "alt": "Paneri tea garden, Udalguri"
+    },
+    {
+      "no": 18,
+      "name": "Charaideo",
+      "division": "Upper Assam",
+      "hq": "Sonari",
+      "tag": "Ahom Maidams · UNESCO 2024",
+      "about": "The necropolis of the Ahom kings — earth-mounded maidams compared to pyramids, inscribed on the UNESCO World Heritage list in 2024.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/MAIDAM1.JPG?width=1600",
+      "alt": "Ahom Maidam at Charaideo"
+    },
+    {
+      "no": 19,
+      "name": "Dhemaji",
+      "division": "Upper Assam",
+      "hq": "Dhemaji",
+      "tag": "Sattriya heartland · Raas",
+      "about": "Land of sattras and Raas leela at the Brahmaputra's northern edge — bamboo-and-thatch naamghars, Monati fair and paddy seas.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20paddy%20field%20in%20Dhemaji%2C%20Assam.jpg?width=1600",
+      "alt": "Paddy field in Dhemaji"
+    },
+    {
+      "no": 20,
+      "name": "Dibrugarh",
+      "division": "Upper Assam",
+      "hq": "Dibrugarh",
+      "tag": "Tea capital · Bogibeel",
+      "about": "Assam's tea capital on the north bank — the Bogibeel rail-road bridge, thika tea estates and the sunrise over the Brahmaputra.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Bogibeel%20Bridge%20view.jpg?width=1600",
+      "alt": "Bogibeel bridge over the Brahmaputra, Dibrugarh"
+    },
+    {
+      "no": 21,
+      "name": "Golaghat",
+      "division": "Upper Assam",
+      "hq": "Golaghat",
+      "tag": "Kaziranga's western range",
+      "about": "Home of Kaziranga's Kohora gate, colonial tea bungalows and the green bowl of the Dhansiri valley.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhinos%20in%20Kaziranga%20National%20Park.jpg?width=1600",
+      "alt": "One-horned rhinos in Kaziranga, Golaghat"
+    },
+    {
+      "no": 22,
+      "name": "Jorhat",
+      "division": "Upper Assam",
+      "hq": "Jorhat",
+      "tag": "Tea research · Majuli gateway",
+      "about": "Tea capital of the world — Tocklai research institute, the last Ahom capital Thowra and the boat jetty to Majuli's sattras.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Jorhat%20Night%20View.png?width=1600",
+      "alt": "Night view of Jorhat town"
+    },
+    {
+      "no": 23,
+      "name": "Lakhimpur",
+      "division": "Upper Assam",
+      "hq": "North Lakhimpur",
+      "tag": "Lachit's legacy · Dighalupukhuri",
+      "about": "Land of Lachit Borphukan's tomb, the royal Dighalupukhuri pond and the Subansiri plains stretching to the Arunachal hills.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Basudeva%20than.jpg?width=1600",
+      "alt": "Basudeva Than shrine, Lakhimpur"
+    },
+    {
+      "no": 24,
+      "name": "Majuli",
+      "division": "Upper Assam",
+      "hq": "Garamur",
+      "tag": "World's largest river island",
+      "about": "The cultural capital of Assam — neo-Vaishnavite sattras, mask-making monasteries, Mishing stilt houses and red-river island life.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Doriya%20River%20of%20Majuli.jpg?width=1600",
+      "alt": "Doriya river channel in Majuli"
+    },
+    {
+      "no": 25,
+      "name": "Sivasagar",
+      "division": "Upper Assam",
+      "hq": "Sivasagar",
+      "tag": "Ahom capital · Rang Ghar",
+      "about": "Seat of the Ahom dynasty for six centuries — Rang Ghar, Talatal Ghar, Joysagar tank and the tallest Shiva Dol of Assam.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Shiva%20Dol.jpg?width=1600",
+      "alt": "Shiva Dol at Sivasagar"
+    },
+    {
+      "no": 26,
+      "name": "Tinsukia",
+      "division": "Upper Assam",
+      "hq": "Tinsukia",
+      "tag": "Digboi · Dibru-Saikhowa",
+      "about": "Where India's first oil refinery fired at Digboi — the state's eastern edge with Dibru-Saikhowa's feral horses and the Brahmaputra's last bend.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/The%20great%20Brahmaputra.jpg?width=1600",
+      "alt": "The Brahmaputra at Tinsukia district"
+    },
+    {
+      "no": 27,
+      "name": "Dima Hasao",
+      "division": "Central Assam",
+      "hq": "Haflong",
+      "tag": "Haflong lake · Barail ranges",
+      "about": "The hill district of Assam — Haflong lake, the mystery of Jatinga's birds and a hill railway threading the Barail ranges.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Barail%20Range%20in%20Dima%20Hasao%20district.jpg?width=1600",
+      "alt": "Barail Range in Dima Hasao"
+    },
+    {
+      "no": 28,
+      "name": "Hojai",
+      "division": "Central Assam",
+      "hq": "Hojai",
+      "tag": "Agarwood (oudh) capital",
+      "about": "India's agarwood capital around Jugijan — oudh distilleries, dairy country and machang-crowned hills of the Karbi fringe.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/East-West%20Corridor%20a%20four%20Lane%20Road%20through%20Hojai%20district.jpg?width=1600",
+      "alt": "East-West Corridor highway through Hojai"
+    },
+    {
+      "no": 29,
+      "name": "Morigaon",
+      "division": "Central Assam",
+      "hq": "Morigaon",
+      "tag": "Pobitora rhino sanctuary",
+      "about": "Pobitora's rhino-rich wetlands on the Mayang fringe, with Devi Parbat's cliffs and the paper town of Jagiroad.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/One%20Horned%20Rhino%20Assam.jpg?width=1600",
+      "alt": "One-horned rhino at Pobitora, Morigaon"
+    },
+    {
+      "no": 30,
+      "name": "Nagaon",
+      "division": "Central Assam",
+      "hq": "Nagaon",
+      "tag": "Batadrava · Sankardev's birthplace",
+      "about": "The cradle of Vaishnavism — Batadrava where Srimanta Sankardev was born, Assam's paddy bowl and Kaziranga's eastern gate.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Paddy%20cultivation%20in%20Nagaon.jpg?width=1600",
+      "alt": "Paddy cultivation in Nagaon"
+    },
+    {
+      "no": 31,
+      "name": "Karbi Anglong",
+      "division": "Central Assam",
+      "hq": "Diphu",
+      "tag": "Karbi culture · Langkovku falls",
+      "about": "Highland of the Karbi people — Langkovku waterfalls, Diphu's pine hills and the Rongker festival of the Rongmei clans.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Langkovku%20waterfall%20in%20Manjha%2C%20Karbi%20Anglong.jpg?width=1600",
+      "alt": "Langkovku waterfall, Karbi Anglong"
+    },
+    {
+      "no": 32,
+      "name": "West Karbi Anglong",
+      "division": "Central Assam",
+      "hq": "Hamren",
+      "tag": "Baithalangso hills",
+      "about": "The newest hill district (2016) — misty Baithalangso, Garo-Karbi border forests and Hamren's ridges above the Vangkok river.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/A%20view%20of%20Baithalangso%2C%20Karbi%20Anglong%20of%20Assam.jpg?width=1600",
+      "alt": "View of Baithalangso hills, West Karbi Anglong"
+    },
+    {
+      "no": 33,
+      "name": "Cachar",
+      "division": "Barak Valley",
+      "hq": "Silchar",
+      "tag": "Barak Valley · Khaspur ruins",
+      "about": "The southern valley of tea, orange and the Barak river — ancient Khaspur's Khasi kings and Silchar's cultured riverfront.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ruins%20of%20Kachari%20kingdom.JPG?width=1600",
+      "alt": "Ruins of the Kachari kingdom at Khaspur, Cachar"
+    },
+    {
+      "no": 34,
+      "name": "Hailakandi",
+      "division": "Barak Valley",
+      "hq": "Hailakandi",
+      "tag": "Orange & pineapple country",
+      "about": "Barak valley's garden district — orange orchards, pineapple gardens and the quiet Satras along the Barak's southern bank.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1939581463big%2025%20230.jpg?width=1600",
+      "alt": "Landscape of Hailakandi district"
+    },
+    {
+      "no": 35,
+      "name": "Sribhumi",
+      "division": "Barak Valley",
+      "hq": "Karimganj",
+      "tag": "Renamed 2024 · Badarpur fort",
+      "about": "Karimganj reborn as Sribhumi in 2024 — the 17th-century Badarpur fort, Barak canals and the eastern gate of the Barak valley.",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Karimganj%20malegar.jpg?width=1600",
+      "alt": "Malegarh historic site, Sribhumi (Karimganj)"
+    }
+  ],
+  "content": {
+    "note": "Extend with hero/dining/experiences overrides here"
+  },
+  "bookings": [
+    {
+      "id": "b-1791689767067",
+      "name": "Test",
+      "email": "t@t.com",
+      "date": "2026-12-01",
+      "guests": "2",
+      "createdAt": "2026-10-11T03:36:07.067Z"
+    }
+  ],
+  "newsletter": [],
+  "users": [],
+  "sessions": [],
+  "orders": [],
+  "tripPlans": []
+}

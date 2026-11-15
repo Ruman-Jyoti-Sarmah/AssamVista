@@ -1,13 +1,11 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const districtsSrc = path.join(__dirname, "..", "..", "src", "data", "districts.js");
+const districtsSrc = path.join(__dirname, "..", "..", "src", "data", "travel", "districts.js");
 const out = path.join(__dirname, "..", "..", "data", "db.json");
 
-// Parse the static DISTRICTS array without executing Wikimedia helpers:
-// extract each { no, name, division, hq, tag, about, image: W("..."), alt } block.
 const raw = fs.readFileSync(districtsSrc, "utf8");
 const W = (file, width = 1600) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${width}`;
@@ -39,6 +37,10 @@ const db = {
   content: { note: "Extend with hero/dining/experiences overrides here" },
   bookings: [],
   newsletter: [],
+  users: [],
+  sessions: [],
+  orders: [],
+  tripPlans: [],
 };
 fs.writeFileSync(out, JSON.stringify(db, null, 2));
 console.log(`Seeded ${districts.length} districts -> ${out}`);
