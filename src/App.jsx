@@ -2,6 +2,7 @@ import { Suspense, useEffect, useState } from "react";
 import { getDistrict } from "@/data/travel/districtDetails";
 import { AppProvider, useApp } from "@/store/AppContext";
 import { TripProvider } from "@/store/TripContext";
+import { CartProvider } from "@/store/CartContext";
 import CultureHeader from "@/components/common/CultureHeader";
 import SectionDock from "@/components/common/SectionDock";
 import Footer from "@/components/common/Footer";
@@ -113,7 +114,12 @@ function Shell() {
   const { t, lang, pick } = useApp();
   const hash = useCurrentHash();
   const route = getRoute(hash);
-  const districtSlug = route.slug || getDistrictSlug(hash);
+  // Only the district route carries a district slug. Other dynamic routes
+  // (marketplace category/product) also expose `slug`, but treating those as
+  // districts would freeze the page reveal key and stop query-only deep links
+  // (for example ?community=bodo) from remounting with their filters applied.
+  const districtSlug =
+    route.name === "district-detail" ? route.slug : getDistrictSlug(hash);
   const section = getSection(hash);
   const riverTitleKey = getRiverTitleKey(route);
   const progress = useScrollProgress();
@@ -149,7 +155,9 @@ export default function App() {
   return (
     <AppProvider>
       <TripProvider>
-        <Shell />
+        <CartProvider>
+          <Shell />
+        </CartProvider>
       </TripProvider>
     </AppProvider>
   );
