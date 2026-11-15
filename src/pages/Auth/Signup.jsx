@@ -1,7 +1,7 @@
 ﻿import { useMemo } from "react";
 import { useAuth } from "@/store/AuthContext";
 import { getPendingAuthAction, clearPendingAuthAction } from "@/lib/authFlow";
-import AuthScreen from "@/components/auth/AuthScreen";
+import AuthPage from "@/components/auth/AuthPage";
 
 export default function SignupPage() {
   const { isAuthenticated } = useAuth();
@@ -13,5 +13,5 @@ export default function SignupPage() {
     window.location.hash = target;
   }
 
-  return <AuthScreen initialMode="signup" />;
+  return <AuthPage />;
 }
