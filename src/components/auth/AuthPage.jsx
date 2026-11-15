@@ -10,6 +10,7 @@ import {
   MapPin,
   Film,
   Sparkles,
+  Globe,
 } from "lucide-react";
 import { useAuth } from "@/store/AuthContext";
 import { useApp } from "@/store/AppContext";
@@ -54,10 +55,6 @@ export default function AuthPage() {
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
-
-  const googleConfigured = Boolean(
-    import.meta.env.VITE_GOOGLE_CLIENT_ID && import.meta.env.VITE_GOOGLE_CLIENT_ID.trim()
-  );
 
   const validate = () => {
     const f = formRef.current;
@@ -232,7 +229,7 @@ export default function AuthPage() {
                     <label className="auth-field">
                       <span>Phone number</span>
                       <div className="auth-input">
-                        <span className="auth-input-icon">+91</span>
+                        <Globe size={17} aria-hidden="true" />
                         <input
                           type="tel"
                           value={formRef.current.phone}
@@ -360,15 +357,6 @@ export default function AuthPage() {
                 <p className="auth-card__note">
                   Passwords are hashed server-side. Sessions use HttpOnly cookies with CSRF protection.
                 </p>
-
-                {googleConfigured && (
-                  <>
-                    <div className="auth-or"><span>OR</span></div>
-                    <button type="button" className="auth-form__google" onClick={() => {}} disabled={!googleConfigured}>
-                      Continue with Google
-                    </button>
-                  </>
-                )}
               </form>
             </div>
           </div>
