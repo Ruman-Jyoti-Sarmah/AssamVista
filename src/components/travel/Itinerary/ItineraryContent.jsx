@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowLeft, ArrowRight, RefreshCw, Printer, Save, Check, MapPin,
-  Clock, CalendarDays, AlertTriangle, Users, Route,
+  Clock, CalendarDays, AlertTriangle, Users, Route, Send,
 } from "lucide-react";
 import { useApp } from "@/store/AppContext";
+import { useAuth } from "@/store/AuthContext";
 import { useTrip } from "@/store/TripContext";
+import { submitTripPlan } from "@/lib/api";
+import { setPendingAuthAction } from "@/lib/authFlow";
+import { useAuthFlow } from "@/store/AuthFlowContext";
 import { categoryLabel } from "@/data/travel/destinations";
 import { getDistrict } from "@/data/travel/districtDetails";
 import { pick as pickLang } from "@/lib/pick";
@@ -12,13 +16,47 @@ import { pick as pickLang } from "@/lib/pick";
 /**
  * ItineraryView — the final results page (route #/trip/itinerary).
  * Renders the rule-based plan from TripContext: overview, day-by-day timeline,
- * estimated costs, warnings, and actions (edit / regenerate / save / print).
+ * estimated costs, warnings, and actions (edit / regenerate / save / print / submit).
  * Costs & times are always labelled ESTIMATES; nothing here is a booking.
  */
 export default function ItineraryView() {
   const { t, pick } = useApp();
-  const { selected, details, itinerary, buildItinerary } = useTrip();
+  const { isAuthenticated } = useAuth();
+  const { openLogin } = useAuthFlow();
+  const {
+    selected, selectedIds, details, itinerary, buildItinerary,
+    submissionRequestId, setSubmissionRequestId, lastSubmission, setLastSubmission,
+  } = useTrip();
   const [saved, setSaved] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMsg, setSubmitMsg] = useState("");
+
+  const hash = window.location.hash || "";
+  useEffect(() => {
+    if (hash.includes("submitted=1")) {
+      setSubmitMsg("Trip plan submitted successfully. You can view it in My Account.");
+      try {
+        const raw = sessionStorage.getItem("assamvista:trip:submit-result");
+        if (raw) {
+          const r = JSON.parse(raw);
+          if (r?.ok && r.clientRequestId) setLastSubmission({ ok: true, clientRequestId: r.clientRequestId, at: r.at || Date.now() });
+          sessionStorage.removeItem("assamvista:trip:submit-result");
+        }
+      } catch {}
+    }
+    if (hash.includes("submit_error=1")) {
+      let msg = lastSubmission?.error || "Trip plan submission failed. Please try again.";
+      try {
+        const raw = sessionStorage.getItem("assamvista:trip:submit-result");
+        if (raw) {
+          const r = JSON.parse(raw);
+          if (r?.error) msg = r.error;
+          sessionStorage.removeItem("assamvista:trip:submit-result");
+        }
+      } catch {}
+      setSubmitMsg(msg);
+    }
+  }, [hash]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const travellers = (Number(details.adults) || 0) + (Number(details.children) || 0);
   const districtNames = [...new Set(selected.map((d) => d.district))].map((slug) => {
@@ -31,6 +69,53 @@ export default function ItineraryView() {
       localStorage.setItem("assamvista:trip:saved", JSON.stringify(itinerary));
       setSaved(true);
     } catch { /* storage unavailable — ignore */ }
+  };
+
+  const ensureRequestId = () => {
+    if (submissionRequestId) return submissionRequestId;
+    const id = `trip-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+    setSubmissionRequestId(id);
+    return id;
+  };
+
+  const doSubmit = async () => {
+    if (!itinerary || submitting) return;
+    const clientRequestId = ensureRequestId();
+    setSubmitting(true);
+    setSubmitMsg("");
+    try {
+      const payload = {
+        clientRequestId,
+        destinations: selectedIds || [],
+        details: details || {},
+        itinerary,
+      };
+      await submitTripPlan(payload);
+      setLastSubmission({ ok: true, clientRequestId, at: Date.now() });
+      setSubmitMsg("Trip plan submitted successfully. You can view it in My Account.");
+      try { window.history.replaceState(null, "", "#/trip/itinerary?submitted=1"); } catch {}
+    } catch (err) {
+      setLastSubmission({ ok: false, error: err?.message || "Submission failed", clientRequestId });
+      setSubmitMsg(err?.message || "Trip plan submission failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const onSubmit = async () => {
+    if (!itinerary) return;
+    if (!isAuthenticated) {
+      const clientRequestId = ensureRequestId();
+      setPendingAuthAction({
+        type: "submit-trip",
+        returnHash: "#/trip/itinerary",
+        clientRequestId,
+        payload: { destinations: selectedIds || [], details: details || {}, itinerary },
+      });
+      openLogin({ message: "Log in or create an account to submit your trip plan. Your trip details are preserved and will be submitted after sign-in." });
+      return;
+    }
+    await doSubmit();
   };
 
   if (!itinerary || !itinerary.days || itinerary.days.length === 0) {
@@ -73,10 +158,14 @@ export default function ItineraryView() {
             {saved ? <Check size={15} aria-hidden="true" /> : <Save size={15} aria-hidden="true" />}
             {saved ? t("itin_saved") : t("itin_save")}
           </button>
-          <button type="button" className="itin__act itin__act--primary" onClick={() => window.print()}>
+          <button type="button" className="itin__act itin__act--primary" onClick={onSubmit} disabled={submitting}>
+            <Send size={15} aria-hidden="true" /> {submitting ? "Submitting…" : "Submit Trip Plan"}
+          </button>
+          <button type="button" className="itin__act" onClick={() => window.print()}>
             <Printer size={15} aria-hidden="true" /> {t("itin_print")}
           </button>
         </div>
+        {submitMsg && <p className={`itin__submit-msg ${submitMsg.toLowerCase().includes("success") ? "is-ok" : "is-error"}`} role="status">{submitMsg}</p>}
       </div>
 
       {/* ── overview ── */}

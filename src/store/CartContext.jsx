@@ -4,16 +4,11 @@ import { getProduct } from "@/data/marketplace/products";
 import { calculateShipping } from "@/data/marketplace/catalogue";
 
 /**
- * Marketplace cart, wishlist and demo order history.
+ * Marketplace cart and wishlist state.
  *
- * This is a frontend-only shopping layer. Nothing here talks to a server, no
- * payment is processed and no order reaches a seller. Everything is persisted
- * to localStorage so a visitor can move between pages and reload without
- * losing the cart.
- *
- * The shape is deliberately backend-ready: a cart line is `{ slug, qty }`, an
- * order is plain JSON with the same product snapshots a server would store.
- * Replacing localStorage with an API later only changes this file.
+ * Cart/wishlist are persisted to localStorage for guest browsing continuity.
+ * Orders are stored server-side for authenticated users; this context no longer
+ * keeps local demo order history.
  */
 const CartCtx = createContext(null);
 
@@ -26,10 +21,6 @@ export function CartProvider({ children }) {
   const [items, setItems] = useLocalStorage("assamvista:marketplace-cart", []);
   const [wishlist, setWishlist] = useLocalStorage(
     "assamvista:marketplace-wishlist",
-    []
-  );
-  const [orders, setOrders] = useLocalStorage(
-    "assamvista:marketplace-orders",
     []
   );
 
@@ -119,49 +110,6 @@ export function CartProvider({ children }) {
     [items]
   );
 
-  /**
-   * Store a demo order locally and empty the cart. Returns the stored order so
-   * the checkout page can show its reference number.
-   */
-  const placeOrder = useCallback(
-    (customer) => {
-      if (!cartLines.length) return null;
-
-      const placedAt = new Date().toISOString();
-      const order = {
-        id: `AV-${Date.now().toString(36).toUpperCase()}`,
-        placedAt,
-        status: "demo-placed",
-        customer,
-        items: cartLines.map((line) => ({
-          slug: line.product.slug,
-          name: line.product.name,
-          localName: line.product.localName,
-          price: line.product.price,
-          qty: line.qty,
-          subtotal: line.subtotal,
-          image: line.product.image,
-        })),
-        subtotal,
-        shipping,
-        total,
-        note: "Demo order stored in this browser only. No payment was taken and no seller received this order.",
-      };
-
-      setOrders((current) => [order, ...current]);
-      setItems([]);
-      return order;
-    },
-    [cartLines, subtotal, shipping, total, setOrders, setItems]
-  );
-
-  const removeOrder = useCallback(
-    (id) => setOrders((current) => current.filter((order) => order.id !== id)),
-    [setOrders]
-  );
-
-  const clearOrders = useCallback(() => setOrders([]), [setOrders]);
-
   const value = useMemo(
     () => ({
       items,
@@ -183,10 +131,6 @@ export function CartProvider({ children }) {
       removeFromWishlist,
       clearWishlist,
       inWishlist: (slug) => wishlist.includes(slug),
-      orders,
-      placeOrder,
-      removeOrder,
-      clearOrders,
     }),
     [
       items,
@@ -203,10 +147,6 @@ export function CartProvider({ children }) {
       toggleWishlist,
       removeFromWishlist,
       clearWishlist,
-      orders,
-      placeOrder,
-      removeOrder,
-      clearOrders,
     ]
   );
 

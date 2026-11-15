@@ -3,6 +3,8 @@ import { getDistrict } from "@/data/travel/districtDetails";
 import { AppProvider, useApp } from "@/store/AppContext";
 import { TripProvider } from "@/store/TripContext";
 import { CartProvider } from "@/store/CartContext";
+import { AuthProvider } from "@/store/AuthContext";
+import { AuthFlowProvider } from "@/store/AuthFlowContext";
 import CultureHeader from "@/components/common/CultureHeader";
 import SectionDock from "@/components/common/SectionDock";
 import Footer from "@/components/common/Footer";
@@ -162,15 +164,19 @@ export default function App() {
 
   return (
     <AppProvider>
-      <TripProvider>
-        <CartProvider>
-          {showIntro ? (
-            <AssamVistaIntro onFinish={() => setShowIntro(false)} />
-          ) : (
-            <Shell />
-          )}
-        </CartProvider>
-      </TripProvider>
+      <AuthProvider>
+        <AuthFlowProvider>
+          <TripProvider>
+            <CartProvider>
+              {showIntro ? (
+                <AssamVistaIntro onFinish={() => setShowIntro(false)} />
+              ) : (
+                <Shell />
+              )}
+            </CartProvider>
+          </TripProvider>
+        </AuthFlowProvider>
+      </AuthProvider>
     </AppProvider>
   );
 }

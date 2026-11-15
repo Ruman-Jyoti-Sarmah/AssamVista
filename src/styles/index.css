@@ -12316,3 +12316,255 @@ main[data-section="travel"] {
     margin-top: 1.1rem;
   }
 }
+
+/* ============================================================
+   WILDLIFE PAGE — Assam Nature & Wildlife
+   Full-bleed hero backdrop + responsive card grid.
+   ============================================================ */
+
+.wildlife {
+  position: relative;
+  overflow: hidden;
+}
+
+.wildlife__hero {
+  position: relative;
+  min-height: clamp(36vh, 44svh, 56vh);
+  background: #0a0907;
+}
+
+.wildlife__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.wildlife__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.wildlife__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 11, 9, 0) 0%,
+    rgba(12, 11, 9, 0.45) 40%,
+    rgba(12, 11, 9, 0.92) 100%
+  );
+}
+
+.wildlife__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--gutter);
+  color: #fff;
+  max-width: 700px;
+}
+
+.wildlife__kicker {
+  margin: 0 0 0.55rem;
+  color: var(--bronze-dim);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.wildlife__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 5.5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.wildlife__sub {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.wildlife__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+  padding: var(--gutter);
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.wildlife__card {
+  border: 1px solid var(--hairline);
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.wildlife__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(27, 22, 17, 0.12);
+}
+
+.wildlife__card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  transition: transform 0.6s var(--ease);
+}
+
+.wildlife__card:hover img {
+  transform: scale(1.06);
+}
+
+.wildlife__card-body {
+  padding: 1.3rem 1.4rem 1.6rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.wildlife__card-body .label {
+  color: var(--bronze);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
+.wildlife__card-name {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.45rem;
+  line-height: 1.12;
+  color: #0a0907;
+}
+
+.wildlife__card-one {
+  margin: 0;
+  color: var(--ivory-dim);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.wildlife__card-facts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.wildlife__card-facts li {
+  color: #0a0907;
+  font-size: 0.79rem;
+  line-height: 1.42;
+  padding-left: 1.15rem;
+  position: relative;
+}
+
+.wildlife__card-facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bronze);
+}
+
+@media (max-width: 560px) {
+  .wildlife__hero {
+    min-height: 30svh;
+  }
+  .wildlife__content {
+    padding: 1.4rem 1rem;
+  }
+  .wildlife__title {
+    font-size: clamp(1.7rem, 10vw, 2.2rem);
+  }
+  .wildlife__grid {
+    padding: 1.2rem 1rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+ /* -- Auth modal, account, and legal (AssamVista premium) --------- */
+ .chead__account{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .7rem;border:1px solid var(--hairline);border-radius:999px;color:var(--ivory);text-decoration:none;font:600 .78rem/1 var(--sans);background:rgba(255,255,255,.6);transition:all .2s var(--ease)}
+ .chead__account:hover,.chead__account:focus-visible{border-color:var(--bronze-dim);color:var(--bronze);background:#fff;outline:none}
+ .chead__account-label{max-width:7rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .auth-modal{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:1rem}
+ .auth-modal__backdrop{position:absolute;inset:0;background:rgba(27,22,17,.45);border:0}
+ .auth-modal__panel{position:relative;z-index:1;width:min(100%,32rem);max-height:min(92vh,46rem);overflow:auto;background:#fff;border:1px solid var(--hairline);border-radius:1.25rem;box-shadow:0 24px 60px rgba(27,22,17,.18);padding:1.25rem 1.25rem 1rem}
+ .auth-modal__close{position:absolute;top:.75rem;right:.75rem;border:1px solid var(--hairline);background:#fff;border-radius:999px;width:2rem;height:2rem;display:grid;place-items:center;color:var(--a11y-dim);cursor:pointer}
+ .auth-modal__close:hover{color:var(--bronze);border-color:var(--bronze-dim)}
+ .auth-modal__head h2,.auth-card h1,.auth-page__intro h1{font-family:var(--serif);font-weight:600;color:#1b1611;margin:.35rem 0 .4rem;line-height:1.1}
+ .auth-modal__head p,.auth-page__intro p,.auth-card__note,.auth-modal__note{color:var(--a11y-dim);font-size:.92rem;line-height:1.55}
+ .auth-modal__tabs,.auth-card__tabs{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin:1rem 0 .85rem;padding:.2rem;background:var(--charcoal);border-radius:.9rem}
+ .auth-modal__tabs button,.auth-card__tabs button{border:0;background:transparent;padding:.65rem .75rem;border-radius:.7rem;font:600 .86rem/1 var(--sans);color:var(--a11y-dim);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.4rem}
+ .auth-modal__tabs button.is-active,.auth-card__tabs button.is-active{background:#fff;color:#1b1611;box-shadow:0 1px 2px rgba(27,22,17,.06)}
+ .auth-form{display:grid;gap:.8rem}
+ .auth-field{display:grid;gap:.3rem}
+ .auth-field>span,.auth-form label>span{font:600 .82rem/1.2 var(--sans);color:#1b1611}
+ .auth-form input[type=email],.auth-form input[type=password],.auth-form input[type=text],.auth-input input{width:100%;padding:.78rem .9rem;border:1px solid var(--hairline);border-radius:.8rem;background:#fff;color:#1b1611;font:500 .95rem/1.3 var(--sans)}
+ .auth-input{position:relative;display:flex;align-items:center;gap:.45rem}
+ .auth-input svg:first-child{position:absolute;left:.75rem;color:var(--a11y-faint);pointer-events:none}
+ .auth-form--page .auth-input>input{padding-left:2.3rem;padding-right:2.5rem}
+ .auth-input__toggle{position:absolute;right:.45rem;border:0;background:transparent;color:var(--a11y-dim);padding:.35rem;border-radius:.5rem;cursor:pointer}
+ .auth-input__toggle:hover{color:var(--bronze);background:rgba(179,40,45,.06)}
+ .auth-form input:focus,.auth-form textarea:focus{outline:2px solid rgba(30,107,72,.25);outline-offset:1px;border-color:var(--leaf)}
+ .auth-form__submit{width:100%;justify-content:center;margin-top:.2rem}
+ .auth-form__error{color:#9f1239;background:#fff1f2;border:1px solid #fecdd3;padding:.65rem .75rem;border-radius:.75rem;font-size:.88rem}
+ .auth-hint,.auth-forgot{color:var(--a11y-dim);font-size:.82rem;line-height:1.45}
+ .auth-forgot span{opacity:.95}
+ .auth-check{display:flex;align-items:flex-start;gap:.55rem;font-size:.88rem;color:var(--a11y-dim);line-height:1.45}
+ .auth-check input{margin-top:.2rem;accent-color:var(--leaf)}
+ .auth-check a,.auth-card__switch button{color:var(--leaf);font-weight:600}
+ .auth-card__switch{margin-top:.8rem;color:var(--a11y-dim);font-size:.9rem}
+ .auth-card__switch button{border:0;background:none;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+ .auth-page{padding:clamp(1.5rem,4vw,3rem) var(--gutter) 3rem;background:linear-gradient(180deg,var(--charcoal),#fff 40%)}
+ .auth-page__wrap{max-width:68rem;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:1.5rem;align-items:start}
+ .auth-page__intro{padding:1rem 0}
+ .auth-page__pending{display:flex;gap:.6rem;align-items:flex-start;margin-top:1rem;padding:.8rem .9rem;border:1px solid rgba(30,107,72,.2);background:rgba(30,107,72,.06);border-radius:.9rem;color:#164e36;font-size:.9rem;line-height:1.45}
+ .auth-card{background:#fff;border:1px solid var(--hairline);border-radius:1.25rem;padding:1.2rem;box-shadow:0 10px 30px rgba(27,22,17,.06)}
+ .account-page,.legal-page{padding:clamp(1.5rem,4vw,3rem) var(--gutter) 3rem}
+ .account-wrap,.legal-wrap{max-width:72rem;margin:0 auto}
+ .account-head h1,.legal-wrap h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);line-height:1.05;color:#1b1611;margin:.35rem 0}
+ .account-head p,.legal-updated{color:var(--a11y-dim)}
+ .account-layout{display:grid;grid-template-columns:15rem 1fr;gap:1rem;margin-top:1.25rem}
+ .account-nav{display:grid;gap:.35rem;align-content:start;background:#fff;border:1px solid var(--hairline);border-radius:1rem;padding:.5rem}
+ .account-nav button{display:flex;align-items:center;gap:.55rem;width:100%;text-align:left;border:0;background:transparent;padding:.7rem .75rem;border-radius:.7rem;color:#1b1611;font:600 .88rem/1.2 var(--sans);cursor:pointer}
+ .account-nav button:hover,.account-nav button.is-active{background:var(--charcoal)}
+ .account-nav button.is-active{color:var(--leaf)}
+ .account-main,.account-card,.legal-wrap{background:#fff}
+ .account-card{border:1px solid var(--hairline);border-radius:1rem;padding:1.1rem}
+ .account-card h2,.legal-wrap h2{font-family:var(--serif);font-size:1.45rem;margin:1rem 0 .5rem;color:#1b1611}
+ .account-dl{display:grid;gap:.6rem;margin:.75rem 0}
+ .account-dl div{display:grid;grid-template-columns:9rem 1fr;gap:.5rem;padding:.55rem 0;border-bottom:1px solid var(--hairline)}
+ .account-dl dt{color:var(--a11y-dim);font-weight:600}
+ .account-dl dd{margin:0;color:#1b1611;word-break:break-word}
+ .account-list{list-style:none;display:grid;gap:.7rem;margin-top:.75rem;padding:0}
+ .account-item{border:1px solid var(--hairline);border-radius:.85rem;padding:.8rem .9rem}
+ .account-item__head{display:flex;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.25rem}
+ .account-note,.legal-wrap p,.legal-wrap li{color:var(--a11y-dim);line-height:1.65}
+ .account-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0}
+ .account-alert{padding:.7rem .85rem;border-radius:.8rem;margin-bottom:.7rem}
+ .account-alert--error{background:#fff1f2;border:1px solid #fecdd3;color:#9f1239}
+ .account-alert--ok{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+ .account-alert--warn{display:flex;gap:.5rem;align-items:flex-start;background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+ .btn--danger{background:#991b1b;color:#fff;border:1px solid #991b1b}
+ .btn--danger:hover{background:#7f1d1d}
+ .legal-wrap ul{padding-left:1.2rem;display:grid;gap:.35rem;margin:.4rem 0 1rem}
+ @media (max-width:900px){.auth-page__wrap,.account-layout{grid-template-columns:1fr}.chead__account-label{display:none}.chead__account{padding:.45rem}}
+ @media (max-width:640px){.auth-modal{padding:.5rem;align-items:flex-end}.auth-modal__panel{border-radius:1rem 1rem .75rem .75rem;max-height:94vh}.account-dl div{grid-template-columns:1fr;gap:.15rem}}

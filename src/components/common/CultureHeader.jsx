@@ -7,9 +7,12 @@ import {
   Landmark,
   MapPin,
   MoreVertical,
+  User,
+  LogIn,
 } from "lucide-react";
 import { BRAND } from "@/data/site/brand";
 import { useApp } from "@/store/AppContext";
+import { useAuth } from "@/store/AuthContext";
 import { useTrip } from "@/store/TripContext";
 import { pick } from "@/lib/pick";
 import { PILLARS } from "@/data/culture/cultureSections";
@@ -147,6 +150,7 @@ const COLUMNS = buildColumns();
 export default function CultureHeader({ section, isCultureHome = false }) {
   const { t, lang, toggleLang } = useApp();
   const { count: tripCount } = useTrip();
+  const { isAuthenticated, user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [hash, setHash] = useState(() => window.location.hash);
   const [openPillar, setOpenPillar] = useState(null);
@@ -369,28 +373,40 @@ export default function CultureHeader({ section, isCultureHome = false }) {
           )}
         </nav>
 
-        <div className="chead__tools">
-          <div className="chead__search">
-            <Search size={16} aria-hidden="true" />
-            <input
-              value={q}
-              onChange={(e) => setQ(e.target.value)}
-              placeholder={t("search_placeholder")}
-              aria-label={t("search_placeholder")}
-              onKeyDown={(e) => { if (e.key === "Enter") submitSearch(e); }}
-            />
-          </div>
+          <div className="chead__tools">
+            <div className="chead__search">
+              <Search size={16} aria-hidden="true" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder={t("search_placeholder")}
+                aria-label={t("search_placeholder")}
+                onKeyDown={(e) => { if (e.key === "Enter") submitSearch(e); }}
+              />
+            </div>
 
-          {/* My Trip — persistent link with selected-place count */}
-          <a className="chead__trip" href="#/trip" aria-label={`${t("nav_my_trip")} (${tripCount})`}>
-            <MapPin size={16} aria-hidden="true" />
-            <span className="chead__trip-label">{t("nav_my_trip")}</span>
-            <span className="chead__trip-count" data-empty={tripCount === 0 ? "true" : "false"}>
-              {tripCount}
-            </span>
-          </a>
+            {/* My Trip — persistent link with selected-place count */}
+            <a className="chead__trip" href="#/trip" aria-label={`${t("nav_my_trip")} (${tripCount})`}>
+              <MapPin size={16} aria-hidden="true" />
+              <span className="chead__trip-label">{t("nav_my_trip")}</span>
+              <span className="chead__trip-count" data-empty={tripCount === 0 ? "true" : "false"}>
+                {tripCount}
+              </span>
+            </a>
 
-          {/* language dropdown */}
+            {isAuthenticated ? (
+              <a className="chead__account" href="#/account" aria-label="My account">
+                <User size={16} aria-hidden="true" />
+                <span className="chead__account-label">{user?.name ? user.name.split(" ")[0] : "Account"}</span>
+              </a>
+            ) : (
+              <a className="chead__account" href="#/login" aria-label="Log in">
+                <LogIn size={16} aria-hidden="true" />
+                <span className="chead__account-label">Log in</span>
+              </a>
+            )}
+
+            {/* language dropdown */}
           <div className="chead__lang" ref={langRef}>
             <button
               className="chead__lang-btn"
@@ -545,16 +561,20 @@ export default function CultureHeader({ section, isCultureHome = false }) {
               ))}
             </>
           )}
-          <div className="chead__mfoot">
-            <SectionSwitcher section={section} />
-            <a className="chead__mtrip" href="#/trip" onClick={(e) => { go(e, "#/trip"); setMobileOpen(false); }}>
-              <MapPin size={15} aria-hidden="true" />
-              {t("nav_my_trip")}
-              <span className="chead__trip-count" data-empty={tripCount === 0 ? "true" : "false"}>
-                {tripCount}
-              </span>
-            </a>
-          </div>
+            <div className="chead__mfoot">
+              <SectionSwitcher section={section} />
+              <a className="chead__mtrip" href={isAuthenticated ? "#/account" : "#/login"} onClick={(e) => { go(e, isAuthenticated ? "#/account" : "#/login"); setMobileOpen(false); }}>
+                {isAuthenticated ? <User size={15} aria-hidden="true" /> : <LogIn size={15} aria-hidden="true" />}
+                {isAuthenticated ? "My Account" : "Log in"}
+              </a>
+              <a className="chead__mtrip" href="#/trip" onClick={(e) => { go(e, "#/trip"); setMobileOpen(false); }}>
+                <MapPin size={15} aria-hidden="true" />
+                {t("nav_my_trip")}
+                <span className="chead__trip-count" data-empty={tripCount === 0 ? "true" : "false"}>
+                  {tripCount}
+                </span>
+              </a>
+            </div>
         </nav>
       )}
     </header>

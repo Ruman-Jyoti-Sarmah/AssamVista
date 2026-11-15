@@ -42,7 +42,7 @@ export function ProductImage({ src, alt, className = "", fallbackLabel }) {
 /** Cart / wishlist / order links shared by every marketplace page. */
 export function ShopLinks({ compact = false }) {
   const { t } = useApp();
-  const { count, wishlist, orders } = useCart();
+  const { count, wishlist } = useCart();
 
   return (
     <nav
@@ -62,7 +62,6 @@ export function ShopLinks({ compact = false }) {
         <a href="#/culture/marketplace/orders">
           <ShoppingBag size={16} aria-hidden="true" />
           <span>{t("mkt_orders")}</span>
-          <em>{orders.length}</em>
         </a>
         <a className="mkt-shoplinks__cart" href="#/culture/marketplace/cart">
           <ShoppingCart size={16} aria-hidden="true" />

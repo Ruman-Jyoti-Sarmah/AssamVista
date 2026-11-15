@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import { useApp } from "@/store/AppContext";
 import { useCart } from "@/store/CartContext";
+import { useAuth } from "@/store/AuthContext";
+import { useAuthFlow } from "@/store/AuthFlowContext";
+import { setPendingAuthAction } from "@/lib/authFlow";
 import {
   formatPrice,
   getCategory,
@@ -91,6 +94,8 @@ export default function MarketplaceProductPage({ slug }) {
     inWishlist,
     cartLines,
   } = useCart();
+  const { isAuthenticated } = useAuth();
+  const { openLogin } = useAuthFlow();
   const product = getProduct(slug);
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
@@ -142,7 +147,16 @@ export default function MarketplaceProductPage({ slug }) {
 
   const buyNow = () => {
     addItem(product.slug, quantity);
-    window.location.hash = "#/culture/marketplace/checkout";
+    if (isAuthenticated) {
+      window.location.hash = "#/culture/marketplace/checkout";
+      return;
+    }
+    setPendingAuthAction({
+      type: "checkout",
+      returnHash: "#/culture/marketplace/checkout",
+      from: `#/culture/marketplace/product/${product.slug}`,
+    });
+    openLogin({ message: "Log in or create an account to continue to checkout. Your cart is saved." });
   };
 
   return (

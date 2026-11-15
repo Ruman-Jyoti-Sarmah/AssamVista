@@ -36,6 +36,8 @@ export function TripProvider({ children }) {
   const [selectedIds, setSelectedIds] = useLocalStorage("assamvista:trip:selected", []);
   const [details, setDetails] = useLocalStorage("assamvista:trip:details", EMPTY_DETAILS);
   const [itinerary, setItinerary] = useLocalStorage("assamvista:trip:itinerary", null);
+  const [submissionRequestId, setSubmissionRequestId] = useLocalStorage("assamvista:trip:submission-request-id", "");
+  const [lastSubmission, setLastSubmission] = useLocalStorage("assamvista:trip:last-submission", null);
 
   const isSelected = useCallback(
     (id) => selectedIds.includes(id),
@@ -66,12 +68,16 @@ export function TripProvider({ children }) {
   const clearTrip = useCallback(() => {
     setSelectedIds([]);
     setItinerary(null);
-  }, [setSelectedIds, setItinerary]);
+    setSubmissionRequestId("");
+    setLastSubmission(null);
+  }, [setSelectedIds, setItinerary, setSubmissionRequestId, setLastSubmission]);
 
   const clearSelection = useCallback(() => {
     setSelectedIds([]);
     setItinerary(null);
-  }, [setSelectedIds, setItinerary]);
+    setSubmissionRequestId("");
+    setLastSubmission(null);
+  }, [setSelectedIds, setItinerary, setSubmissionRequestId, setLastSubmission]);
 
   const resolveSelected = useCallback(
     () => selectedIds.map((id) => getDestination(id)).filter(Boolean),
@@ -110,6 +116,10 @@ export function TripProvider({ children }) {
       resetDetails,
       itinerary,
       buildItinerary,
+      submissionRequestId,
+      setSubmissionRequestId,
+      lastSubmission,
+      setLastSubmission,
       removeFromItinerary: (id) => {
         // A convenience: removing a place also drops the stale itinerary so the
         // traveller regenerates after editing their selection.
@@ -130,6 +140,10 @@ export function TripProvider({ children }) {
       resetDetails,
       itinerary,
       buildItinerary,
+      submissionRequestId,
+      setSubmissionRequestId,
+      lastSubmission,
+      setLastSubmission,
       removeDestination,
     ]
   );
