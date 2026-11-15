@@ -18,7 +18,7 @@ import SectionSwitcher from "@/components/common/SectionSwitcher";
 import ScrollHint from "@/components/common/ScrollHint";
 import CultureHomeSections from "./CultureHomeSections";
 import { Cuisine, Explore } from "./CultureHomeMore";
-import AssamCommunitiesSection from "@/components/culture/AssamCommunities/AssamCommunitiesSection";
+import CultureGateway from "./CultureGateway";
 
 /**
  * CultureHome — the main Culture section homepage.
@@ -61,7 +61,7 @@ export default function CultureHome() {
 
       <HowToPlan />
 
-      <AssamCommunitiesSection compact />
+      <CultureGateway />
 
       {/* ── 3. New editorial sections (below preserved hero + lede) ── */}
       <CultureHomeSections />

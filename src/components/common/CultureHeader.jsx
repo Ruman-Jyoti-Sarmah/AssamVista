@@ -87,6 +87,10 @@ function buildColumns() {
             label: { en: "Communities of Assam", as: "অসমৰ জনগোষ্ঠীসমূহ" },
             href: "#/communities",
           },
+          {
+            label: { en: "Heritage Marketplace", as: "ঐতিহ্য বজাৰ" },
+            href: "#/culture/marketplace",
+          },
         ],
       },
       {

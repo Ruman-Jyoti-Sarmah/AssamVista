@@ -14,6 +14,13 @@ const HandicraftsAndSilk = lazy(() => import("@/pages/Culture/HandicraftsAndSilk
 const AssamArtists = lazy(() => import("@/pages/Culture/AssamArtists"));
 const AssamFacts = lazy(() => import("@/pages/Culture/AssamFacts"));
 const StateSymbols = lazy(() => import("@/pages/Culture/StateSymbols"));
+const Marketplace = lazy(() => import("@/pages/Culture/Marketplace"));
+const MarketplaceCategory = lazy(() => import("@/pages/Culture/MarketplaceCategory"));
+const MarketplaceProduct = lazy(() => import("@/pages/Culture/MarketplaceProduct"));
+const MarketplaceCart = lazy(() => import("@/pages/Culture/MarketplaceCart"));
+const MarketplaceWishlist = lazy(() => import("@/pages/Culture/MarketplaceWishlist"));
+const MarketplaceCheckout = lazy(() => import("@/pages/Culture/MarketplaceCheckout"));
+const MarketplaceOrders = lazy(() => import("@/pages/Culture/MarketplaceOrders"));
 
 const TravelHomepage = lazy(() => import("@/pages/Travel/Homepage"));
 const DistrictDetails = lazy(() => import("@/pages/Travel/DistrictDetails"));
@@ -60,6 +67,19 @@ export function getRoute(hash = "") {
 
   if (currentHash === "#/culture/festivals") return route("culture-festivals", CultureAndFestivals, { titleKey: "title_culture" });
   if (currentHash === "#/credits") return route("credits", ImageCredits, { titleKey: "title_culture" });
+
+  /* ── Heritage Marketplace ───────────────────────────────────────────
+     The landing page owns the shell; the dynamic pages reuse the same
+     product/category data. Unknown slugs render a friendly in-page state. */
+  if (routeHash === "#/culture/marketplace") return route("marketplace", Marketplace, { titleKey: "title_marketplace" });
+  const marketplaceCategory = routeHash.match(/^#\/culture\/marketplace\/category\/([a-z0-9-]+)$/);
+  if (marketplaceCategory) return route("marketplace-category", MarketplaceCategory, { slug: marketplaceCategory[1], titleKey: "title_marketplace" });
+  const marketplaceProduct = routeHash.match(/^#\/culture\/marketplace\/product\/([a-z0-9-]+)$/);
+  if (marketplaceProduct) return route("marketplace-product", MarketplaceProduct, { slug: marketplaceProduct[1], titleKey: "title_marketplace" });
+  if (routeHash === "#/culture/marketplace/cart") return route("marketplace-cart", MarketplaceCart, { titleKey: "title_marketplace_cart" });
+  if (routeHash === "#/culture/marketplace/wishlist") return route("marketplace-wishlist", MarketplaceWishlist, { titleKey: "title_marketplace_wishlist" });
+  if (routeHash === "#/culture/marketplace/checkout") return route("marketplace-checkout", MarketplaceCheckout, { titleKey: "title_marketplace_checkout" });
+  if (routeHash === "#/culture/marketplace/orders") return route("marketplace-orders", MarketplaceOrders, { titleKey: "title_marketplace_orders" });
 
   if (currentHash === "#/trip/itinerary") return route("trip-itinerary", Itinerary, { titleKey: "itin_title" });
   if (currentHash === "#/trip/plan") return route("trip-plan", TravelDetails, { titleKey: "plan_title" });
