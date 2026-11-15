@@ -346,6 +346,8 @@ export const STRINGS = {
     site_brand: "অসম",
     title_home: "AXOM — Soul of Assam, Land of the Brahmaputra",
     title_home_as: "অসম — অসমৰ আত্মা, ব্ৰহ্মপুত্ৰৰ দেশ",
+    title_login: "AssamVista | Discover Assam",
+    title_signup: "AssamVista | Discover Assam",
     title_districts: "All 35 Districts — AXOM, Assam",
     title_stays: "Stays Across Assam — AXOM, Assam",
     title_journey: "Plan Your Assam Journey — AXOM, Assam",

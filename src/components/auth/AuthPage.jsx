@@ -22,7 +22,6 @@ export default function AuthPage() {
   const [error, setError] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [showPw2, setShowPw2] = useState(false);
-  const bgRef = useRef(null);
 
   const formRef = useRef({
     name: "",
@@ -135,7 +134,6 @@ export default function AuthPage() {
       {/* Background */}
       <div className="auth-bg">
         <img
-          ref={bgRef}
           className="auth-bg__img"
           src="/images/auth/assam-landscape-hero.jpg"
           alt="Assam landscape with tea gardens, mountains and river"
@@ -157,12 +155,14 @@ export default function AuthPage() {
                 <p className="auth-hero__kicker">{kicker}</p>
                 <h1 className="auth-hero__title">The Incredible Assam</h1>
                 <p className="auth-hero__sub">
-                  From lush tea gardens to rich culture, let AssamVista be your travel companion through the heart of Northeast India.
+                  From lush tea gardens to rich culture, let AssamVista be your travel companion.
                 </p>
                 <div className="auth-feature-cards">
                   {cards.map((c, i) => (
                     <div key={c.title} className="auth-feature-card">
-                      <div className="auth-feature-card__icon">{i === 0 ? <MapPin size={20} aria-hidden="true" /> : i === 1 ? <Film size={20} aria-hidden="true" /> : <Sparkles size={20} aria-hidden="true" />}</div>
+                      <div className="auth-feature-card__icon">
+                        {i === 0 ? <MapPin size={20} aria-hidden="true" /> : i === 1 ? <Film size={20} aria-hidden="true" /> : <Sparkles size={20} aria-hidden="true" />}
+                      </div>
                       <div className="auth-feature-card__text">
                         <div className="auth-feature-card__title">{c.title}</div>
                         <div className="auth-feature-card__subtitle">{c.subtitle}</div>
@@ -177,203 +177,203 @@ export default function AuthPage() {
           {/* Right auth card */}
           <div className="auth-wrap">
             <div className="auth-card">
-          <div className="auth-card__brand">
-            <img className="auth-card__logo" src="/Logo/AssamVista-Logo.png" alt="AssamVista" />
-            <div className="auth-card__text">
-              <span className="auth-card__name">Assam<span className="auth-card__accent">Vista</span></span>
-              <span className="auth-card__tagline">Your Gateway to Assam</span>
-            </div>
-          </div>
-
-          <div className="auth-card__tabs" role="tablist" aria-label="Authentication mode">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={mode === "login"}
-              className={mode === "login" ? "is-active" : ""}
-              onClick={() => { setMode("login"); setError(""); }}
-            >
-              <LogIn size={15} aria-hidden="true" /> <span>Log in</span>
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={mode === "signup"}
-              className={mode === "signup" ? "is-active" : ""}
-              onClick={() => { setMode("signup"); setError(""); }}
-            >
-              <UserPlus size={15} aria-hidden="true" /> <span>Sign up</span>
-            </button>
-          </div>
-
-          <p className="auth-card__kicker">{heading}</p>
-          <p className="auth-card__sub">{sub}</p>
-
-          <form className="auth-form" onSubmit={submit} noValidate>
-            {mode === "signup" && (
-              <>
-                <label className="auth-field">
-                  <span>Full name</span>
-                  <div className="auth-input">
-                    <User size={17} aria-hidden="true" />
-                    <input
-                      value={formRef.current.name}
-                      onChange={set("name")}
-                      autoComplete="name"
-                      required
-                      minLength={2}
-                      maxLength={80}
-                      disabled={busy}
-                      placeholder="Your full name"
-                    />
-                  </div>
-                </label>
-
-                <label className="auth-field">
-                  <span>Phone number</span>
-                  <div className="auth-input">
-                    <Globe size={17} aria-hidden="true" />
-                    <input
-                      type="tel"
-                      value={formRef.current.phone}
-                      onChange={set("phone")}
-                      autoComplete="tel"
-                      disabled={busy}
-                      placeholder="+91 9XXXXXXXXX"
-                    />
-                  </div>
-                </label>
-              </>
-            )}
-
-            <label className="auth-field">
-              <span>Email address</span>
-              <div className="auth-input">
-                <Mail size={17} aria-hidden="true" />
-                <input
-                  type="email"
-                  value={formRef.current.email}
-                  onChange={set("email")}
-                  autoComplete={mode === "login" ? "email" : "username"}
-                  required
-                  disabled={busy}
-                  placeholder="you@example.com"
-                />
+              <div className="auth-card__brand">
+                <img className="auth-card__logo" src="/Logo/AssamVista-Logo.png" alt="AssamVista" />
+                <div className="auth-card__text">
+                  <span className="auth-card__name">Assam<span className="auth-card__accent">Vista</span></span>
+                  <span className="auth-card__tagline">Your Gateway to Assam</span>
+                </div>
               </div>
-            </label>
 
-            <label className="auth-field">
-              <span>Password</span>
-              <div className="auth-input">
-                <Lock size={17} aria-hidden="true" />
-                <input
-                  type={showPw ? "text" : "password"}
-                  value={formRef.current.password}
-                  onChange={set("password")}
-                  autoComplete={mode === "login" ? "current-password" : "new-password"}
-                  required
-                  minLength={mode === "signup" ? 8 : undefined}
-                  disabled={busy}
-                  placeholder={mode === "signup" ? "At least 8 characters" : "Your password"}
-                />
+              <div className="auth-card__tabs" role="tablist" aria-label="Authentication mode">
                 <button
                   type="button"
-                  className="auth-input__toggle"
-                  onClick={() => setShowPw((v) => !v)}
-                  aria-label={showPw ? "Hide password" : "Show password"}
-                  disabled={busy}
+                  role="tab"
+                  aria-selected={mode === "login"}
+                  className={mode === "login" ? "is-active" : ""}
+                  onClick={() => { setMode("login"); setError(""); }}
                 >
-                  {showPw ? <EyeOff size={17} /> : <Eye size={17} />}
+                  <LogIn size={15} aria-hidden="true" /> <span>Log in</span>
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={mode === "signup"}
+                  className={mode === "signup" ? "is-active" : ""}
+                  onClick={() => { setMode("signup"); setError(""); }}
+                >
+                  <UserPlus size={15} aria-hidden="true" /> <span>Sign up</span>
                 </button>
               </div>
-            </label>
 
-            {mode === "signup" && (
-              <label className="auth-field">
-                <span>Confirm password</span>
-                <div className="auth-input">
-                  <Lock size={17} aria-hidden="true" />
-                  <input
-                    type={showPw2 ? "text" : "password"}
-                    value={formRef.current.confirmPassword}
-                    onChange={set("confirmPassword")}
-                    autoComplete="new-password"
-                    required
-                    disabled={busy}
-                    placeholder="Re-enter password"
-                  />
-                  <button
-                    type="button"
-                    className="auth-input__toggle"
-                    onClick={() => setShowPw2((v) => !v)}
-                    aria-label={showPw2 ? "Hide confirm password" : "Show confirm password"}
-                    disabled={busy}
-                  >
-                    {showPw2 ? <EyeOff size={17} /> : <Eye size={17} />}
-                  </button>
-                </div>
-              </label>
-            )}
+              <p className="auth-card__kicker">{heading}</p>
+              <p className="auth-card__sub">{sub}</p>
 
-            {mode === "login" && (
-              <label className="auth-check">
-                <input
-                  type="checkbox"
-                  checked={formRef.current.remember}
-                  onChange={set("remember")}
-                  disabled={busy}
-                />
-                <span>Remember me</span>
-              </label>
-            )}
+              <form className="auth-form" onSubmit={submit} noValidate>
+                {mode === "signup" && (
+                  <>
+                    <label className="auth-field">
+                      <span>Full name</span>
+                      <div className="auth-input">
+                        <User size={17} aria-hidden="true" />
+                        <input
+                          value={formRef.current.name}
+                          onChange={set("name")}
+                          autoComplete="name"
+                          required
+                          minLength={2}
+                          maxLength={80}
+                          disabled={busy}
+                          placeholder="Your full name"
+                        />
+                      </div>
+                    </label>
 
-            {mode === "login" && (
-              <div className="auth-forgot">
-                Forgot password?{" "}
-                <button type="button" className="auth-link" onClick={handleForgot}>Reset password</button>
-              </div>
-            )}
+                    <label className="auth-field">
+                      <span>Phone number</span>
+                      <div className="auth-input">
+                        <span className="auth-input-icon">+91</span>
+                        <input
+                          type="tel"
+                          value={formRef.current.phone}
+                          onChange={set("phone")}
+                          autoComplete="tel"
+                          disabled={busy}
+                          placeholder="9XXXXXXXXX"
+                        />
+                      </div>
+                    </label>
+                  </>
+                )}
 
-            {mode === "signup" && (
-              <label className="auth-check terms">
-                <input
-                  type="checkbox"
-                  checked={formRef.current.acceptTerms}
-                  onChange={set("acceptTerms")}
-                  required
-                  disabled={busy}
-                />
-                <span>I agree to the <a href="#/terms" className="auth-link">Terms of Service</a> and <a href="#/privacy" className="auth-link">Privacy Policy</a>.</span>
-              </label>
-            )}
+                <label className="auth-field">
+                  <span>Email address</span>
+                  <div className="auth-input">
+                    <Mail size={17} aria-hidden="true" />
+                    <input
+                      type="email"
+                      value={formRef.current.email}
+                      onChange={set("email")}
+                      autoComplete={mode === "login" ? "email" : "username"}
+                      required
+                      disabled={busy}
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                </label>
 
-            {error && <p className="auth-form__error" role="alert">{error}</p>}
+                <label className="auth-field">
+                  <span>Password</span>
+                  <div className="auth-input">
+                    <Lock size={17} aria-hidden="true" />
+                    <input
+                      type={showPw ? "text" : "password"}
+                      value={formRef.current.password}
+                      onChange={set("password")}
+                      autoComplete={mode === "login" ? "current-password" : "new-password"}
+                      required
+                      minLength={mode === "signup" ? 8 : undefined}
+                      disabled={busy}
+                      placeholder={mode === "signup" ? "At least 8 characters" : "Your password"}
+                    />
+                    <button
+                      type="button"
+                      className="auth-input__toggle"
+                      onClick={() => setShowPw((v) => !v)}
+                      aria-label={showPw ? "Hide password" : "Show password"}
+                      disabled={busy}
+                    >
+                      {showPw ? <EyeOff size={17} /> : <Eye size={17} />}
+                    </button>
+                  </div>
+                </label>
 
-            <button type="submit" className="auth-form__submit" disabled={busy}>
-              {busy ? "Please wait…" : primaryBtn}
-            </button>
+                {mode === "signup" && (
+                  <label className="auth-field">
+                    <span>Confirm password</span>
+                    <div className="auth-input">
+                      <Lock size={17} aria-hidden="true" />
+                      <input
+                        type={showPw2 ? "text" : "password"}
+                        value={formRef.current.confirmPassword}
+                        onChange={set("confirmPassword")}
+                        autoComplete="new-password"
+                        required
+                        disabled={busy}
+                        placeholder="Re-enter password"
+                      />
+                      <button
+                        type="button"
+                        className="auth-input__toggle"
+                        onClick={() => setShowPw2((v) => !v)}
+                        aria-label={showPw2 ? "Hide confirm password" : "Show confirm password"}
+                        disabled={busy}
+                      >
+                        {showPw2 ? <EyeOff size={17} /> : <Eye size={17} />}
+                      </button>
+                    </div>
+                  </label>
+                )}
 
-            <p className="auth-card__switch">
-              {switchLabel} <button type="button" className="auth-switch-btn" onClick={() => setMode(mode === "login" ? "signup" : "login")}>{switchAction}</button>
-            </p>
+                {mode === "login" && (
+                  <label className="auth-check">
+                    <input
+                      type="checkbox"
+                      checked={formRef.current.remember}
+                      onChange={set("remember")}
+                      disabled={busy}
+                    />
+                    <span>Remember me</span>
+                  </label>
+                )}
 
-            <p className="auth-card__note">
-              Passwords are hashed server-side. Sessions use HttpOnly cookies with CSRF protection.
-            </p>
+                {mode === "login" && (
+                  <div className="auth-forgot">
+                    Forgot password?{" "}
+                    <button type="button" className="auth-link" onClick={handleForgot}>Reset password</button>
+                  </div>
+                )}
 
-            {googleConfigured && (
-              <>
-                <div className="auth-or"><span>OR</span></div>
-                <button type="button" className="auth-form__google" onClick={() => {}} disabled={!googleConfigured}>
-                  Continue with Google
+                {mode === "signup" && (
+                  <label className="auth-check terms">
+                    <input
+                      type="checkbox"
+                      checked={formRef.current.acceptTerms}
+                      onChange={set("acceptTerms")}
+                      required
+                      disabled={busy}
+                    />
+                    <span>I agree to the <a href="#/terms" className="auth-link">Terms of Service</a> and <a href="#/privacy" className="auth-link">Privacy Policy</a>.</span>
+                  </label>
+                )}
+
+                {error && <p className="auth-form__error" role="alert">{error}</p>}
+
+                <button type="submit" className="auth-form__submit" disabled={busy}>
+                  {busy ? "Please wait…" : primaryBtn}
                 </button>
-              </>
-            )}
-          </form>
+
+                <p className="auth-card__switch">
+                  {switchLabel} <button type="button" className="auth-switch-btn" onClick={() => setMode(mode === "login" ? "signup" : "login")}>{switchAction}</button>
+                </p>
+
+                <p className="auth-card__note">
+                  Passwords are hashed server-side. Sessions use HttpOnly cookies with CSRF protection.
+                </p>
+
+                {googleConfigured && (
+                  <>
+                    <div className="auth-or"><span>OR</span></div>
+                    <button type="button" className="auth-form__google" onClick={() => {}} disabled={!googleConfigured}>
+                      Continue with Google
+                    </button>
+                  </>
+                )}
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
     </section>
   );
 }
