@@ -243,7 +243,7 @@ export default function AssamVistaIntro({ onFinish }) {
             ref={logoRef}
             alt="AssamVista emblem"
             decoding="async"
-            src="/Logo/AssamVista-Logo.png"
+            src="/Logo/AssamVista-Logo-intro.png"
           />
         </div>
         <h1 className="wordmark" aria-label="AssamVista">

@@ -94,7 +94,7 @@ describe("cultureSections: static data and ordering", () => {
       assert.deepEqual(Object.keys(a), ["name", "place", "about", "image"]);
     }
     assert.deepEqual(cs.ADVENTURE.map((a) => a.image), [
-      "https://commons.wikimedia.org/wiki/Special:FilePath/Brahmaputra%20river%20rafting.jpg?width=900",
+      "https://commons.wikimedia.org/wiki/Special:FilePath/Brahmaputra%20River%20Guwahati%20Assam.jpg?width=900",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Langkovku%20waterfall%20in%20Manjha%2C%20Karbi%20Anglong.jpg?width=900",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Plucking%20tea%20in%20a%20tea%20garden%20of%20Assam.jpg?width=900",
       "https://commons.wikimedia.org/wiki/Special:FilePath/Kaziranga%20National%20Park%2C%20Assam%2C%20India.jpg?width=900",

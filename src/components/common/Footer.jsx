@@ -27,8 +27,8 @@ export default function Footer() {
     <footer className="footer" aria-label="Footer">
       <div className="footer__top">
         <div>
-          <p className="footer__logo">{pick(BRAND.name, lang)}</p>
-          <p className="label footer__tag">{pick(BRAND.tagline, lang)}</p>
+          <p className="footer__logo">{pick(BRAND.name)}</p>
+          <p className="label footer__tag">{pick(BRAND.tagline)}</p>
           <p className="footer__note">{t("footer_independent_note")}</p>
         </div>
         <div className="footer__cols">
@@ -45,7 +45,7 @@ export default function Footer() {
             <ul>
               {favourites.length === 0 && <li><span style={{ opacity: 0.55 }}>—</span></li>}
               {favourites.slice(0, 5).map((s) => (
-                <li key={s}><a href={`#/district/${s}`} style={{ textTransform: "capitalize" }}>{pick(s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()), lang)}</a></li>
+                <li key={s}><a href={`#/district/${s}`} style={{ textTransform: "capitalize" }}>{pick(s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()))}</a></li>
               ))}
             </ul>
           </div>
@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer__bottom">
-        <span>{pick(BRAND.established, lang)}</span>
+        <span>{pick(BRAND.established)}</span>
         <span><a href="#/privacy" onClick={(e) => go(e, "#/privacy")}>Privacy Policy</a> · <a href="#/terms" onClick={(e) => go(e, "#/terms")}>Terms of Service</a></span>
         <span><a href="#/credits" onClick={(e) => go(e, "#/credits")}>{t("foot_credits")}</a></span>
       </div>

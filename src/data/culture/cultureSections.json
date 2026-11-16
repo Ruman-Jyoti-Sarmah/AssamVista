@@ -303,7 +303,7 @@
         "en": "River-running and kayaking across Asia's great river, with picnic beaches on its sandbars (chars).",
         "as": "এছিয়াৰ মহানদীত নদী-ভাগ আৰু কায়াকিং, বালিছল (চৰ)ত পিকনিক ছন্দীৰ সৈতে।"
       },
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brahmaputra%20river%20rafting.jpg?width=900"
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Brahmaputra%20River%20Guwahati%20Assam.jpg?width=900"
     },
     {
       "name": {
@@ -443,37 +443,7 @@
     "sub": {
       "en": "Six centuries of Ahoms, the sattras of Majuli, muga silk and the one-horned rhino — the culture of Assam, told through its people, places and festivals.",
       "as": "ছয় শতিকাৰ আহোম, মাজুলীৰ সাত্ৰ, মুগা ৰেশম আৰু একালো গঁড়ৰাগী — অসমৰ সংস্কৃতি, ইয়াৰ মানুহ, ঠাই আৰু উৎসৱৰ মাজেদি।"
-    },
-    "stats": [
-      {
-        "value": "35",
-        "label": {
-          "en": "Districts",
-          "as": "জিলা"
-        }
-      },
-      {
-        "value": "600",
-        "label": {
-          "en": "Years of Ahoms",
-          "as": "বৰ্ষৰ আহোম"
-        }
-      },
-      {
-        "value": "3",
-        "label": {
-          "en": "Bihus a year",
-          "as": "বিহু প্ৰতি বৰ্ষ"
-        }
-      },
-      {
-        "value": "11",
-        "label": {
-          "en": "State symbols",
-          "as": "ৰাজ্যিক প্ৰতীক"
-        }
-      }
-    ]
+    }
   },
   "HERO_SLIDES": [
     {
@@ -482,8 +452,6 @@
         "en": "Wildlife",
         "as": "বন্যপ্ৰাণী"
       },
-      "video": "/video/hero-1.mp4",
-      "hdVideo": "/video/hero-hd-wildlife.mp4",
       "poster": "/images/culture/rhino.jpg",
       "credit": {
         "author": "L. Shyamal",
@@ -497,17 +465,11 @@
       },
       "headline": [
         {
-          "en": "Where the one-horned",
-          "as": "য'ত একালো"
-        },
-        {
-          "en": "rhino still roams.",
-          "as": "গঁড়ৰাগী বাটুৱালিয়ে।"
+          "en": "Discover the Wild Soul of Assam"
         }
       ],
       "sub": {
-        "en": "Tall elephant grass, the mighty Brahmaputra and the great Indian rhino — the wild heart of Assam, protected since 1905.",
-        "as": "ডাঙৰ হাতী-ঘাহ, মাহাৰথী ব্ৰহ্মপুত্ৰ আৰু মহান ভাৰতীয় গঁড়ৰাগী — ১৯০৫ সালৰ পৰা সুৰক্ষিত অসমৰ বন্যপ্ৰকৃতিৰ হৃদয়।"
+        "en": "From the majestic one-horned rhinoceros to vibrant birdlife, explore the extraordinary wildlife that makes Assam a sanctuary of nature."
       },
       "cta": {
         "label": {
@@ -536,18 +498,11 @@
       },
       "headline": [
         {
-          "en": "A river that is",
-          "as": "এডাল নদী"
-        },
-        {
-          "em": true,
-          "en": "a way of life.",
-          "as": "যাৰ জীৱন ধৰণ।"
+          "en": "Where Nature Paints Its Masterpiece"
         }
       ],
       "sub": {
-        "en": "From the misty tea gardens of Jorhat to the river islands of Majuli — Assam's living landscape shaped by water and monsoon.",
-        "as": "যোৰহাটৰ ডোখৰৰ চাহ বাগানৰ পৰা মাজুলীৰ নদীয় দ্বীপলৈ — পানী আৰু বৰষূণে গঢ় লোৱা অসমৰ জীয়ন্ত ভূ-দৃশ্য।"
+        "en": "Journey through endless tea gardens, misty hills, mighty rivers and breathtaking landscapes that capture the untouched beauty of Assam."
       },
       "cta": {
         "label": {
@@ -576,18 +531,11 @@
       },
       "headline": [
         {
-          "en": "Six centuries of",
-          "as": "ছয় শতিকাৰ"
-        },
-        {
-          "em": true,
-          "en": "Ahom legacy.",
-          "as": "আহোম পৰম্পৰা।"
+          "en": "A Legacy Woven Through Time"
         }
       ],
       "sub": {
-        "en": "Brick temples of the Ahom kings, the monastic sattras of Sankardeva and golden muga silk — a culture carried by its people.",
-        "as": "আহোম ৰাজাসকলৰ ইটা মন্দিৰ, শংকৰদেৱৰ সাত্ৰ আৰু সোণীয় মুগা ৰেশম — ইয়াৰ মানুহে বহন কৰা সংস্কৃতি।"
+        "en": "Explore the timeless traditions, ancient kingdoms, vibrant communities and cultural treasures that tell the unforgettable story of Assam."
       },
       "cta": {
         "label": {
