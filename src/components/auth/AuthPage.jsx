@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   Eye,
   EyeOff,
@@ -24,7 +24,7 @@ export default function AuthPage() {
   const [showPw, setShowPw] = useState(false);
   const [showPw2, setShowPw2] = useState(false);
 
-  const formRef = useRef({
+  const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
@@ -36,7 +36,7 @@ export default function AuthPage() {
 
   const set = (k) => (e) => {
     const value = e?.target?.type === "checkbox" ? e.target.checked : e.target.value;
-    formRef.current[k] = value;
+    setForm((f) => ({ ...f, [k]: value }));
     setError("");
   };
 
@@ -57,7 +57,7 @@ export default function AuthPage() {
   }, []);
 
   const validate = () => {
-    const f = formRef.current;
+    const f = form;
     if (mode === "login") {
       if (!f.email.trim()) return "Please enter your email address.";
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim())) return "Please enter a valid email address.";
@@ -84,9 +84,9 @@ export default function AuthPage() {
     setBusy(true);
     try {
       if (mode === "login") {
-        await login({ email: formRef.current.email.trim(), password: formRef.current.password });
+        await login({ email: form.email.trim(), password: form.password });
       } else {
-        await register({ name: formRef.current.name.trim(), email: formRef.current.email.trim(), password: formRef.current.password });
+        await register({ name: form.name.trim(), email: form.email.trim(), password: form.password });
       }
     } catch (err) {
       setError(err?.message || "Authentication failed. Please try again.");
@@ -163,6 +163,7 @@ export default function AuthPage() {
                       <div className="auth-feature-card__text">
                         <div className="auth-feature-card__title">{c.title}</div>
                         <div className="auth-feature-card__subtitle">{c.subtitle}</div>
+                        <p className="auth-feature-card__desc">{c.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -214,7 +215,7 @@ export default function AuthPage() {
                       <div className="auth-input">
                         <User size={17} aria-hidden="true" />
                         <input
-                          value={formRef.current.name}
+                          value={form.name}
                           onChange={set("name")}
                           autoComplete="name"
                           required
@@ -232,7 +233,7 @@ export default function AuthPage() {
                         <Globe size={17} aria-hidden="true" />
                         <input
                           type="tel"
-                          value={formRef.current.phone}
+                          value={form.phone}
                           onChange={set("phone")}
                           autoComplete="tel"
                           disabled={busy}
@@ -249,7 +250,7 @@ export default function AuthPage() {
                     <Mail size={17} aria-hidden="true" />
                     <input
                       type="email"
-                      value={formRef.current.email}
+                      value={form.email}
                       onChange={set("email")}
                       autoComplete={mode === "login" ? "email" : "username"}
                       required
@@ -265,7 +266,7 @@ export default function AuthPage() {
                     <Lock size={17} aria-hidden="true" />
                     <input
                       type={showPw ? "text" : "password"}
-                      value={formRef.current.password}
+                      value={form.password}
                       onChange={set("password")}
                       autoComplete={mode === "login" ? "current-password" : "new-password"}
                       required
@@ -292,7 +293,7 @@ export default function AuthPage() {
                       <Lock size={17} aria-hidden="true" />
                       <input
                         type={showPw2 ? "text" : "password"}
-                        value={formRef.current.confirmPassword}
+                        value={form.confirmPassword}
                         onChange={set("confirmPassword")}
                         autoComplete="new-password"
                         required
@@ -316,7 +317,7 @@ export default function AuthPage() {
                   <label className="auth-check">
                     <input
                       type="checkbox"
-                      checked={formRef.current.remember}
+                      checked={form.remember}
                       onChange={set("remember")}
                       disabled={busy}
                     />
@@ -335,7 +336,7 @@ export default function AuthPage() {
                   <label className="auth-check terms">
                     <input
                       type="checkbox"
-                      checked={formRef.current.acceptTerms}
+                      checked={form.acceptTerms}
                       onChange={set("acceptTerms")}
                       required
                       disabled={busy}

@@ -5,14 +5,13 @@ import "../../styles/intro.css";
 const BRAND_NAME = "AssamVista";
 const COLORS = ["#1e6fe0", "#0b3d91", "#e0212c", "#4f9d1e", "#e8b13a", "#38b6ff"];
 const PARTICLE_LIMIT = 180;
-const ANIMATION_MS = 7600;
-const SAFETY_MS = 10000;
+const ANIMATION_MS = 3300;
+const SAFETY_MS = 4500;
 
-export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
+export default function AssamVistaIntro({ onFinish }) {
   const introRef = useRef(null);
   const canvasRef = useRef(null);
   const logoRef = useRef(null);
-  const replayRef = useRef(null);
 
   const rafRef = useRef(0);
   const finishTimerRef = useRef(null);
@@ -124,7 +123,7 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
     const { width, height } = sizeRef.current;
     ctx.clearRect(0, 0, width, height);
 
-    if (elapsed > 2.35 && !burstCreatedRef.current) {
+    if (elapsed > 1.05 && !burstCreatedRef.current) {
       burstCreatedRef.current = true;
       createBurst();
     }
@@ -139,7 +138,7 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
     ctx.globalAlpha = 1;
     ctx.shadowBlur = 0;
 
-    if (elapsed < 7.2 || particles.length > 0) {
+    if (elapsed < 3.2 || particles.length > 0) {
       rafRef.current = requestAnimationFrame(renderParticles);
     } else {
       ctx.clearRect(0, 0, width, height);
@@ -177,14 +176,8 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
     finishTimerRef.current = setTimeout(finish, ANIMATION_MS);
   }
 
-  function handleReplay(event) {
-    event?.preventDefault?.();
-    startIntro();
-  }
-
   useEffect(() => {
     const intro = introRef.current;
-    const replayButton = replayRef.current;
     const logo = logoRef.current;
 
     const handleVisibilityChange = () => {
@@ -209,10 +202,12 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
     };
     logo?.addEventListener("error", handleLogoError, { once: true });
 
-    replayButton?.addEventListener("click", handleReplay);
     window.addEventListener("resize", handleResize, { passive: true });
     window.addEventListener("orientationchange", handleOrientationChange, { passive: true });
     document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     startIntro();
 
@@ -222,8 +217,8 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
       cancelAnimationFrame(rafRef.current);
       clearTimeout(finishTimerRef.current);
       clearTimeout(safetyTimerRef.current);
+      document.body.style.overflow = previousOverflow;
       logo?.removeEventListener("error", handleLogoError);
-      replayButton?.removeEventListener("click", handleReplay);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", handleOrientationChange);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
@@ -231,9 +226,9 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
   }, []);
 
   return (
-    <main
+    <div
       ref={introRef}
-      className="intro"
+      className="av-intro"
       role="region"
       aria-label="AssamVista introduction"
     >
@@ -268,11 +263,6 @@ export default function AssamVistaIntro({ onFinish, replayEnabled = true }) {
       </section>
 
       <div className="bottom-band" aria-hidden="true" />
-      {replayEnabled && (
-        <button ref={replayRef} className="replay-button" type="button">
-          Replay intro
-        </button>
-      )}
-    </main>
+    </div>
   );
 }

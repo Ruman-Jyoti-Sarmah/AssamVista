@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { getDistrict } from "@/data/travel/districtDetails";
 import { AppProvider, useApp } from "@/store/AppContext";
 import { TripProvider } from "@/store/TripContext";
@@ -28,11 +28,55 @@ const RIVER_TITLE_KEYS = {
   longai: "title_rivers_longai",
 };
 
+function scrollToTopInstant() {
+  // `scroll-behavior: smooth` is set globally, so the plain `scrollTo(0, 0)`
+  // form can be swallowed by a running smooth scroll animation. The object
+  // form with an explicit `instant` behaviour always applies immediately.
+  try {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (window.scrollY === 0) return;
+  } catch {
+    // Older engines may not understand the `instant` keyword.
+  }
+
+  const root = document.documentElement;
+  const previous = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  window.scrollTo(0, 0);
+  root.style.scrollBehavior = previous;
+}
+
+/**
+ * Scrolls a freshly opened route to the very top.
+ *
+ * A hash route change re-renders the whole page: the old (tall) page is
+ * replaced by the lazily loaded one, so the document briefly collapses and
+ * grows again while the browser keeps its previous scroll offset. Repeating
+ * the instant jump over the next few frames guarantees the new page really
+ * starts at the top instead of showing its footer.
+ */
+function scrollToTopForRoute() {
+  scrollToTopInstant();
+  requestAnimationFrame(scrollToTopInstant);
+  setTimeout(scrollToTopInstant, 90);
+}
+
 function useCurrentHash() {
   const [hash, setHash] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const handleHashChange = () => setHash(window.location.hash);
+    const handleHashChange = () => {
+      const next = window.location.hash;
+      // The link that triggered the navigation should not stay focused: the
+      // browser would scroll it back into view. Only that link is blurred, so
+      // focus stays untouched in every other case.
+      const active = document.activeElement;
+      if (active && active.getAttribute?.("href") === next) active.blur();
+      // Open every route page at the very top, even when the previous page
+      // was scrolled all the way down to the footer.
+      if (!next || next.startsWith("#/")) scrollToTopForRoute();
+      setHash(next);
+    };
     window.addEventListener("hashchange", handleHashChange);
 
     return () => window.removeEventListener("hashchange", handleHashChange);
@@ -74,7 +118,7 @@ function scrollAfterRouteChange(hash, routeName) {
   }
 
   if (routeName !== "unknown" || hash === "#top" || !hash) {
-    window.scrollTo(0, 0);
+    scrollToTopInstant();
   }
 }
 
@@ -82,12 +126,35 @@ function useRouteEffects({ hash, route, districtSlug, riverTitleKey, t, lang, pi
   useEffect(() => {
     document.title = getPageTitle({ route, districtSlug, riverTitleKey, t, pick });
 
-    const timeoutId = setTimeout(() => {
-      scrollAfterRouteChange(hash, route.name);
-    }, 60);
+    const isRouteHash = !hash || hash.startsWith("#/");
 
+    if (isRouteHash) {
+      // Route pages always open at the very top, never at the footer.
+      scrollToTopForRoute();
+      return undefined;
+    }
+
+    scrollAfterRouteChange(hash, route.name);
+    const timeoutId = setTimeout(() => scrollAfterRouteChange(hash, route.name), 80);
     return () => clearTimeout(timeoutId);
   }, [hash, route.name, route.titleKey, districtSlug, riverTitleKey, t, lang, pick]);
+}
+
+/**
+ * Rendered inside <Suspense>, so it mounts together with the lazily loaded
+ * page. That guarantees the new page is scrolled to the top even when its
+ * chunk finished loading after the hash change.
+ */
+function RouteScrollTop({ hash }) {
+  useEffect(() => {
+    if (hash && !hash.startsWith("#/")) return undefined;
+    // The lazily loaded page mounts here, so this is the moment the document
+    // grows back to its real height — scroll to the top again for that layout.
+    scrollToTopForRoute();
+    return undefined;
+  }, [hash]);
+
+  return null;
 }
 
 function useScrollProgress() {
@@ -141,11 +208,13 @@ function Shell() {
       <CultureHeader section={section} isCultureHome={route.name === "culture-home"} />
       <Suspense
         fallback={
-          <div className="route-loading" role="status" aria-label="Loading page">
-            …
+          <div className="route-loading" role="status" aria-live="polite">
+            <span className="route-loading__spinner" aria-hidden="true" />
+            <span className="route-loading__label">Loading page…</span>
           </div>
         }
       >
+        <RouteScrollTop hash={hash} />
         <Page {...pageProps} key={revealKey} />
       </Suspense>
       {route.name !== "login" && route.name !== "signup" && (
@@ -161,8 +230,15 @@ export default function App() {
      reload. Because the app uses hash-based routing inside a single
      page, this state persists while the user navigates between internal
      routes, so the intro never replays on navigation. It only plays
-     again after a full refresh, which resets component state. */
+     again after a full refresh, which resets component state.
+     The page shell is rendered behind the intro overlay while the intro
+     plays, so route code, fonts and images are ready by the time it ends. */
   const [showIntro, setShowIntro] = useState(true);
+  const shellRef = useRef(null);
+
+  useEffect(() => {
+    if (shellRef.current) shellRef.current.inert = showIntro;
+  }, [showIntro]);
 
   return (
     <AppProvider>
@@ -170,10 +246,11 @@ export default function App() {
         <AuthFlowProvider>
           <TripProvider>
             <CartProvider>
-              {showIntro ? (
-                <AssamVistaIntro onFinish={() => setShowIntro(false)} />
-              ) : (
+              <div ref={shellRef} className="app-shell">
                 <Shell />
+              </div>
+              {showIntro && (
+                <AssamVistaIntro onFinish={() => setShowIntro(false)} />
               )}
             </CartProvider>
           </TripProvider>
