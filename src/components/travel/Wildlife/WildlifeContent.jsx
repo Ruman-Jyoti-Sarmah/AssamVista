@@ -1,5 +1,4 @@
 import { useApp } from "@/store/AppContext";
-import { HERO } from "@/data/site/hero";
 
 const W = (file, width = 800) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${width}`;
@@ -38,7 +37,7 @@ export function WildlifePage() {
     <section className="wildlife" id="top">
       <div className="wildlife__hero">
         <div className="wildlife__bg">
-          <img src={HERO.image} alt="" />
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Indian%20rhinoceros%20in%20Kaziranga%20National%20Park%20March%202025%20by%20Tisha%20Mukherjee%2006.jpg?width=1600" alt="One-horned rhinoceros in Kaziranga" />
         </div>
         <div className="wildlife__veil"></div>
         <div className="wildlife__content">

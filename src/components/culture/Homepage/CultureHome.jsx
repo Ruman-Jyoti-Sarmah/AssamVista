@@ -8,8 +8,6 @@ import {
   Play,
   Users,
   Compass,
-  Volume2,
-  VolumeX,
 } from "lucide-react";
 import { useApp } from "@/store/AppContext";
 import { CULTURE_HERO, HERO_SLIDES, SPIRITUAL } from "@/data/culture/cultureSections";
@@ -125,7 +123,6 @@ function HowToPlan() {
 function HeroCarousel() {
   const { t, pick } = useApp();
   const [i, setI] = useState(0);
-  const [muted, setMuted] = useState(true);
   const [paused, setPaused] = useState(false);
   const videoRefs = useRef([]);
   const n = HERO_SLIDES.length;
@@ -141,18 +138,19 @@ function HeroCarousel() {
     return () => clearInterval(id);
   }, [paused, n]);
 
-  // Play/pause the videos to match the active slide + mute state.
+  // Play/pause the videos to match the active slide. Videos stay muted so
+  // browsers allow autoplay.
   useEffect(() => {
     videoRefs.current.forEach((v, idx) => {
       if (!v) return;
       if (idx === i) {
-        v.muted = muted;
+        v.muted = true;
         v.play().catch(() => {});
       } else {
         v.pause();
       }
     });
-  }, [i, muted]);
+  }, [i]);
 
   const slide = HERO_SLIDES[i];
 
@@ -265,37 +263,6 @@ function HeroCarousel() {
             </button>
           ))}
         </nav>
-        <div className="chub__hero-nav">
-          <button
-            type="button"
-            className="chub__hero-arrow"
-            onClick={() => go(i - 1)}
-            aria-label={t("hero_prev")}
-          >
-            <ChevronLeft size={18} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="chub__hero-arrow"
-            onClick={() => go(i + 1)}
-            aria-label={t("hero_next")}
-          >
-            <ChevronRight size={18} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="chub__hero-arrow"
-            onClick={() => setMuted((m) => !m)}
-            aria-label={muted ? t("hero_unmute") : t("hero_mute")}
-            aria-pressed={!muted}
-          >
-            {muted ? (
-              <VolumeX size={18} aria-hidden="true" />
-            ) : (
-              <Volume2 size={18} aria-hidden="true" />
-            )}
-          </button>
-        </div>
       </div>
     </section>
   );
