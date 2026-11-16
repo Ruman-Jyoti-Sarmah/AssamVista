@@ -145,7 +145,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Dibrugarh, Tinsukia, Lakhimpur and Upper Assam",
     craft: "Handloom cotton and eri textiles, bamboo craft",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/75/Sonowal_Kachari_Leseri_Bisu_troupe.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/75/Sonowal_Kachari_Leseri_Bisu_troupe.jpg",
     fallbackImage: "/images/culture/sualkuchi-handloom.jpg",
     summary:
       "Sonowal Kachari communities carry forward Upper Assam's agricultural, handloom and festival traditions.",
@@ -488,7 +488,7 @@ const PROFILES = [
     category: "bodoKachari",
     region: "Tinsukia, Dibrugarh, Sivasagar and Upper Assam",
     craft: "Handloom weaving and agriculture",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/42/Moran_Bihu_Dance.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/42/Moran_Bihu_Dance.jpg",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "The Moran are an Upper Assam community known for Rati Bihu, a night-time Bihu tradition with songs and dance.",
@@ -689,7 +689,7 @@ const PROFILES = [
     category: "adivasi",
     region: "Tea gardens and Adivasi settlements across Assam",
     craft: "Agriculture, weaving and household craft",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Firkal_slowly_decaying_martial_dance_of_ChotaNagpur_of_Jharkhand_performed_at_Central_Park_Delhi_IMG_0934_02.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/20/Firkal_slowly_decaying_martial_dance_of_ChotaNagpur_of_Jharkhand_performed_at_Central_Park_Delhi_IMG_0934_02.jpg",
     fallbackImage: "/images/culture/bihu-dance.jpg",
     summary:
       "Bhumij communities share Karam and Sohrai dance traditions with neighbouring Adivasi groups, while specific details need further documentation.",

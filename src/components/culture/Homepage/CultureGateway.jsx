@@ -46,7 +46,7 @@ export default function CultureGateway() {
         <article className="chub__gateway-card chub__gateway-card--shop">
           <div className="chub__gateway-media">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/9/90/Assamese_Jaapi.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/90/Assamese_Jaapi.jpg"
               alt=""
               loading="lazy"
               decoding="async"

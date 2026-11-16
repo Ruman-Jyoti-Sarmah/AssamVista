@@ -124,7 +124,6 @@ function HeroCarousel() {
   const { t, pick } = useApp();
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
-  const videoRefs = useRef([]);
   const n = HERO_SLIDES.length;
 
   const go = useCallback((next) => setI((cur) => (next + n) % n), [n]);
@@ -138,20 +137,9 @@ function HeroCarousel() {
     return () => clearInterval(id);
   }, [paused, n]);
 
-  // Play/pause the videos to match the active slide. Videos stay muted so
-  // browsers allow autoplay.
-  useEffect(() => {
-    videoRefs.current.forEach((v, idx) => {
-      if (!v) return;
-      if (idx === i) {
-        v.muted = true;
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
-    });
-  }, [i]);
-
+  // Every slide is a still poster image. The old video slides pointed at
+  // /video/hero-*.mp4 files that no longer exist, so the wildlife slide
+  // rendered an empty <video> and its rhino poster never showed.
   const slide = HERO_SLIDES[i];
 
   return (
@@ -162,33 +150,17 @@ function HeroCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="chub__hero-media">
-        {HERO_SLIDES.map((s, idx) =>
-          s.video ? (
-            <video
-              key={s.id}
-              ref={(el) => (videoRefs.current[idx] = el)}
-              className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
-              autoPlay={idx === 0}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster={s.poster}
-              aria-hidden="true"
-              tabIndex={-1}
-            >
-              <source src={s.video} type="video/mp4" />
-            </video>
-          ) : (
-            <img
-              key={s.id}
-              className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
-              src={s.poster}
-              alt=""
-              aria-hidden="true"
-            />
-          )
-        )}
+        {HERO_SLIDES.map((s, idx) => (
+          <img
+            key={s.id}
+            className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
+            src={s.poster}
+            alt=""
+            aria-hidden="true"
+            loading={idx === 0 ? "eager" : "lazy"}
+            decoding="async"
+          />
+        ))}
         <div className="chub__hero-veil" aria-hidden="true" />
       </div>
       {/* Side rail actions — like Incredible India */}
