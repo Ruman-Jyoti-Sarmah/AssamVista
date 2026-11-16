@@ -210,14 +210,6 @@ function HeroCarousel() {
             </a>
           </div>
         </div>
-        <dl className="chub__stats">
-          {CULTURE_HERO.stats.map((s) => (
-            <div key={s.label.en} className="chub__stat">
-              <dt>{s.value}</dt>
-              <dd>{pick(s.label)}</dd>
-            </div>
-          ))}
-        </dl>
       </div>
 
       {/* Bottom control bar: category chips + prev/next + mute */}

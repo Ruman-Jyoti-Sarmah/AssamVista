@@ -20,8 +20,8 @@
   --bronze-dim: rgba(179, 40, 45, 0.45);
   --hairline: rgba(27, 22, 17, 0.14);
   --leaf: #1e6b48;
-  --serif: "Cormorant Garamond", "Noto Sans Assamese", Georgia, serif;
-  --sans: "Manrope", "Noto Sans Assamese", "Helvetica Neue", sans-serif;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Manrope", "Helvetica Neue", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --gutter: clamp(1.25rem, 5vw, 6rem);
 }

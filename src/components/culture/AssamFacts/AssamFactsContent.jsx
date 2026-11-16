@@ -27,7 +27,7 @@ export function AssamFactsContent() {
           {assamHighlights.map((h) => (
             <div key={h.icon} className="page__fact">
               <span className="page__fact-icon">{h.icon}</span>
-              <span className="page__fact-text">{pick(h.text, lang)}</span>
+              <span className="page__fact-text">{pick(h.text)}</span>
             </div>
           ))}
         </div>
@@ -37,9 +37,9 @@ export function AssamFactsContent() {
           <div className="page__food-grid">
             {ASSAM_FOOD.map((f) => (
               <div key={f.name} className="page__food-card">
-                <span className="page__food-name">{pick(f.name, lang)}</span>
-                <span className="page__food-kind">{pick(f.sort, lang)}</span>
-                <p className="page__food-about">{pick(f.about, lang)}</p>
+                <span className="page__food-name">{pick(f.name)}</span>
+                <span className="page__food-kind">{pick(f.sort)}</span>
+                <p className="page__food-about">{pick(f.about)}</p>
               </div>
             ))}
           </div>
@@ -50,9 +50,9 @@ export function AssamFactsContent() {
           <div className="page__culture-grid">
             {ASSAM_CULTURE.map((c) => (
               <div key={c.name} className="page__culture-card">
-                <span className="page__culture-name">{pick(c.name, lang)}</span>
-                <span className="page__culture-kind">{pick(c.kind, lang)}</span>
-                <p className="page__culture-about">{pick(c.about, lang)}</p>
+                <span className="page__culture-name">{pick(c.name)}</span>
+                <span className="page__culture-kind">{pick(c.kind)}</span>
+                <p className="page__culture-about">{pick(c.about)}</p>
               </div>
             ))}
           </div>

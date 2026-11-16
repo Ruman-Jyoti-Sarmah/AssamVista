@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   X,
   Search,
-  Globe,
   ChevronDown,
   Landmark,
   MapPin,
@@ -23,12 +22,6 @@ const UTILITY = (t) => [
   { label: t("nav_guide"), href: "#/guide" },
   { label: t("nav_visit"), href: "#/visit" },
   { label: t("foot_credits"), href: "#/credits" },
-];
-
-/* ── Language selector (Incredible India offers many; we ship EN + অসমীয়া) ── */
-const LANGUAGES = [
-  { code: "en", label: "English", native: "English" },
-  { code: "as", label: "Assamese", native: "অসমীয়া" },
 ];
 
 /* ── Mega-menu columns (rich, region-grouped like the real site) ────── */
@@ -148,17 +141,15 @@ const COLUMNS = buildColumns();
  * switcher lives at the right so Culture ⟷ Travel is always one tap away.
  */
 export default function CultureHeader({ section, isCultureHome = false }) {
-  const { t, lang, toggleLang } = useApp();
+  const { t } = useApp();
   const { count: tripCount } = useTrip();
   const { isAuthenticated, user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [hash, setHash] = useState(() => window.location.hash);
   const [openPillar, setOpenPillar] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [langOpen, setLangOpen] = useState(false);
   const [q, setQ] = useState("");
   const closeTimer = useRef(null);
-  const langRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -177,20 +168,12 @@ export default function CultureHeader({ section, isCultureHome = false }) {
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
+
   /** Is a flat Travel link the current route? (#/district/… counts as Districts) */
   const isLinkActive = (href) =>
     hash === href ||
     (href === "#/districts" &&
       (hash.startsWith("#/district/") || hash.startsWith("#/districts?")));
-
-  useEffect(() => {
-    const onClick = (e) => {
-      if (langRef.current && !langRef.current.contains(e.target))
-        setLangOpen(false);
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
 
   const go = (e, href) => {
     e.preventDefault();
@@ -227,7 +210,6 @@ export default function CultureHeader({ section, isCultureHome = false }) {
     PILLARS.experiences,
     PILLARS.travel,
   ].filter(Boolean);
-  const activeLang = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0];
   const utilityLinks = UTILITY(t);
 
   // TRAVEL section: simple flat links (pehle jaisa) instead of the Culture mega-menu.
@@ -249,7 +231,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
             onClick={(e) => go(e, "#/culture")}
           >
             <Landmark size={13} aria-hidden="true" />
-            <span>{pick(BRAND.name, lang)}</span>
+            <span>{pick(BRAND.name)}</span>
           </a>
           <nav className="chead__strip-links" aria-label="Utility">
             {utilityLinks.map((link) => (
@@ -267,13 +249,13 @@ export default function CultureHeader({ section, isCultureHome = false }) {
           className="chead__logo"
           href="#/culture"
           onClick={(e) => go(e, "#/culture")}
-          aria-label={`${pick(BRAND.name, lang)} — ${t("switch_to_culture")}`}
+          aria-label={`${pick(BRAND.name)} — ${t("switch_to_culture")}`}
         >
           <span className="chead__logo-mark" aria-hidden="true">
             <img src="/Logo/AssamVista-Logo.png" alt="" />
           </span>
           <span className="chead__logo-text">
-            <strong>{pick(BRAND.name, lang)}</strong>
+            <strong>{pick(BRAND.name)}</strong>
             <em>{t("switch_to_culture")}</em>
           </span>
         </a>
@@ -325,7 +307,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                       aria-haspopup="true"
                       onClick={() => setOpenPillar(isOpen ? null : p.id)}
                     >
-                      <span>{pick(p.label, lang)}</span>
+                      <span>{pick(p.label)}</span>
                       <ChevronDown
                         size={14}
                         aria-hidden="true"
@@ -340,13 +322,13 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                         onMouseEnter={() => enterPillar(p.id)}
                       >
                         <p className="chead__panel-blurb">
-                          {pick(p.blurb, lang)}
+                          {pick(p.blurb)}
                         </p>
                         <div className="chead__cols">
                           {COLUMNS[p.id].map((col) => (
                             <div key={col.heading.en} className="chead__col">
                               <span className="chead__col-head">
-                                {pick(col.heading, lang)}
+                                {pick(col.heading)}
                               </span>
                               <ul>
                                 {col.links.map((l) => (
@@ -356,7 +338,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                                       onClick={(e) => go(e, l.href)}
                                       role="menuitem"
                                     >
-                                      {pick(l.label, lang)}
+                                      {pick(l.label)}
                                     </a>
                                   </li>
                                 ))}
@@ -405,44 +387,6 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                 <span className="chead__account-label">Log in</span>
               </a>
             )}
-
-            {/* language dropdown */}
-          <div className="chead__lang" ref={langRef}>
-            <button
-              className="chead__lang-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLangOpen((v) => !v);
-              }}
-              aria-haspopup="listbox"
-              aria-expanded={langOpen}
-              aria-label="Select language"
-            >
-              <Globe size={15} aria-hidden="true" />
-              <span>{activeLang.native}</span>
-              <ChevronDown size={13} aria-hidden="true" />
-            </button>
-            {langOpen && (
-              <ul className="chead__lang-menu" role="listbox">
-                {LANGUAGES.map((l) => (
-                  <li key={l.code}>
-                    <button
-                      role="option"
-                      aria-selected={l.code === lang}
-                      className={l.code === lang ? "is-active" : ""}
-                      onClick={() => {
-                        if (l.code !== lang) toggleLang();
-                        setLangOpen(false);
-                      }}
-                    >
-                      <span>{l.native}</span>
-                      <em>{l.label}</em>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
 
           <SectionSwitcher section={section} compact />
 
@@ -504,7 +448,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                   {COLUMNS.travel.map((col) => (
                     <div key={col.heading.en}>
                       <span className="chead__mcolhead">
-                        {pick(col.heading, lang)}
+                        {pick(col.heading)}
                       </span>
                       {col.links.map((l) => (
                         <a
@@ -514,7 +458,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                           aria-current={hash === l.href ? "page" : undefined}
                           className={hash === l.href ? "is-active" : ""}
                         >
-                          {pick(l.label, lang)}
+                          {pick(l.label)}
                         </a>
                       ))}
                     </div>
@@ -538,11 +482,11 @@ export default function CultureHeader({ section, isCultureHome = false }) {
               </div>
               {pillars.map((p) => (
                 <div key={p.id} className="chead__mgroup">
-                  <span className="chead__mghead">{pick(p.label, lang)}</span>
+                  <span className="chead__mghead">{pick(p.label)}</span>
                   {COLUMNS[p.id].map((col) => (
                     <div key={col.heading.en} className="chead__mcol">
                       <span className="chead__mcolhead">
-                        {pick(col.heading, lang)}
+                        {pick(col.heading)}
                       </span>
                       {col.links.map((l) => (
                         <a
@@ -552,7 +496,7 @@ export default function CultureHeader({ section, isCultureHome = false }) {
                           aria-current={hash === l.href ? "page" : undefined}
                           className={hash === l.href ? "is-active" : ""}
                         >
-                          {pick(l.label, lang)}
+                          {pick(l.label)}
                         </a>
                       ))}
                     </div>
