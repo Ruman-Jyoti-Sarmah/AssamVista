@@ -1,40 +1,25 @@
 {
   "HERO": {
     "image": "",
-    "alt": {
-      "en": "Golden sunset over the mighty Brahmaputra river in Guwahati, Assam",
-      "as": "গুৱাহাটী, অসমৰ প্ৰবল ব্ৰহ্মপুত্ৰ নদীয়ে সোণৰাস্তাৰ ৰূপ"
-    },
+    "alt": "Golden sunset over the mighty Brahmaputra river in Guwahati, Assam",
     "headline": [
-      { "en": "DISCOVER", "as": "চিনক" },
-      { "en": "ASSAM", "as": "অসম" }
+      "DISCOVER",
+      "ASSAM"
     ],
-    "support": {
-      "en": "An independent guide to Assam's communities, living heritage, tea gardens, wildlife and Brahmaputra. Explore the culture, then plan a trip.",
-      "as": "অসমৰ জনগোষ্ঠী, জীৱন্ত ঐতিহ্য, চাহ বাগিচা, বন্যপ্ৰাণী আৰু ব্ৰহ্মপুত্ৰৰ এক স্বতন্ত্ৰ নিৰ্দেশিকা। সংস্কৃতি জানক, তাৰ পিছত ভ্ৰমণৰ পৰিকল্পনা কৰক।"
-    },
-    "cta": { "en": "Begin the Journey", "as": "যাত্ৰা আৰম্ভ কৰক" }
+    "support": "An independent guide to Assam's communities, living heritage, tea gardens, wildlife and Brahmaputra. Explore the culture, then plan a trip.",
+    "cta": "Begin the Journey"
   },
   "INTRO": {
-    "label": { "en": "CHAPTER 01 — THE ARRIVAL · NOMOSKAR", "as": "অধ্যায় ০১ — আগমন · নমস্কাৰ" },
+    "label": "CHAPTER 01 — THE ARRIVAL · NOMOSKAR",
     "lines": [
-      { "en": "WHERE ASSAM", "as": "য'ত অসম" },
-      { "en": "MEETS", "as": "মিলে" },
-      { "en": "TIMELESS SOUL", "as": "কালজয়ী আত্মা" }
+      "WHERE ASSAM",
+      "MEETS",
+      "TIMELESS SOUL"
     ],
     "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamakhya%20Temple%2C%20Guwahati%2C%20Assam.jpg?width=1600",
-    "imageAlt": {
-      "en": "Kamakhya Temple atop Nilachal Hill — heart of Shakti worship in Assam",
-      "as": "নীলাচল পাহাৰৰ মূৰত কামাখ্যা মন্দিৰ — অসমৰ শক্তি-পূজাৰ হৃদয়"
-    },
+    "imageAlt": "Kamakhya Temple atop Nilachal Hill — heart of Shakti worship in Assam",
     "image2": "https://commons.wikimedia.org/wiki/Special:FilePath/Jaapi%20of%20Assam.jpg?width=1200",
-    "image2Alt": {
-      "en": "Colourful Jaapi — traditional conical hat of Assam, symbol of honour",
-      "as": "ৰঙাৰ জাপী — অসমৰ পৰম্পৰাগত শঙালী টুপী, সন্মানৰ প্ৰতীক"
-    },
-    "body": {
-      "en": "Meet Assam through its people, festivals, food, crafts, spiritual traditions and historic places. Use the district guides to turn what interests you into a draft itinerary.",
-      "as": "জনগোষ্ঠী, উৎসৱ, খাদ্য, শিল্প, আধ্যাত্মিক পৰম্পৰা আৰু ঐতিহাসিক ঠাইৰ মাজেৰে অসমক জানক। জিলা-নিৰ্দেশিকাৰ সহায়ত নিজৰ আগ্ৰহক ভ্ৰমণসূচীৰ খচৰালৈ ৰূপ দিয়ক।"
-    }
+    "image2Alt": "Colourful Jaapi — traditional conical hat of Assam, symbol of honour",
+    "body": "Meet Assam through its people, festivals, food, crafts, spiritual traditions and historic places. Use the district guides to turn what interests you into a draft itinerary."
   }
 }

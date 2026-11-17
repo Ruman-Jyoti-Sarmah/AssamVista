@@ -2,99 +2,45 @@
   "ASSAM_FOOD": [
     {
       "name": "Khar",
-      "sort": {
-        "en": "The soul of an Assamese meal",
-        "as": "অসমীয়া ভোজৰ আত্মা"
-      },
-      "about": {
-        "en": "A distinctive alkaline preparation traditionally made with filtered water from the ash of dried banana peels or stems, often cooked with vegetables.",
-        "as": "শুকান কলৰ বাকলি বা ডালৰ ছাইৰ পৰা প্ৰস্তুত কৰা ক্ষাৰযুক্ত পানীৰে তৈয়াৰ কৰা এক সুকীয়া ব্যঞ্জন; প্ৰায়ে শাক-পাচলিৰ সৈতে ৰন্ধা হয়।"
-      },
+      "sort": "The soul of an Assamese meal",
+      "about": "A distinctive alkaline preparation traditionally made with filtered water from the ash of dried banana peels or stems, often cooked with vegetables.",
       "image": "Khar.jpg",
-      "alt": {
-        "en": "Khar, a traditional alkaline Assamese preparation",
-        "as": "খাৰ, অসমৰ পৰম্পৰাগত ক্ষাৰযুক্ত ব্যঞ্জন"
-      }
+      "alt": "Khar, a traditional alkaline Assamese preparation"
     },
     {
       "name": "Masor Tenga",
-      "sort": {
-        "en": "The everyday classic",
-        "as": "নিত্যৰ পৰিচিত খাদ্য"
-      },
-      "about": {
-        "en": "A light sour fish curry; the tang often comes from ingredients such as tomatoes, lemon or elephant apple, depending on the recipe.",
-        "as": "এবিধ পাতল টেঙা মাছৰ জোল; ৰন্ধনপ্ৰণালী অনুসৰি বিলাহী, নেমু বা ঔটেঙাৰ দৰে উপাদানে টেঙা সোৱাদ দিয়ে।"
-      },
+      "sort": "The everyday classic",
+      "about": "A light sour fish curry; the tang often comes from ingredients such as tomatoes, lemon or elephant apple, depending on the recipe.",
       "image": "Masor Tenga.jpg",
-      "alt": {
-        "en": "Masor Tenga, a light sour fish curry from Assam",
-        "as": "মাছৰ টেঙা, অসমৰ এবিধ পাতল টেঙা মাছৰ জোল"
-      }
+      "alt": "Masor Tenga, a light sour fish curry from Assam"
     },
     {
       "name": "Pigu",
-      "sort": {
-        "en": "Riverine delicacy",
-        "as": "নদীয় বিবিধ স্বাদ"
-      },
-      "about": {
-        "en": "Fermented fish from the riverine lowlands — a prized, deeply savoury taste of the Brahmaputra belt.",
-        "as": "নদীয় সমভূমিৰ তেমি মাছ — ব্ৰহ্মপুত্ৰৰ আঁচলৰ এটা মূল্যৱান, গভীৰ ৰুচিকৰ খাদ্য।"
-      },
+      "sort": "Riverine delicacy",
+      "about": "Fermented fish from the riverine lowlands — a prized, deeply savoury taste of the Brahmaputra belt.",
       "image": "Pigu.jpg",
-      "alt": {
-        "en": "Pigu, fermented fish of Assam",
-        "as": "পিগু, অসমৰ তেমি মাছ"
-      }
+      "alt": "Pigu, fermented fish of Assam"
     },
     {
       "name": "Bamboo shoot (Khoa / Khoi)",
-      "sort": {
-        "en": "Seasonal hill staple",
-        "as": "ঋতুগত পাহাৰীৰ খাদ্য"
-      },
-      "about": {
-        "en": "Stewed tender bamboo shoot, fragrant with mustard oil — the taste of Assam's hills at every meal.",
-        "as": "সাৰিয়েই তেলেৰ সুগন্ধে ৰান্ধা কোমল বাঁহ — অসমৰ পাহাৰৰ স্বাদ প্ৰতিটো ভোজত।"
-      },
+      "sort": "Seasonal hill staple",
+      "about": "Stewed tender bamboo shoot, fragrant with mustard oil — the taste of Assam's hills at every meal.",
       "image": "Bamboo shoot.jpg",
-      "alt": {
-        "en": "Stewed bamboo shoot of Assam",
-        "as": "অসমৰ ৰান্ধা বাঁহৰ কঁৰা"
-      }
+      "alt": "Stewed bamboo shoot of Assam"
     },
     {
       "name": "Til-pitha · Narikol laru · Payas",
-      "sort": {
-        "en": "Sweet tradition",
-        "as": "মিঠাৰ পৰম্পৰা"
-      },
-      "about": {
-        "en": "Steamed sweets on banana leaves for Bihu and every celebration — rice, coconut and milk in every guise.",
-        "as": "বিহু আৰু প্ৰতিটো উৎসৱত কলিপাতত বাপৰা মিঠাই — চাউল, নাৰিকল আৰু গাখীৰৰ বিভিন্ন ৰূপ।"
-      },
+      "sort": "Sweet tradition",
+      "about": "Steamed sweets on banana leaves for Bihu and every celebration — rice, coconut and milk in every guise.",
       "image": "Til pitha.jpg",
-      "alt": {
-        "en": "Assamese sweets on banana leaves",
-        "as": "কলিপাতত অসমীয়া মিঠাই"
-      }
+      "alt": "Assamese sweets on banana leaves"
     },
     {
       "name": "Assamese Thali",
-      "sort": {
-        "en": "The full feast",
-        "as": "সম্পূৰ্ণ ভোজ"
-      },
-      "about": {
-        "en": "Khar, masor tenga, duck with bamboo shoot and rice served on banana leaf — the complete Assamese table.",
-        "as": "খাৰ, মাছৰ টেঙা, বাঁহৰ কঁৰাৰ হাঁহ আৰু ভাত কলিপাতত পৰিৱেশন — সম্পূৰ্ণ অসমীয়া ভোজ।"
-      },
+      "sort": "The full feast",
+      "about": "Khar, masor tenga, duck with bamboo shoot and rice served on banana leaf — the complete Assamese table.",
       "image": "Assamese Thali (Jorhat).JPG",
-      "alt": {
-        "en": "The traditional Assamese thali on banana leaf",
-        "as": "কলিপাতত পাৰম্পৰিক অসমীয়া থলী"
-      }
+      "alt": "The traditional Assamese thali on banana leaf"
     }
   ]
 }
