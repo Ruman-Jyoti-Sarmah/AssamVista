@@ -1,31 +1,40 @@
 {
   "BRAND": {
-    "name": {
-      "en": "AssamVista",
-      "as": "অসম"
-    },
-    "tagline": {
-      "en": "An independent culture & travel guide to Assam",
-      "as": "অসমৰ সংস্কৃতি আৰু ভ্ৰমণৰ এক স্বতন্ত্ৰ নিৰ্দেশিকা"
-    },
-    "established": {
-      "en": "ASSAM · INDIA · INDEPENDENT GUIDE",
-      "as": "অসম · ভাৰত · স্বতন্ত্ৰ নিৰ্দেশিকা"
-    }
+    "name": "AssamVista",
+    "tagline": "An independent culture & travel guide to Assam",
+    "established": "ASSAM · INDIA · INDEPENDENT GUIDE"
   },
   "NAV": [
-    { "label": "Heritage", "href": "#/heritage" },
-    { "label": "Stays", "href": "#/stays" },
-    { "label": "Cuisine", "href": "#/culture/experiences/cuisine" },
-    { "label": "Festivals", "href": "#/culture/festivals" },
-    { "label": "Districts", "href": "#/districts" },
-    { "label": "Travel Guide", "href": "#/guide" },
-    { "label": "Plan a Visit", "href": "#/visit" }
+    {
+      "label": "Heritage",
+      "href": "#/heritage"
+    },
+    {
+      "label": "Stays",
+      "href": "#/stays"
+    },
+    {
+      "label": "Cuisine",
+      "href": "#/culture/experiences/cuisine"
+    },
+    {
+      "label": "Festivals",
+      "href": "#/culture/festivals"
+    },
+    {
+      "label": "Districts",
+      "href": "#/districts"
+    },
+    {
+      "label": "Travel Guide",
+      "href": "#/guide"
+    },
+    {
+      "label": "Plan a Visit",
+      "href": "#/visit"
+    }
   ],
   "FOOTER": {
-    "legal": {
-      "en": "AssamVista is an independent guide to Assam, not an official government website. © 2026",
-      "as": "AssamVista অসমৰ এক স্বতন্ত্ৰ নিৰ্দেশিকা, চৰকাৰী ৱেবছাইট নহয়। © ২০২৬"
-    }
+    "legal": "AssamVista is an independent guide to Assam, not an official government website. © 2026"
   }
 }
