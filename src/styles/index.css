@@ -10415,13 +10415,22 @@ main[data-section="travel"] .trail-card__body em {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-bottom: 0.35rem;
 }
 .thub__sec-title {
-  margin: 0.7rem 0 1.8rem;
+  margin: 0.75rem 0 1.8rem;
   font-family: var(--serif);
   font-weight: 600;
   font-size: clamp(1.8rem, 3.4vw, 2.8rem);
   line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.thub__sec-sub {
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ivory-dim);
+  max-width: 62ch;
 }
 .thub__tool-grid {
   display: grid;
@@ -11395,7 +11404,7 @@ main[data-section="travel"] .chead__logo-mark {
     margin-bottom: 1.3rem;
   }
   .thub__sec-sub {
-    margin-top: -0.5rem;
+    margin-top: 0.55rem;
   }
   .tfinal__inner {
     border-radius: 14px;
