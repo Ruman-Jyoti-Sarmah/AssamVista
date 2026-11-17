@@ -106,7 +106,8 @@
 }
 .dcard--selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
 .dcard__media {
