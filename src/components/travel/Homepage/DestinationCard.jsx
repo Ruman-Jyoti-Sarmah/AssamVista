@@ -25,7 +25,6 @@ export default function DestinationCard({
   return (
     <article
       className={`dcard ${selected ? "dcard--selected" : ""} ${compact ? "dcard--compact" : ""}`}
-      data-reveal
       data-category={destination.category}
     >
       <button
@@ -74,6 +73,7 @@ export default function DestinationCard({
             className={`dcard__add ${selected ? "is-on" : ""}`}
             onClick={toggle}
             aria-pressed={selected}
+            aria-checked={selected}
           >
             {selected ? <Check size={15} aria-hidden="true" /> : <Plus size={15} aria-hidden="true" />}
             {selected ? "Added to My Trip" : "Add to My Trip"}
