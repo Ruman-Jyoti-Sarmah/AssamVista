@@ -150,17 +150,35 @@ function HeroCarousel() {
       onMouseLeave={() => setPaused(false)}
     >
       <div className="chub__hero-media">
-        {HERO_SLIDES.map((s, idx) => (
-          <img
-            key={s.id}
-            className={`chub__hero-video ${idx === i ? "is-active" : ""}`}
-            src={s.poster}
-            alt=""
-            aria-hidden="true"
-            loading={idx === 0 ? "eager" : "lazy"}
-            decoding="async"
-          />
-        ))}
+        {HERO_SLIDES.map((s, idx) => {
+          const isWildlife = s.id === "wildlife";
+          const active = idx === i;
+          return (
+            <>
+              {isWildlife ? (
+                <video
+                  className={`chub__hero-video ${active ? "is-active" : ""}`}
+                  src="/video/culture-home-hero/Wildlife/wildlife.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  aria-hidden="true"
+                  loading="eager"
+                />
+              ) : (
+                <img
+                  className={`chub__hero-video ${active ? "is-active" : ""}`}
+                  src={s.poster}
+                  alt=""
+                  aria-hidden="true"
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              )}
+            </>
+          );
+        })}
         <div className="chub__hero-veil" aria-hidden="true" />
       </div>
       {/* Side rail actions — like Incredible India */}
