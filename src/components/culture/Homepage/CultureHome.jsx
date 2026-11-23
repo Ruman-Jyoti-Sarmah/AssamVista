@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   ArrowRight,
   ChevronLeft,
@@ -154,17 +154,17 @@ function HeroCarousel() {
           const isWildlife = s.id === "wildlife";
           const active = idx === i;
           return (
-            <>
+            <React.Fragment key={s.id}>
               {isWildlife ? (
                 <video
                   className={`chub__hero-video ${active ? "is-active" : ""}`}
                   src="/video/culture-home-hero/Wildlife/wildlife.mp4"
+                  poster="/images/culture/rhino.jpg"
                   autoPlay
                   muted
                   loop
                   playsInline
                   aria-hidden="true"
-                  loading="eager"
                 />
               ) : (
                 <img
@@ -176,7 +176,7 @@ function HeroCarousel() {
                   decoding="async"
                 />
               )}
-            </>
+            </React.Fragment>
           );
         })}
         <div className="chub__hero-veil" aria-hidden="true" />
