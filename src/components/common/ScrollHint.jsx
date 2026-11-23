@@ -1,53 +1,110 @@
-import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight, MoveHorizontal } from "lucide-react";
 import { useApp } from "@/store/AppContext";
 
 /**
- * ScrollHint — the small "Scroll to explore →" line under a mobile-only
- * card carousel. It is hidden on desktop (the rails only become scrollable
- * at the ≤600px breakpoint) and whenever the rail does not actually
- * overflow, so it is never a misleading instruction.
+ * ScrollHint — the visible "this row slides sideways" control under a carousel.
+ *
+ * It renders a short hint plus real previous/next buttons whenever the rail
+ * actually overflows, at every breakpoint: the culture home rails only become
+ * scrollers on phones, while the spiritual, artists and travel rails scroll on
+ * desktop too. When nothing overflows (a grid that fits) it renders nothing,
+ * so the hint can never be a misleading instruction.
  *
  * `targetRef` must point at the scrolling rail element.
  */
-export default function ScrollHint({ targetRef }) {
+export default function ScrollHint({ targetRef, label }) {
   const { t } = useApp();
-  const [visible, setVisible] = useState(false);
+  const [state, setState] = useState({ scrollable: false, prev: false, next: false });
+  const frame = useRef(0);
 
   useEffect(() => {
     const rail = targetRef?.current;
     if (!rail) return undefined;
-    const refresh = () => {
-      // hidden on desktop (rail is not a scroller there) + only when there
-      // is genuinely more card content to discover.
-      const scrollable = rail.scrollWidth - rail.clientWidth > 8;
-      const shown = !!(
-        window.matchMedia?.("(max-width: 600px)").matches && scrollable
-      );
-      setVisible(shown);
+
+    const measure = () => {
+      frame.current = 0;
+      const overflow = rail.scrollWidth - rail.clientWidth;
+      setState({
+        scrollable: overflow > 8,
+        prev: rail.scrollLeft > 4,
+        next: rail.scrollLeft < overflow - 4,
+      });
     };
-    refresh();
+    // Layout reads from a scroll handler are coalesced to one per frame, with a
+    // timeout fallback for throttled (background) tabs.
+    const refresh = () => {
+      if (frame.current) return;
+      frame.current = window.requestAnimationFrame(measure);
+      window.setTimeout(() => {
+        if (frame.current) {
+          window.cancelAnimationFrame(frame.current);
+          measure();
+        }
+      }, 120);
+    };
+
+    measure();
     window.addEventListener("resize", refresh);
     rail.addEventListener("scroll", refresh, { passive: true });
-    // cards/images can change the rail width after first paint
-    const mo = typeof ResizeObserver !== "undefined"
-      ? new ResizeObserver(refresh)
-      : null;
-    mo?.observe(rail);
-    if (rail.firstElementChild) mo?.observe(rail.firstElementChild);
+    const observer =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(refresh) : null;
+    observer?.observe(rail);
+    if (rail.firstElementChild) observer.observe(rail.firstElementChild);
+
     return () => {
       window.removeEventListener("resize", refresh);
       rail.removeEventListener("scroll", refresh);
-      mo?.disconnect();
+      observer?.disconnect();
+      if (frame.current) window.cancelAnimationFrame(frame.current);
     };
   }, [targetRef]);
 
-  if (!visible) return null;
+  const step = useCallback(
+    (direction) => {
+      const rail = targetRef?.current;
+      if (!rail) return;
+      const card = rail.firstElementChild;
+      const gap = parseFloat(getComputedStyle(rail).columnGap || "0") || 16;
+      const amount = (card?.getBoundingClientRect().width || rail.clientWidth * 0.8) + gap;
+      const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      rail.scrollBy({
+        left: direction * amount,
+        behavior: reduce ? "auto" : "smooth",
+      });
+    },
+    [targetRef]
+  );
+
+  if (!state.scrollable) return null;
 
   return (
-    <p className="chome__scroll-hint" aria-hidden="true">
-      {t("culture_scroll_hint")}
-      <ArrowRight size={13} aria-hidden="true" />
-    </p>
+    <div className="rail-hint">
+      <p className="rail-hint__text">
+        <MoveHorizontal size={14} aria-hidden="true" />
+        {t("culture_scroll_hint")}
+        <ArrowRight size={13} aria-hidden="true" className="rail-hint__nudge" />
+      </p>
+      <div className="rail-hint__nav">
+        <button
+          type="button"
+          className="rail-hint__btn"
+          onClick={() => step(-1)}
+          disabled={!state.prev}
+          aria-label={`${label || t("culture_scroll_hint")} — previous cards`}
+        >
+          <ChevronLeft size={16} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="rail-hint__btn"
+          onClick={() => step(1)}
+          disabled={!state.next}
+          aria-label={`${label || t("culture_scroll_hint")} — next cards`}
+        >
+          <ChevronRight size={16} aria-hidden="true" />
+        </button>
+      </div>
+    </div>
   );
 }

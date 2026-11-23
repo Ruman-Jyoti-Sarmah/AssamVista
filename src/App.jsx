@@ -10,6 +10,7 @@ import SectionDock from "@/components/common/SectionDock";
 import Footer from "@/components/common/Footer";
 import AssamVistaIntro from "@/components/common/AssamVistaIntro";
 import { useRevealRoot } from "@/lib/useReveal";
+import { startCoverflow } from "@/lib/coverflow";
 import { getSection } from "@/lib/section";
 import { getRoute } from "@/app/routes";
 
@@ -195,6 +196,9 @@ function Shell() {
   const progress = useScrollProgress();
 
   useRouteEffects({ hash, route, districtSlug, riverTitleKey, t, lang, pick });
+
+  // One shared 3D coverflow treatment for every horizontal carousel.
+  useEffect(() => startCoverflow(), []);
 
   // Change this value on every route so newly mounted reveal sections are observed.
   const revealKey = districtSlug ? `district:${districtSlug}` : hash || "home";

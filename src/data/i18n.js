@@ -943,6 +943,7 @@ export const STRINGS = {
     culture_explore_title: "More ways to discover Assam",
     culture_explore_sub: "Choose a topic to explore Assam's history, people, art, traditions and everyday life in more detail.",
     culture_discover: "Discover",
+    culture_scroll_hint: "Swipe or use the arrows",
     culture_cta_line: "Keep exploring the history, people and living traditions of Assam.",
     culture_cta_primary: "Explore heritage",
     culture_experiences_title: "Experiences",

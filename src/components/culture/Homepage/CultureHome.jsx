@@ -398,6 +398,8 @@ function Spiritual() {
           </button>
         </div>
 
+        <ScrollHint targetRef={trackRef} label={t("culture_spiritual_title")} />
+
         <div className="chub__rail-cta-row">
           <a className="chub__cta" href="#/culture/experiences/spiritual">
             {t("culture_spiritual_title")}

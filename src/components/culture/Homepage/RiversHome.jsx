@@ -1,11 +1,13 @@
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { useApp } from "@/store/AppContext";
+import ScrollHint from "@/components/common/ScrollHint";
 import { RIVERS, riverSideLabel, riverSystemLabel } from "@/data/travel/rivers";
 import { riverCreditFor } from "@/data/travel/riverImageCredits";
 
 export default function RiversHome() {
   const { t, pick, lang } = useApp();
+  const mosaicRef = useRef(null);
   const featured = useMemo(() => {
     const byId = new Map(RIVERS.map((r) => [r.id, r]));
     const order = ["brahmaputra", "barak", "jia-bharali", "manas", "beki", "subansiri", "longai"];
@@ -22,7 +24,7 @@ export default function RiversHome() {
         <p className="chome__sub">{t("rivers_intro2")}</p>
       </div>
 
-      <div className="chome__mosaic">
+      <div className="chome__mosaic" ref={mosaicRef}>
         {featured.map((r, idx) => {
           const credit = riverCreditFor(r.image.split("/").pop());
           return (
@@ -46,6 +48,8 @@ export default function RiversHome() {
           );
         })}
       </div>
+
+      <ScrollHint targetRef={mosaicRef} label={t("rivers_title")} />
 
       <div className="chome__cta">
         <p>{t("rivers_home_cta")}</p>

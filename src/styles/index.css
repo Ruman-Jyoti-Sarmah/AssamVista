@@ -9099,32 +9099,62 @@ main[data-section="travel"] .trail-card__body em {
 }
 }
 
-/* "Scroll to explore →" hint under every mobile-only Culture carousel.
-   Rendered only by ScrollHint.jsx when the rail is ≤600px AND actually
-   overflows, so it can never be misleading; the min-width guard below is a
-   CSS safety net for desktop. */
-.chome__scroll-hint {
+/* Carousel control bar. Rendered by ScrollHint.jsx under every rail that
+   actually overflows — at every breakpoint — so a sideways row always shows a
+   hint and real previous/next buttons instead of silently hiding extra cards. */
+.rail-hint {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
-  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-top: 0.9rem;
+}
+.rail-hint__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--bronze);
 }
-.chome__scroll-hint svg {
+.rail-hint__text svg {
   flex: none;
 }
-@media (min-width: 601px) {
-  .chome__scroll-hint {
-    display: none;
-  }
+.rail-hint__nav {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+.rail-hint__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--bronze) 45%, transparent);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--bronze);
+  transition: background 0.22s var(--ease), color 0.22s var(--ease),
+    border-color 0.22s var(--ease), opacity 0.22s var(--ease);
+}
+.rail-hint__btn:hover:not(:disabled) {
+  background: var(--bronze);
+  border-color: var(--bronze);
+  color: #fff;
+}
+.rail-hint__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.rail-hint__btn:focus-visible {
+  outline: 2px solid var(--bronze);
+  outline-offset: 3px;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .chome__scroll-hint svg {
+  .rail-hint__nudge {
     animation: chomeHintNudge 1.9s var(--ease) infinite;
   }
 }
@@ -11600,41 +11630,54 @@ main[data-section="travel"] .section-dock__thumb[data-pos="travel"] {
   }
 }
 
-/* Laptop: the full 244px dock overlaps the catalogue's third column. Collapse
-   it to an icon-only pill in the right gutter; icon titles and the drawer
-   switcher keep the control discoverable. */
+/* Laptop / small desktop: the right-edge dock used to shrink to an icon-only
+   box that overlapped the hero side rails and page columns at 1081px. It now
+   becomes the same compact two-option pill phones use, centred at the bottom:
+   both Culture and Travel stay fully visible and readable, and nothing it
+   covers is interactive. */
 @media (min-width: 1081px) and (max-width: 1439px) {
   .section-dock {
-    top: 58%;
-    right: 0.9rem;
+    top: auto;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1.1rem);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
     width: auto;
-    padding: 0.4rem;
-    border-radius: 14px;
+    max-width: calc(100vw - 2rem);
+    padding: 0.45rem;
+    border-radius: 999px;
+    gap: 0;
   }
   .section-dock__eyebrow,
-  .section-dock__hint,
-  .section-dock__label {
+  .section-dock__hint {
     display: none;
   }
   .section-dock__track {
-    border-radius: 11px;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 999px;
+  }
+  .section-dock__thumb {
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: auto;
+    width: calc(50% - 4px);
+    height: auto;
+    border-radius: 999px;
+  }
+  .section-dock__thumb[data-pos="travel"] {
+    transform: translateX(calc(100% + 2px));
   }
   .section-dock__btn {
-    min-height: 44px;
-    padding: 0.4rem;
+    min-height: 46px;
+    min-width: 132px;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
     justify-content: center;
-    gap: 0;
   }
   .section-dock__icon {
-    width: 32px;
-    height: 32px;
-  }
-}
-/* On the narrowest laptops the icon dock still brushes the content edge, so
-   reserve its width in the communities page gutter. */
-@media (min-width: 1081px) and (max-width: 1279px) {
-  .page__body--wide {
-    padding-right: calc(var(--gutter) + 76px);
+    width: 28px;
+    height: 28px;
   }
 }
 
@@ -12871,3 +12914,249 @@ main[data-section="travel"] {
 @media (max-width:1000px){.fest-planner__layout{grid-template-columns:1fr}.fest-summary-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.fest-hero{min-height:28rem}.fest-hero__content{padding-top:8rem}.fest-form-grid,.fest-summary-grid,.fest-detail-grid{grid-template-columns:1fr}.fest-trip-meta{grid-template-columns:repeat(3,1fr)}.fest-card__actions{grid-template-columns:1fr}.fest-modal{padding:.5rem;align-items:flex-end}.fest-modal__panel{max-height:94vh;border-radius:1rem 1rem .8rem .8rem}.fest-modal__media{aspect-ratio:16/10}}
 @media (max-width:480px){.fest-hero__actions,.fest-planner__actions{flex-direction:column;align-items:stretch}.fest-hero__actions .fest-btn,.fest-planner__actions .fest-btn{width:100%}.fest-trip-meta{grid-template-columns:1fr 1fr 1fr}.fest-filters{overflow-x:auto;flex-wrap:nowrap;padding-bottom:.2rem}.fest-chip{white-space:nowrap}}
+
+/* ============================================================
+   CULTURE CTAs — visible borders on every section's buttons
+   ------------------------------------------------------------
+   Culture pages (home sections, experiences, festivals, symbols,
+   communities, marketplace, …) use several filled button styles
+   whose border matched their own background, so they read as flat
+   colour blocks. Each one now carries a crisp 1px edge derived from
+   its own text colour, keeping every section's palette intact.
+   Scoped to the culture section only — navbar and footer untouched.
+   ============================================================ */
+main[data-section="culture"] .btn--solid,
+main[data-section="culture"] .chub__btn--solid,
+main[data-section="culture"] .chub__cta,
+main[data-section="culture"] .chub__gateway-cta--solid,
+main[data-section="culture"] .chub__rail,
+main[data-section="culture"] .fest-btn--solid,
+main[data-section="culture"] .mkt-btn--solid,
+main[data-section="culture"] .mkt-btn--dark,
+main[data-section="culture"] .mkt-card__add,
+main[data-section="culture"] .mkt-shoplinks__cart {
+  border: 1px solid color-mix(in srgb, currentColor 42%, transparent);
+}
+
+main[data-section="culture"] .btn--solid:hover,
+main[data-section="culture"] .chub__btn--solid:hover,
+main[data-section="culture"] .chub__cta:hover,
+main[data-section="culture"] .chub__gateway-cta--solid:hover,
+main[data-section="culture"] .chub__rail:hover,
+main[data-section="culture"] .fest-btn--solid:hover,
+main[data-section="culture"] .mkt-btn--solid:hover,
+main[data-section="culture"] .mkt-btn--dark:hover,
+main[data-section="culture"] .mkt-card__add:hover,
+main[data-section="culture"] .mkt-shoplinks__cart:hover {
+  border-color: color-mix(in srgb, currentColor 72%, transparent);
+}
+
+/* ------------------------------------------------------------
+   Culture section navigation buttons — outlined pills
+   ------------------------------------------------------------
+   The "Discover …", "Explore all festivals", "Cuisine", "Artists"
+   and gateway links in the culture sections are page links that used
+   to read as plain underlined text. They now carry a full 1px border,
+   pill radius and breathing room so every section has a real button.
+   Colour comes from each section's own text colour, so the same rule
+   works on light sections and on the dark performance/photographic ones.
+   ============================================================ */
+main[data-section="culture"] .chome__link,
+main[data-section="culture"] .chome__band-link,
+main[data-section="culture"] .chub__all-link,
+main[data-section="culture"] .chub__gateway-cta:not(.chub__gateway-cta--solid) {
+  padding: 0.72rem 1.2rem;
+  border: 1px solid color-mix(in srgb, currentColor 55%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  transition:
+    color 0.25s var(--ease),
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    gap 0.25s var(--ease);
+}
+
+main[data-section="culture"] .chome__link:hover,
+main[data-section="culture"] .chome__band-link:hover,
+main[data-section="culture"] .chub__all-link:hover,
+main[data-section="culture"] .chub__gateway-cta:not(.chub__gateway-cta--solid):hover {
+  color: #ffffff;
+  background: var(--bronze);
+  border-color: var(--bronze);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(179, 40, 45, 0.22);
+}
+
+main[data-section="culture"] .chome__link:focus-visible,
+main[data-section="culture"] .chome__band-link:focus-visible,
+main[data-section="culture"] .chub__all-link:focus-visible,
+main[data-section="culture"] .chub__gateway-cta:not(.chub__gateway-cta--solid):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* the CTA sitting on the artists photograph */
+main[data-section="culture"] .chome__wide-cta {
+  padding: 0.72rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+  background: rgba(9, 6, 4, 0.22);
+  backdrop-filter: blur(6px);
+  transition:
+    color 0.25s var(--ease),
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    gap 0.25s var(--ease);
+}
+
+main[data-section="culture"] .chome__wide:hover .chome__wide-cta {
+  color: #17211f;
+  background: #f3c98a;
+  border-color: #f3c98a;
+  gap: 0.8rem;
+}
+
+/* ============================================================
+   3D COVERFLOW CAROUSELS  (site-wide, one shared look)
+   ------------------------------------------------------------
+   src/lib/coverflow.js measures each horizontal rail and writes a
+   transform on every card: the card at the centre of the rail faces
+   forward, the ones either side rotate away, recede and dim slightly.
+   Everything here only adds the perspective context and smooths the
+   transform — snapping, drag, arrows and hover zooms are untouched.
+   Rails that fit their viewport (non-scrolling grids) are left flat.
+   ============================================================ */
+.cf {
+  perspective: 1500px;
+  perspective-origin: 50% 45%;
+}
+
+.cf__item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-origin: 50% 50%;
+  transition: transform 0.18s ease-out, opacity 0.18s ease-out;
+}
+
+/* the rail keeps a soft stage behind the cards while it is a carousel */
+/* The rail keeps a little vertical breathing room for the cards that lift as
+   they recede. No masks or glows here: the white edge fade and the raised
+   shadow are deliberately gone, so the photographs stay clean and only the
+   depth itself shows that a row is a carousel. */
+.cf--on {
+  padding-block: 0.35rem;
+  scroll-snap-type: x mandatory;
+}
+
+/* Cards settle in the middle of the rail, so the box you are looking at is
+   always the front one and the rest sit behind it until you scroll. */
+.cf--on.cf--on > .cf__item {
+  scroll-snap-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cf__item {
+    transition: none !important;
+  }
+}
+
+/* ============================================================
+   HEADER — keep the bar inside the viewport at in-between widths
+   ------------------------------------------------------------
+   The two-tier header (logo + Home/Destinations/Experiences/Travel
+   + search + My Trip + Log in + section switch) needs ~1300px. In
+   between the mobile breakpoint (900px) and a wide desktop the tools
+   ran past the right edge, so the search box, My Trip and Log in were
+   cut off. These steps tighten the rhythm first, then drop the
+   secondary labels, so nothing is clipped at 901px / 1024px / 1213px.
+   The ≤900px mobile drawer behaviour is untouched.
+   ============================================================ */
+
+/* the floating SectionDock already offers Culture ⟷ Travel below 1081px,
+   so the header copy of the switch used to be a second, off-screen control */
+@media (max-width: 1080px) {
+  .chead__tools > .switch--compact {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1360px) {
+  .chead__bar {
+    gap: 1rem;
+  }
+  .chead__trigger,
+  .chead__link {
+    padding-inline: 0.8rem;
+  }
+  .chead__search input {
+    width: 120px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .chead__bar {
+    gap: 0.7rem;
+  }
+  .chead__trigger,
+  .chead__link {
+    padding-inline: 0.62rem;
+    font-size: 0.83rem;
+  }
+  .chead__logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+  .chead__logo-text strong {
+    font-size: 1.25rem;
+  }
+  .chead__search input {
+    width: 96px;
+  }
+  /* icon + badge are enough for My Trip here; the label returns on
+     wide screens and lives in the mobile drawer on small ones */
+  .chead__trip-label {
+    display: none;
+  }
+  .chead__trip {
+    padding: 0 0.6rem;
+    gap: 0.35rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .chead__bar {
+    gap: 0.55rem;
+  }
+  .chead__nav {
+    min-width: 0;
+  }
+  .chead__trigger,
+  .chead__link {
+    padding-inline: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .chead__logo-mark {
+    width: 34px;
+    height: 34px;
+  }
+  .chead__logo-text strong {
+    font-size: 1.12rem;
+  }
+  .chead__tools {
+    gap: 0.45rem;
+  }
+  .chead__search {
+    padding: 0 0.55rem;
+  }
+  .chead__search input {
+    width: 64px;
+  }
+  .chead__account-label {
+    display: none;
+  }
+  .chead__account {
+    padding: 0 0.65rem;
+  }
+}

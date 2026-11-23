@@ -58,7 +58,13 @@ export function LivingHeritage() {
                 <span className="chome__row-kicker">{pick(r.kicker)}</span>
                 <h3>{pick(r.title)}</h3>
                 <p>{pick(r.body)}</p>
-                <a className="chome__link" href={r.href}>{t("culture_discover")} <ArrowRight size={14} aria-hidden="true" /> {pick(r.title)}</a>
+                <a
+                  className="chome__link"
+                  href={r.href}
+                  aria-label={`${t("culture_discover")} — ${pick(r.title)}`}
+                >
+                  {t("culture_discover")} <ArrowRight size={14} aria-hidden="true" />
+                </a>
               </div>
             </article>
           ))}
@@ -122,7 +128,13 @@ export function Crafts() {
               <span className="chome__row-kicker">{pick(c.kicker)}</span>
               <h3>{pick(c.title)}</h3>
               <p>{pick(c.body)}</p>
-              <a className="chome__link" href={c.href}>{t("culture_discover")} <ArrowUpRight size={14} aria-hidden="true" /> {pick(c.title)}</a>
+              <a
+                className="chome__link"
+                href={c.href}
+                aria-label={`${t("culture_discover")} — ${pick(c.title)}`}
+              >
+                {t("culture_discover")} <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
             </div>
           </article>
         ))}
